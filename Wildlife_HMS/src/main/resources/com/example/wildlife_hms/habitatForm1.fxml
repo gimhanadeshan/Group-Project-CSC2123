@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<GridPane hgap="30.0" prefHeight="427.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.HabitatForm1Controller">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" prefWidth="250.0" />
+      <ColumnConstraints hgrow="SOMETIMES" prefWidth="250.0" />
+    <ColumnConstraints hgrow="SOMETIMES" prefWidth="250.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="75.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Pane prefHeight="6.0" prefWidth="700.0" GridPane.columnSpan="3" GridPane.hgrow="ALWAYS">
+         <children>
+            <Label layoutX="80.0" layoutY="19.0" prefHeight="27.0" prefWidth="234.0" text="Habitat Information Form" textFill="#252b48">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/icons8-habitat-100.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <StackPane alignment="CENTER_LEFT" prefHeight="88.0" prefWidth="266.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+         <children>
+            <MFXTextField fx:id="txtDesc" accessibleRole="TEXT_AREA" floatingText="Description" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" />
+         </children>
+      </StackPane>
+      <StackPane prefHeight="66.0" prefWidth="702.0" GridPane.columnSpan="3" GridPane.rowIndex="3">
+         <children>
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="260.0" spacing="10.0">
+               <children>
+                  <MFXButton fx:id="btnSave" buttonType="RAISED" onAction="#saveHabitat" prefHeight="30.0" prefWidth="75.0" text="Save">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/icons8-save-button-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MFXButton>
+                  <MFXButton fx:id="btnClear" buttonType="RAISED" layoutX="96.0" layoutY="10.0" onAction="#clearHabitat" prefHeight="30.0" prefWidth="75.0" text="Undo">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/icons8-undo-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MFXButton>
+                  <MFXButton fx:id="btnUpdate" buttonType="RAISED" onAction="#updateHabitat" prefHeight="30.0" prefWidth="90.0" text="Update">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/icons8-update-30.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MFXButton>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+      <MFXTextField fx:id="txtid" disable="true" floatingText="HabitatID" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="1" />
+      <MFXTextField fx:id="txtName" floatingText="HabitatName*" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <MFXTextField fx:id="txtLocation" floatingText="Location" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <MFXTextField fx:id="txtSize" floatingText="Size*" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="2" />
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@css/style.css" />
+      <URL value="@css/Common.css" />
+   </stylesheets>
+   <styleClass>
+      <String fx:value="white-background" />
+      <String fx:value="grid-background" />
+   </styleClass>
+</GridPane>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<GridPane hgap="20.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.MonitoringAlertsController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="2">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+               <image>
+                  <Image url="@../../../img/icons8-google-alerts-100.png" />
+               </image>
+            </ImageView>
+            <Label text=" Monitoring Alerts " textFill="#252b48" StackPane.alignment="CENTER_LEFT">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <StackPane.margin>
+                  <Insets left="50.0" />
+               </StackPane.margin>
+            </Label>
+         </children>
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
+         <children>
+            <TextField fx:id="txtSearch" onKeyTyped="#search" prefHeight="30.0" prefWidth="699.0" promptText="Search ID or Name" stylesheets="@css/style.css">
+               <styleClass>
+                  <String fx:value="white-background" />
+                  <String fx:value="border" />
+               </styleClass>
+            </TextField>
+            <ImageView fitHeight="20.0" fitWidth="20.0" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
+               <image>
+                  <Image url="@../../../img/icons8-search-30.png" />
+               </image>
+               <StackPane.margin>
+                  <Insets right="10.0" />
+               </StackPane.margin>
+            </ImageView>
+         </children>
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="2">
+         <children>
+            <TableView fx:id="tblAlert" prefHeight="276.0" prefWidth="699.0" stylesheets="@css/style.css" tableMenuButtonVisible="true">
+               <columns>
+                  <TableColumn fx:id="colAlertId" editable="false" prefWidth="75.0" sortable="false" text="Alert ID" />
+                  <TableColumn fx:id="colAlertType" editable="false" prefWidth="75.0" sortable="false" text="Alert Type" />
+                  <TableColumn fx:id="colHabitatName" editable="false" prefWidth="141.60003662109375" sortable="false" text="Habitat Name" />
+                  <TableColumn fx:id="colHabitatID" editable="false" prefWidth="150.39996337890625" sortable="false" text="Habitat ID" />
+                  <TableColumn fx:id="colAlertDate" editable="false" minWidth="0.0" prefWidth="139.1999969482422" sortable="false" text="Alert Date" />
+                  <TableColumn fx:id="colAlertDesc" editable="false" minWidth="0.0" prefWidth="252.00006103515625" sortable="false" text="Alert Discription" />
+                  <TableColumn fx:id="colUpdate" prefWidth="75.0" sortable="false" text="Upadate" />
+                  <TableColumn fx:id="colDelete" prefWidth="75.0" sortable="false" text="Delete" />
+               </columns>
+               <styleClass>
+                  <String fx:value="transparent" />
+                  <String fx:value="border" />
+               </styleClass>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </StackPane>
+      <MFXButton buttonType="RAISED" onAction="#openAlertsForm" prefHeight="30.0" prefWidth="75.0" text="New" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/icons8-add-new-50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </MFXButton>
+   </children>
+   <padding>
+      <Insets bottom="50.0" left="50.0" right="50.0" top="20.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@css/style.css" />
+      <URL value="@css/Common.css" />
+   </stylesheets>
+   <styleClass>
+      <String fx:value="grid-background" />
+      <String fx:value="white-background" />
+   </styleClass>
+</GridPane>

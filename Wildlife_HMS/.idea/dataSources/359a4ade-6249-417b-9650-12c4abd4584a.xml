@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="wildlifehms@localhost">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.51">
+    <root id="1"/>
+    <schema id="2" parent="1" name="mysql">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="3" parent="1" name="information_schema">
+      <CollationName>utf8mb3_general_ci</CollationName>
+    </schema>
+    <schema id="4" parent="1" name="performance_schema">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="5" parent="1" name="sys">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="6" parent="1" name="school_items">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="7" parent="1" name="company">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="8" parent="1" name="books">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="9" parent="1" name="projects">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="10" parent="1" name="ass_10">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="11" parent="1" name="ass9">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="12" parent="1" name="ass10">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="13" parent="1" name="swprojects">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="14" parent="1" name="ass7">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="15" parent="1" name="ibilling">
+      <CollationName>latin1_swedish_ci</CollationName>
+    </schema>
+    <schema id="16" parent="1" name="phpmyadmin">
+      <CollationName>utf8mb3_bin</CollationName>
+    </schema>
+    <schema id="17" parent="1" name="project1">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="18" parent="1" name="taskapp">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="19" parent="1" name="student">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="20" parent="1" name="wildlifehms">
+      <Current>1</Current>
+      <LastIntrospectionLocalTimestamp>2023-12-23.09:37:04</LastIntrospectionLocalTimestamp>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="21" parent="1" name="simple_report">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="22" parent="1" name="pos">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="23" parent="1" name="bank">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <table id="24" parent="20" name="environmentalconditions">
+      <Engine>MyISAM</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="25" parent="20" name="habitats">
+      <Engine>MyISAM</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="26" parent="20" name="habitatspecies">
+      <Engine>MyISAM</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="27" parent="20" name="monitoringalerts">
+      <Engine>MyISAM</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="28" parent="20" name="observations">
+      <Engine>MyISAM</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="29" parent="20" name="species">
+      <Engine>MyISAM</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="30" parent="20" name="useraccounts">
+      <Engine>MyISAM</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="31" parent="20" name="vegetationtypes">
+      <Engine>MyISAM</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <column id="32" parent="24" name="ConditionID">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="33" parent="24" name="ConditionType">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="34" parent="24" name="ConditionValue">
+      <DasType>decimal(10)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="35" parent="24" name="HabitatID">
+      <DasType>int|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <index id="36" parent="24" name="PRIMARY">
+      <ColNames>ConditionID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="37" parent="24" name="HabitatID">
+      <ColNames>HabitatID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="38" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="39" parent="25" name="HabitatID">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="40" parent="25" name="HabitatName">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="41" parent="25" name="Location">
+      <DasType>point|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="42" parent="25" name="Size">
+      <DasType>decimal(10)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="43" parent="25" name="Description">
+      <DasType>text|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <index id="44" parent="25" name="PRIMARY">
+      <ColNames>HabitatID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="45" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="46" parent="26" name="HabitatSpeciesID">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="47" parent="26" name="HabitatID">
+      <DasType>int|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="48" parent="26" name="SpeciesID">
+      <DasType>int|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <index id="49" parent="26" name="PRIMARY">
+      <ColNames>HabitatSpeciesID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="50" parent="26" name="HabitatID">
+      <ColNames>HabitatID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="51" parent="26" name="SpeciesID">
+      <ColNames>SpeciesID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="52" parent="26" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="53" parent="27" name="AlertID">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="54" parent="27" name="HabitatID">
+      <DasType>int|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="55" parent="27" name="AlertType">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="56" parent="27" name="AlertDescription">
+      <DasType>text|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="57" parent="27" name="AlertDate">
+      <DasType>date|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="58" parent="27" name="AlertStatus">
+      <DasType>varchar(50)|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <index id="59" parent="27" name="PRIMARY">
+      <ColNames>AlertID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="60" parent="27" name="HabitatID">
+      <ColNames>HabitatID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="61" parent="27" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="62" parent="28" name="ObservationID">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="63" parent="28" name="HabitatID">
+      <DasType>int|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="64" parent="28" name="SpeciesID">
+      <DasType>int|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="65" parent="28" name="ObserverName">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="66" parent="28" name="ObservationDate">
+      <DasType>date|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="67" parent="28" name="Notes">
+      <DasType>text|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <column id="68" parent="28" name="Attachments">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <index id="69" parent="28" name="PRIMARY">
+      <ColNames>ObservationID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="70" parent="28" name="HabitatID">
+      <ColNames>HabitatID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="71" parent="28" name="SpeciesID">
+      <ColNames>SpeciesID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="72" parent="28" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="73" parent="29" name="SpeciesID">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="74" parent="29" name="CommonName">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="75" parent="29" name="ScientificName">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="76" parent="29" name="ConservationStatus">
+      <DasType>varchar(50)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="77" parent="29" name="Description">
+      <DasType>text|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <index id="78" parent="29" name="PRIMARY">
+      <ColNames>SpeciesID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="79" parent="29" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="80" parent="30" name="id">
+      <AutoIncrement>2</AutoIncrement>
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="81" parent="30" name="username">
+      <DasType>varchar(20)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="82" parent="30" name="password">
+      <DasType>varchar(10)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <index id="83" parent="30" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="84" parent="30" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="85" parent="31" name="VegetationID">
+      <DasType>int|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="86" parent="31" name="VegetationName">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="87" parent="31" name="Description">
+      <DasType>text|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="88" parent="31" name="HabitatID">
+      <DasType>int|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <index id="89" parent="31" name="PRIMARY">
+      <ColNames>VegetationID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="90" parent="31" name="HabitatID">
+      <ColNames>HabitatID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="91" parent="31" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>

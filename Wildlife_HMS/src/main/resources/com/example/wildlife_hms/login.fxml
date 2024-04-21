@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="817.0" stylesheets="@css/TextFields.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.LoginController">
+   <right>
+      <AnchorPane prefHeight="428.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="62.0" layoutY="123.0" text="Log in" textFill="#252b48">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/icons8-login-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label fx:id="loginMsg" layoutX="14.0" layoutY="94.0" prefHeight="27.0" prefWidth="326.0" textFill="#c70c0c">
+               <font>
+                  <Font name="Times New Roman Bold" size="14.0" />
+               </font></Label>
+            <MFXTextField fx:id="unameField" floatMode="BORDER" floatingText="Username" layoutX="61.0" layoutY="188.0" prefHeight="30.0" prefWidth="230.0" selectable="false" />
+            <MFXPasswordField fx:id="pwdField" floatMode="BORDER" floatingText="Password" layoutX="61.0" layoutY="256.0" prefHeight="30.0" prefWidth="230.0" selectable="false" />
+            <MFXButton fx:id="loginBtn" layoutX="62.0" layoutY="340.0" onAction="#loginBtnOnAction" prefHeight="30.0" prefWidth="230.0" styleClass="outline-button" stylesheets="@css/Buttons.css" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="cancelBtn" layoutX="61.0" layoutY="387.0" onAction="#cancelBtnOnAction" prefHeight="30.0" prefWidth="230.0" styleClass="outline-button" stylesheets="@css/Buttons.css" text="Cancel">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </MFXButton>
+            <Label layoutX="237.0" layoutY="37.0" text="Wildlife" textFill="#5b9a8b">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Line endX="126.4000244140625" endY="71.5" layoutX="191.0" layoutY="-6.0" startX="34.40000915527344" startY="71.5" stroke="#0000005d" strokeLineJoin="BEVEL" />
+            <Label layoutX="251.0" layoutY="67.0" text="HMS" textFill="#5b9a8b">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+            <Hyperlink alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="137.0" layoutY="456.0" onAction="#openRegisterForm" text="Register Here">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/icons8-back-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Hyperlink>
+         </children>
+      </AnchorPane>
+   </right>
+   <center>
+      <AnchorPane prefHeight="550.0" prefWidth="438.0" style="-fx-background-color: #252B48;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutX="26.0" layoutY="385.0" prefHeight="46.0" prefWidth="400.0" text="Efficiently manage all your wildlife habitat data " textFill="#faf8f8">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></Label>
+            <ImageView fitHeight="275.0" fitWidth="292.0" layoutX="88.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/login.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="SW_RESIZE" />
+               </cursor>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="25.0" layoutY="408.0" prefHeight="46.0" prefWidth="400.0" text="in one place." textFill="#faf8f8">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

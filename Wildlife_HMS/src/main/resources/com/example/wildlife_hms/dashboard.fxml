@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXScrollPane?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bpDashboard" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.DashboardController">
+   <top>
+      <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="58.0" prefWidth="1139.0" spacing="20.0" style="-fx-background-color: #5B9A8B;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="20.0" fitWidth="20.0" onMouseClicked="#toggleScrollPane" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/icons8-menu-100.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="67.0" prefWidth="169.0" text="Wildlife HMS ">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="290.0" styleClass="round_layout" visible="false">
+               <children>
+                  <TextField prefHeight="26.0" prefWidth="215.0" promptText="Search" styleClass="transparent" stylesheets="@css/style.css" />
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/icons8-search-30.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="user" alignment="CENTER" prefHeight="50.0" prefWidth="138.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="profile" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../img/icons8-user-100-1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </HBox>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane fx:id="ancMain" layoutX="47.2" layoutY="56.0" prefHeight="570.0" prefWidth="757.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0" />
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <MFXScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" prefWidth="250.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+         <content>
+            <VBox styleClass="white-background">
+               <children>
+                  <VBox layoutX="10.0" layoutY="580.0" maxHeight="-Infinity" prefWidth="250.0">
+                     <children>
+                        <HBox fx:id="btnDashboard" alignment="CENTER" onMouseClicked="#btnDashboardOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/icons8-dashboard-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefWidth="140.0" text="Dashboard" />
+                           </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
+                     </children>
+                  </VBox>
+                  <VBox maxHeight="-Infinity" prefWidth="250.0">
+                     <children>
+                        <HBox fx:id="btnHabitat" alignment="CENTER" onMouseClicked="#toggleScrollHabitat" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/icons8-habitat-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefWidth="140.0" text="Habitat">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <VBox fx:id="h">
+                           <children>
+                              <HBox alignment="CENTER" onMouseClicked="#btnOnActionHabitatReport" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                                 <children>
+                                    <Label prefWidth="140.0" text="Habitat Reports" />
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="h2" alignment="CENTER" onMouseClicked="#btnHabitatOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                                 <children>
+                                    <Label prefWidth="140.0" text="Habitat Details" />
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="btnEnvironmentalConditions" alignment="CENTER" onMouseClicked="#btnEnvironmentalConditionsOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved">
+                                 <children>
+                                    <Label prefWidth="140.0" text="Environmental Conditions" />
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="btnVegetationTypes" alignment="CENTER" onMouseClicked="#btnVegetationTypesOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved">
+                                 <children>
+                                    <Label prefWidth="140.0" text="VegetationTypes" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox fx:id="btnSpecies" alignment="CENTER" onMouseClicked="#toggleScrollSpecies" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/icons8-animal-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefWidth="140.0" text="Species Inventory">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                        <VBox fx:id="s">
+                           <children>
+                              <HBox alignment="CENTER" onMouseClicked="#btnSpeciesOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                                 <children>
+                                    <Label prefWidth="140.0" text="Species " />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                                 <children>
+                                    <Label prefWidth="140.0" text="Species Reports" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox fx:id="btnObservation" alignment="CENTER" onMouseClicked="#toggleScrollObservation" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/icons8-observation-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefWidth="140.0" text="Observation ">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                        <VBox fx:id="o" layoutX="10.0" layoutY="245.0">
+                           <children>
+                              <HBox alignment="CENTER" onMouseClicked="#btnOnActionObservation" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                                 <children>
+                                    <Label prefWidth="140.0" text="Observation Details" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                                 <children>
+                                    <Label prefWidth="140.0" text="Observation Reports" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox fx:id="btnMonitoringAlerts" alignment="CENTER" onMouseClicked="#toggleScrollAlerts" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/icons8-google-alerts-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefWidth="140.0" text="Monitoring Alerts ">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                        <VBox fx:id="a" layoutX="10.0" layoutY="360.0">
+                           <children>
+                              <HBox alignment="CENTER" onMouseClicked="#btnMonitoringAlertsOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                                 <children>
+                                    <Label prefWidth="140.0" text="Alerts Details" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                                 <children>
+                                    <Label prefWidth="140.0" text="Alerts Reports" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="441.0" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/icons8-setting-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefWidth="140.0" text="Settings">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/icons8-management-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefWidth="140.0" text="User Management">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="btnUserRegister" alignment="CENTER" onMouseClicked="#btnUserRegisterOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/icons8-user-100-1.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefWidth="140.0" text="User Registration">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="btnLogout" alignment="CENTER" onMouseClicked="#btnLogoutOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/icons8-logout-100.png" />
+                                 </image>
+                              </ImageView>
+                              <Label prefWidth="140.0" text="LOGOUT">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </content>
+         <styleClass>
+            <String fx:value="mfx-scroll-pane" />
+            <String fx:value="scroll-bar" />
+         </styleClass>
+      </MFXScrollPane>
+   </left>
+   <stylesheets>
+      <URL value="@css/style.css" />
+      <URL value="@css/Common.css" />
+   </stylesheets>
+</BorderPane>
