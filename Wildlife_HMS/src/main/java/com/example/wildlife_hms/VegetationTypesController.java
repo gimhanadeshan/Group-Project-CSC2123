@@ -254,6 +254,7 @@ public class VegetationTypesController implements Initializable, ButtonAction{
                     vegetationTypesFormController.getData(vegetationModel);
                     vegetationTypesFormController.btnSave.setDisable(true);
                     vegetationTypesFormController.btnClear.setDisable(true);
+                    vegetationTypesFormController.btnUpdate.setDisable(false);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.setResizable(false);

@@ -1,17 +1,23 @@
 package com.example.wildlife_hms;
 
 import io.github.palexdev.materialfx.controls.MFXComboBox;
+import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXFilterComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.utils.StringUtils;
 import io.github.palexdev.materialfx.utils.others.FunctionalStringConverter;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -21,7 +27,7 @@ import java.util.function.Predicate;
 import static java.lang.Integer.parseInt;
 
 
-public class EnvironmentalConditionsFormController implements Initializable, LookupHabitatData {
+public class EnvironmentalConditionsFormController extends DashboardController implements Initializable, LookupHabitatData {
 
     @FXML
     public Button btnClear;
@@ -53,6 +59,9 @@ public class EnvironmentalConditionsFormController implements Initializable, Loo
     @FXML
     private MFXTextField txtHabitatName;
 
+    @FXML
+    private MFXDatePicker datePostingDate;
+
 
 
 
@@ -70,19 +79,20 @@ public class EnvironmentalConditionsFormController implements Initializable, Loo
     DatabaseConnection connectNow=new DatabaseConnection();
     Connection connectDB = connectNow.getConnection();
 
-    HabitatFormController habitatFormController=new HabitatFormController();
+    HabitatController habitatController=new HabitatController();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         StringConverter<HabitatModel> converter = FunctionalStringConverter.to(habitatModel -> (habitatModel == null) ? "" : STR."\{habitatModel.getHaId()} | \{habitatModel.getName()}");
         Function<String, Predicate<HabitatModel>> filterFunction = s -> habitatModel -> StringUtils.containsIgnoreCase(converter.toString(habitatModel), s);
-        filterCombo.setItems(habitatFormController.getHabitat());
+        filterCombo.setItems(habitatController.getHabitat());
         filterCombo.setConverter(converter);
         filterCombo.setFilterFunction(filterFunction);
 
 
 
         filterCombo.setOnAction(event -> lookupHabitatName());
+
 
 
         
@@ -101,6 +111,7 @@ public class EnvironmentalConditionsFormController implements Initializable, Loo
         txtConditionType.setText(environmentalConditionsModel.getConditionType());
         txtConditionValue.setText(String.valueOf(environmentalConditionsModel.getConditionValue()));
         txtHabitatId.setText(String.valueOf(environmentalConditionsModel.getHabitatID()));
+        datePostingDate.setValue(environmentalConditionsModel.getPostingDate().toLocalDate());
 
 
         lookupHabitatNameForGetData();
@@ -116,24 +127,23 @@ public class EnvironmentalConditionsFormController implements Initializable, Loo
         txtConditionType.clear();
         txtHabitatName.clear();
         filterCombo.clearSelection();
+        datePostingDate.setValue(null);
 
 
     }
 
 
     void afterUpdateOperation() {
-
         clear();
         Stage window = (Stage) txtHabitatId.getScene().getWindow();
         window.close();
-
     }
 
 
 
 
     private boolean validateFields() {
-        return !txtConditionType.getText().isEmpty() && !txtHabitatId.getText().isEmpty();
+        return !txtConditionType.getText().isEmpty() && !txtHabitatId.getText().isEmpty() && !datePostingDate.getText().isEmpty();
     }
 
 
@@ -169,7 +179,7 @@ public class EnvironmentalConditionsFormController implements Initializable, Loo
 
         if (validateFields() && validateSize()) {
 
-            String query = "Insert into environmentalconditions(ConditionType,ConditionValue,HabitatID)values(?,?,?)";
+            String query = "Insert into environmentalconditions(ConditionType,ConditionValue,HabitatID,PostingDate)values(?,?,?,?)";
 
             try {
                 PreparedStatement statement = connectDB.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -177,6 +187,7 @@ public class EnvironmentalConditionsFormController implements Initializable, Loo
                 statement.setString(1, txtConditionType.getText());
                 statement.setDouble(2, Double.parseDouble(txtConditionValue.getText()));
                 statement.setInt(3, Integer.parseInt((txtHabitatId.getText())));
+                statement.setDate(4, Date.valueOf(datePostingDate.getValue()));
                 statement.executeUpdate();
 
                 ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -196,8 +207,10 @@ public class EnvironmentalConditionsFormController implements Initializable, Loo
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Condition saved successfully!");
 
 
+
+
             } catch (NumberFormatException | SQLException e) {
-                showAlert(Alert.AlertType.ERROR, "Database Error", "Error in saving Condition");
+                showAlert(Alert.AlertType.ERROR, "Database Error", STR."Error in updating Condition: \{e.getMessage()}");
             }
         } else {
             showAlert(Alert.AlertType.ERROR, "Validation Error", "Some fields are invalid");
@@ -208,14 +221,15 @@ public class EnvironmentalConditionsFormController implements Initializable, Loo
     void updateCondition() {
         if(validateFields() && validateSize()) {
 
-            String query = "UPDATE environmentalconditions SET ConditionType=?,ConditionValue=?,HabitatID=? where ConditionID=?";
+            String query = "UPDATE environmentalconditions SET ConditionType=?,ConditionValue=?,HabitatID=? ,PostingDate=? where ConditionID=?";
             try {
                 PreparedStatement statement = connectDB.prepareStatement(query);
 
                 statement.setString(1, txtConditionType.getText());
                 statement.setDouble(2, Double.parseDouble(txtConditionValue.getText()));
                 statement.setInt(3, Integer.parseInt(txtHabitatId.getText()));
-                statement.setInt(4, id);
+                statement.setDate(4, Date.valueOf(datePostingDate.getValue()));
+                statement.setInt(5, id);
                 statement.executeUpdate();
 
 
@@ -223,8 +237,12 @@ public class EnvironmentalConditionsFormController implements Initializable, Loo
                 afterUpdateOperation();
 
 
+
+
+
+
             } catch (NumberFormatException | SQLException e) {
-                showAlert(Alert.AlertType.ERROR, "Database Error", "Error in updating Condition");
+                showAlert(Alert.AlertType.ERROR, "Database Error", STR."Error in updating Condition: \{e.getMessage()}");
             }
         } else {
             showAlert(Alert.AlertType.ERROR, "Validation Error", "Some fields are invalid");
@@ -300,9 +318,13 @@ public class EnvironmentalConditionsFormController implements Initializable, Loo
         } catch (NumberFormatException | SQLException e) {
             showAlert(Alert.AlertType.ERROR, "Database Error", "Error in looking up Habitat Name");
             e.printStackTrace(); // You may want to log the exception for debugging purposes
+
         }
     }
 
+    public void OpenHabitatForm() throws IOException {
+        habitatController.openHabitatForm();
+    }
 
 
 }

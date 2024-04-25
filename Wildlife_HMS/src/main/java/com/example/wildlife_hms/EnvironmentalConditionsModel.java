@@ -1,5 +1,7 @@
 package com.example.wildlife_hms;
 
+import java.sql.Date;
+
 public class EnvironmentalConditionsModel {
 
     private int conditionID;
@@ -14,7 +16,9 @@ public class EnvironmentalConditionsModel {
 
     private String habitatName;
 
-    public EnvironmentalConditionsModel(int conditionID, String conId, String conditionType, Double conditionValue, int habitatID,String haId,String habitatName) {
+    private Date postingDate;
+
+    public EnvironmentalConditionsModel(int conditionID, String conId, String conditionType, Double conditionValue, int habitatID,String haId,String habitatName,Date postingDate) {
         this.conditionID = conditionID;
         this.conId = conId;
         this.conditionType = conditionType;
@@ -22,6 +26,7 @@ public class EnvironmentalConditionsModel {
         this.habitatID = habitatID;
         this.haId=haId;
         this.habitatName=habitatName;
+        this.postingDate=postingDate;
     }
 
     public EnvironmentalConditionsModel(int conditionID, String conId, String conditionType, Double conditionValue, int habitatID) {
@@ -88,5 +93,13 @@ public class EnvironmentalConditionsModel {
 
     public void setHabitatName(String habitatName) {
         this.habitatName = habitatName;
+    }
+
+    public Date getPostingDate() {
+        return postingDate;
+    }
+
+    public void setPostingDate(Date postingDate) {
+        this.postingDate = postingDate;
     }
 }

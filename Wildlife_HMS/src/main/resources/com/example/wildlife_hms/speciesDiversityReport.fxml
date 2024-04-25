@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<GridPane hgap="50.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" vgap="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.SpeciesDiversityReportController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="border" GridPane.columnSpan="3">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../img/icons8-filter-100.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="50.0" text="Filter">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="border" GridPane.columnSpan="3" GridPane.rowIndex="2">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../img/icons8-report-100.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="50.0" text="Species Diversity Report">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="3">
+         <children>
+            <TableView fx:id="tblSpeciesDiversity" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true">
+              <columns>
+                <TableColumn fx:id="colCommonName" prefWidth="75.0" text="Common Name" />
+                <TableColumn fx:id="colScientificName" prefWidth="75.0" text="Scientific Name" />
+                  <TableColumn fx:id="colConservationStatus" prefWidth="75.0" text="Conservation Status" />
+                  <TableColumn fx:id="colHabitatCount" prefWidth="75.0" text="Habitat Count" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <styleClass>
+                  <String fx:value="transparent" />
+                  <String fx:value="border" />
+               </styleClass>
+            </TableView>
+         </children>
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
+         <children>
+            <HBox maxHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <MFXFilterComboBox fx:id="combCommonName" floatingText="Common Name" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" />
+                  <MFXComboBox fx:id="combConservationStatus" floatingText="Conservation Status" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" />
+                  <MFXButton buttonType="RAISED" onAction="#filteredSpeciesDiversityData" prefHeight="50.0" prefWidth="110.0" text="Add Filter">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/icons8-add-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MFXButton>
+                  <MFXButton buttonType="RAISED" layoutX="431.0" layoutY="10.0" onAction="#clearSpeciesDiversityFilter" prefHeight="50.0" prefWidth="110.0" text="Clear Filter">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/icons8-cancel-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MFXButton>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@css/style.css" />
+      <URL value="@css/Common.css" />
+   </stylesheets>
+</GridPane>

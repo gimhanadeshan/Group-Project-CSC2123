@@ -78,6 +78,16 @@ public class DashboardController implements Initializable {
     @FXML
     private VBox a;
 
+    @FXML
+    private VBox se;
+
+    @FXML
+    private VBox um;
+
+    @FXML
+    private VBox of;
+
+
 
 
 
@@ -90,6 +100,12 @@ public class DashboardController implements Initializable {
         s.setVisible(false);s.setManaged(false);
         o.setVisible(false);o.setManaged(false);
         a.setVisible(false);a.setManaged(false);
+        um.setVisible(false);um.setManaged(false);
+        se.setVisible(false);se.setManaged(false);
+        of.setVisible(false);of.setManaged(false);
+
+
+
 
 
     }
@@ -152,6 +168,23 @@ public class DashboardController implements Initializable {
         if (a.isVisible()) {a.setVisible(false);a.setManaged(false);} else {a.setVisible(true);a.setManaged(true);}
     }
 
+    @FXML
+    void toggleScrollUserManagement() {
+        if (um.isVisible()) {um.setVisible(false);um.setManaged(false);} else {um.setVisible(true);um.setManaged(true);}
+    }
+
+    @FXML
+    void toggleScrollSetting() {
+        if (se.isVisible()) {se.setVisible(false);se.setManaged(false);} else {se.setVisible(true);se.setManaged(true);}
+    }
+
+    @FXML
+    void toggleScrollOtherFiles() {
+        if (of.isVisible()) {of.setVisible(false);of.setManaged(false);} else {of.setVisible(true);of.setManaged(true);}
+    }
+
+
+
 
 
     @FXML
@@ -194,10 +227,24 @@ public class DashboardController implements Initializable {
 
     }
 
+    public void btnHabitatFormOnAction() throws IOException {
+        HabitatFormController controller = new HabitatFormController();
+        loadForm("habitatForm.fxml", controller);
+
+    }
+
     public void btnSpeciesOnAction() throws IOException {
 
         SpeciesController controller=new SpeciesController();
         loadForm("species.fxml", controller);
+
+
+    }
+
+    public void btnSpeciesFormOnAction() throws IOException {
+
+        SpeciesFormController controller=new SpeciesFormController();
+        loadForm("speciesForm.fxml", controller);
 
 
     }
@@ -210,11 +257,27 @@ public class DashboardController implements Initializable {
 
     }
 
+    public void btnEnvironmentalConditionsFormOnAction() throws IOException {
+
+        EnvironmentalConditionsFormController controller=new EnvironmentalConditionsFormController();
+        loadForm("environmentalConditionsForm.fxml", controller);
+
+
+    }
+
     public void btnVegetationTypesOnAction() throws IOException {
 
 
-        VegetationTypesFormController controller=new VegetationTypesFormController();
+        VegetationTypesController controller=new VegetationTypesController();
         loadForm("vegetationTypes.fxml", controller);
+
+    }
+
+    public void btnVegetationTypesFormOnAction() throws IOException {
+
+
+        VegetationTypesFormController controller=new VegetationTypesFormController();
+        loadForm("vegetationTypesForm.fxml", controller);
 
     }
 
@@ -229,8 +292,15 @@ public class DashboardController implements Initializable {
 
     public void btnMonitoringAlertsOnAction() throws IOException {
 
-        MonitoringAlertsFormController controller=new MonitoringAlertsFormController();
+        MonitoringAlertsController controller=new MonitoringAlertsController();
         loadForm("monitoringAlerts.fxml", controller);
+
+    }
+
+    public void btnMonitoringAlertsFormOnAction() throws IOException {
+
+        MonitoringAlertsFormController controller=new MonitoringAlertsFormController();
+        loadForm("monitoringAlertsForm.fxml", controller);
 
     }
 
@@ -243,6 +313,15 @@ public class DashboardController implements Initializable {
 
     }
 
+    public void btnUserRegisterFormOnAction() throws IOException {
+
+
+        UserRegisterFormController controller=new UserRegisterFormController();
+        loadForm("userRegisterFormAdminView.fxml", controller);
+
+
+    }
+
 
 
     public void btnOnActionObservation() throws IOException {
@@ -250,10 +329,50 @@ public class DashboardController implements Initializable {
         loadForm("observation.fxml", controller);
     }
 
+    public void btnOnActionObservationForm() throws IOException {
+        ObservationsFormController controller=new ObservationsFormController();
+        loadForm("observationForm.fxml", controller);
+    }
+
+
     public void btnOnActionHabitatReport() throws IOException {
         HabitatOverviewReportController controller=new HabitatOverviewReportController();
         loadForm("habitatOverviewReport.fxml", controller);
     }
+
+    public void btnOnActionSpeciesDiversityReport() throws IOException {
+        SpeciesDiversityReportController controller=new SpeciesDiversityReportController();
+        loadForm("speciesDiversityReport.fxml", controller);
+    }
+
+
+
+    public void btnOnActionObservationSummaryReport() throws IOException {
+        ObservationSummaryReportController controller=new ObservationSummaryReportController();
+        loadForm("observationSummaryReport.fxml", controller);
+    }
+
+    public void alertStatusForm() throws IOException {
+        AlertStatusFormController controller=new AlertStatusFormController();
+        loadForm("alertStatusForm.fxml", controller);
+    }
+
+    public void alertTypesForm() throws IOException {
+        AlertTypesFormController controller=new AlertTypesFormController();
+        loadForm("alertTypesForm.fxml", controller);
+    }
+
+    public void conservationStatusForm() throws IOException {
+        ConservationStatusFormController controller=new ConservationStatusFormController();
+        loadForm("conservationStatusForm.fxml", controller);
+    }
+
+    public void otherMasterFiles() throws IOException {
+        OtherMasterFilesController controller=new OtherMasterFilesController();
+        loadForm("otherMasterFiles.fxml", controller);
+    }
+
+
 
 
     public void btnLogoutOnAction(){

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="500.0" prefWidth="750.0" spacing="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.OtherMasterFilesController">
+   <children>
+      <HBox maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#toggleScrollAlertStatus" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="10.0" top="15.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../../../img/icons8-report-100.png" />
+               </image>
+            </ImageView>
+            <Label maxHeight="-Infinity" prefHeight="50.0" text="Alert Status ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="mouse-moved" />
+            <String fx:value="border" />
+         </styleClass>
+      </HBox>
+      <VBox fx:id="as">
+         <children>
+            <TableView fx:id="tblAlertStatus" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true">
+              <columns>
+                <TableColumn fx:id="colAlertStatus" prefWidth="50.0" text="Alert Status " />
+                <TableColumn fx:id="colRemarkAS" prefWidth="150.0" text="Remarks" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <styleClass>
+                  <String fx:value="transparent" />
+                  <String fx:value="border" />
+               </styleClass>
+            </TableView>
+         </children>
+      </VBox>
+      <HBox maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#toggleScrollAlertTypes" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="10.0" top="15.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../../../img/icons8-report-100.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="50.0" text="Alert Types ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="mouse-moved" />
+            <String fx:value="border" />
+         </styleClass>
+      </HBox>
+      <VBox fx:id="at">
+         <children>
+            <TableView fx:id="tblAlertTypes" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true">
+               <columns>
+                  <TableColumn fx:id="colAlertTypes" prefWidth="50.0" text="Alert Types " />
+                  <TableColumn fx:id="colRemarksAT" prefWidth="150.0" text="Remarks" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <styleClass>
+                  <String fx:value="transparent" />
+                  <String fx:value="border" />
+               </styleClass>
+            </TableView>
+         </children>
+      </VBox>
+      <HBox maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#toggleScrollConservationStatus" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets left="10.0" top="15.0" />
+               </HBox.margin>
+               <image>
+                  <Image url="@../../../img/icons8-report-100.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="50.0" text="Conservation  Status ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="border" />
+            <String fx:value="mouse-moved" />
+         </styleClass>
+      </HBox>
+      <VBox fx:id="cs">
+         <children>
+            <TableView fx:id="tblConservationStatus" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true">
+               <columns>
+                  <TableColumn fx:id="colConservationStatus" prefWidth="50.0" text="Conservation  Status " />
+                  <TableColumn fx:id="colRemarkCS" prefWidth="150.0" text="Remarks" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <styleClass>
+                  <String fx:value="transparent" />
+                  <String fx:value="border" />
+               </styleClass>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@css/Common.css" />
+      <URL value="@css/style.css" />
+   </stylesheets>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

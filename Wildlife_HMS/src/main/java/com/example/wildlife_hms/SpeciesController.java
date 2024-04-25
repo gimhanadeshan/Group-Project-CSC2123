@@ -238,6 +238,7 @@ public class SpeciesController implements Initializable,ButtonAction {
                     controller.getData(species);
                     controller.btnSave.setDisable(true);
                     controller.btnClear.setDisable(true);
+                    controller.btnUpdate.setDisable(false);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.setResizable(false);
@@ -292,6 +293,8 @@ public class SpeciesController implements Initializable,ButtonAction {
     }
 
 
-
+    public void refreshSpeciesTableData() {
+        showSpecies();
+    }
    
 }

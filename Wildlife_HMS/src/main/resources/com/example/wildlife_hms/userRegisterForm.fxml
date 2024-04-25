@@ -29,8 +29,7 @@
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
@@ -40,12 +39,12 @@
       <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <MFXDatePicker fx:id="dateRegDate" floatMode="INLINE" floatingText="Register Date*" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="2" />
-      <MFXPasswordField fx:id="pwdPassword" floatingText="Password*" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-      <MFXPasswordField fx:id="pwdConfirmPassword" floatingText="Confirm Password*" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-      <MFXTextField fx:id="txtFname" floatingText="First Name*" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="3" />
-      <MFXTextField fx:id="txtLname" floatingText="Last Name" layoutX="30.0" layoutY="152.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+      <MFXDatePicker fx:id="dateRegDate" disable="true" floatMode="INLINE" floatingText="Register Date*" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" visible="false" GridPane.rowIndex="1" />
+      <MFXPasswordField fx:id="pwdPassword" floatingText="Password*" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <MFXPasswordField fx:id="pwdConfirmPassword" floatingText="Confirm Password*" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+      <MFXTextField fx:id="txtFname" floatingText="First Name*" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="2" />
+      <MFXTextField fx:id="txtLname" floatingText="Last Name" layoutX="30.0" layoutY="152.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0">
                <children>
@@ -55,13 +54,13 @@
             </HBox>
          </children>
       </StackPane>
-      <MFXComboBox fx:id="combRoll" floatingText="User Roll*" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="4" />
-      <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+      <MFXComboBox fx:id="combRoll" floatingText="User Roll*" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="3" />
+      <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
          <children>
             <MFXTextField fx:id="txtEmail" floatingText="Email" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="400.0" />
          </children>
       </StackPane>
-      <StackPane fx:id="stackPaneDp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" styleClass="border" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.rowSpan="3">
+      <StackPane fx:id="stackPaneDp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" styleClass="border" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
          <children>
             <ImageView fx:id="imageViewDp" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -69,7 +68,7 @@
                </image>
             </ImageView>
          </children></StackPane>
-      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="4" GridPane.rowIndex="5">
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="4" GridPane.rowIndex="4">
          <children>
             <Label fx:id="PwdMsgLable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="231.0" textAlignment="CENTER" textFill="#d11313">
                <font>
@@ -78,7 +77,7 @@
             </Label>
          </children>
       </StackPane>
-      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1">
          <children>
             <Label fx:id="regMsgLable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="231.0" textAlignment="CENTER" textFill="#56a145">
                <font>
@@ -87,22 +86,34 @@
             </Label>
          </children>
       </StackPane>
-      <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
+      <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="5">
          <children>
             <MFXTextField fx:id="txtUsername" floatingText="User Name*" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="400.0" />
          </children>
       </StackPane>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="4">
          <children>
-            <Label text="User Registration">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
+            <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0" styleClass="border">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../img/icons8-form-100.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="50.0" text="User Registration">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </StackPane>
-      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
@@ -128,7 +139,7 @@
             </HBox>
          </children>
       </StackPane>
-      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8">
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
          <children>
             <Hyperlink onAction="#goBackToLoginForm" text="Back to Login ">
                <graphic>
@@ -141,16 +152,7 @@
             </Hyperlink>
          </children>
       </StackPane>
-      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2">
-         <children>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../img/icons8-user-100-1.png" />
-               </image>
-            </ImageView>
-         </children>
-      </StackPane>
-      <MFXCheckbox fx:id="checkBoxActive" disable="true" text="Active" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+      <MFXCheckbox fx:id="checkBoxActive" disable="true" text="Active" visible="false" GridPane.columnIndex="3" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

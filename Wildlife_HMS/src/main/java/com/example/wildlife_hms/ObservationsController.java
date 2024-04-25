@@ -264,7 +264,8 @@ public class ObservationsController implements Initializable,ButtonAction  {
                     controller.getData(observationsModel);
                     controller.btnSave.setDisable(true);
                     controller.btnClear.setDisable(true);
-                    controller.selectedFilesPane.setDisable(true);
+                    controller.btnUpdate.setDisable(false);
+                    //controller.selectedFilesPane.setDisable(true);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.setResizable(false);

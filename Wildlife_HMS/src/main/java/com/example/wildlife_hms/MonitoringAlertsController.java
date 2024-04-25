@@ -258,6 +258,7 @@ public class MonitoringAlertsController implements Initializable,ButtonAction {
                     monitoringAlertsFormController.getData(alertModel);
                     monitoringAlertsFormController.btnSave.setDisable(true);
                     monitoringAlertsFormController.btnClear.setDisable(true);
+                    monitoringAlertsFormController.btnUpdate.setDisable(false);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.setResizable(false);

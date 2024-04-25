@@ -55,6 +55,9 @@ public class EnvironmentalConditionsController implements Initializable,ButtonAc
     @FXML
     private TableColumn<EnvironmentalConditionsModel, String> colHabitatName;
 
+    @FXML
+    private TableColumn<EnvironmentalConditionsModel, Date> colPostingDate;
+
 
     @FXML
     private TableView<EnvironmentalConditionsModel> tblEnvironmentalCondition;
@@ -106,7 +109,8 @@ public class EnvironmentalConditionsController implements Initializable,ButtonAc
                         output.getDouble("ConditionValue") ,
                         output.getInt("HabitatID"),
                         output.getString("HA_ID"),
-                        output.getString("HabitatName")
+                        output.getString("HabitatName"),
+                        output.getDate("PostingDate")
 
                 );
 
@@ -129,8 +133,10 @@ public class EnvironmentalConditionsController implements Initializable,ButtonAc
         colConditionValue.setCellValueFactory(new PropertyValueFactory<>("conditionValue"));
         colHabitatID.setCellValueFactory(new PropertyValueFactory<>("haId"));
         colHabitatName.setCellValueFactory(new PropertyValueFactory<>("habitatName"));
+        colPostingDate.setCellValueFactory(new PropertyValueFactory<>("postingDate"));
 
     }
+
 
 
 
@@ -177,7 +183,8 @@ public class EnvironmentalConditionsController implements Initializable,ButtonAc
                         resultSet.getDouble("ConditionValue"),
                         resultSet.getInt("HabitatID"),
                         resultSet.getString("HA_ID"),
-                        resultSet.getString("HabitatName")
+                        resultSet.getString("HabitatName"),
+                        resultSet.getDate("PostingDate")
 
                 );
                 searchResults.add(conditions);
@@ -225,7 +232,7 @@ public class EnvironmentalConditionsController implements Initializable,ButtonAc
             showConditions();
 
         } catch (SQLException e) {
-            showAlert(Alert.AlertType.ERROR, "Database Error", "Error in deleting Condition");
+            showAlert(Alert.AlertType.ERROR, "Database Error", STR."Error in deleting Condition: \{e.getMessage()}");
         }
 
     }
@@ -257,6 +264,7 @@ public class EnvironmentalConditionsController implements Initializable,ButtonAc
                     conditionsFormController.getData(conditionsModel);
                     conditionsFormController.btnSave.setDisable(true);
                     conditionsFormController.btnClear.setDisable(true);
+                    conditionsFormController.btnUpdate.setDisable(false);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.setResizable(false);
@@ -312,7 +320,9 @@ public class EnvironmentalConditionsController implements Initializable,ButtonAc
     }
 
 
-
+    public void refreshTableData() {
+        showConditions();
+    }
 
 
 }

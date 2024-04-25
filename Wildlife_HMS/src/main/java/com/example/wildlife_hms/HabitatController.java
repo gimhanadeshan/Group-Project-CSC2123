@@ -2,16 +2,11 @@ package com.example.wildlife_hms;
 
 
 
-import io.github.palexdev.materialfx.controls.MFXPagination;
-import io.github.palexdev.materialfx.controls.cell.MFXPage;
-import io.github.palexdev.materialfx.utils.others.observables.When;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -26,7 +21,6 @@ import java.net.URL;
 import java.sql.*;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.function.Function;
 
 import static java.lang.Integer.parseInt;
 
@@ -135,9 +129,9 @@ public class HabitatController implements Initializable,ButtonAction {
 
 
     public void openHabitatForm() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("habitatForm1.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("habitatForm.fxml"));
         Parent root = fxmlLoader.load();
-        HabitatForm1Controller controller=fxmlLoader.getController() ;
+        HabitatFormController controller=fxmlLoader.getController() ;
         controller.btnUpdate.setDisable(true);
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
@@ -229,7 +223,8 @@ public class HabitatController implements Initializable,ButtonAction {
             showHabitat();
 
         } catch (SQLException e) {
-            showAlert(Alert.AlertType.ERROR, "Database Error", "Error in deleting habitat");
+            //showAlert(Alert.AlertType.ERROR, "Database Error", "Error in deleting habitat");
+            showAlert(Alert.AlertType.ERROR, "Database Error", STR."Error in deleting habitat:\n\{e.getMessage()}");
         }
     }
 
@@ -251,17 +246,18 @@ public class HabitatController implements Initializable,ButtonAction {
                 updateButton.setOnAction(event -> {
                     HabitatModel habitatModel = (HabitatModel) getTableView().getItems().get(getIndex());
 
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("habitatForm1.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("habitatForm.fxml"));
                     Parent root;
                     try {
                         root = fxmlLoader.load();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    HabitatForm1Controller controller=fxmlLoader.getController() ;
+                    HabitatFormController controller=fxmlLoader.getController() ;
                     controller.getData(habitatModel);
                     controller.btnSave.setDisable(true);
                     controller.btnClear.setDisable(true);
+                    controller.btnUpdate.setDisable(false);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.setResizable(false);
@@ -317,6 +313,11 @@ public class HabitatController implements Initializable,ButtonAction {
         });
     }
 
+
+    public void refreshHabitatTable(){
+
+        showHabitat();
+    }
 
 
 

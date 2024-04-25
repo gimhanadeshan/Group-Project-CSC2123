@@ -4,6 +4,9 @@
     -fx-background-color: #252B48;
 
 }
+#txtSearch.text-field:focused{
+    -fx-border-color:#252B48 ;
+}
 
 .white-background{
     -fx-background-color: #fff;
@@ -23,15 +26,19 @@
 
 }
 
-.selected{
-    -fx-background-color: #F3F3F3;
-}
+
 
 .mouse-moved:hover{
     -fx-background-color: #E4E4E4;
     -fx-text-background-color: black;
 
 }
+
+
+.mouse-moved:selected{
+    -fx-background-color: #E4E4E4;
+}
+
 
 .table-view{
     -fx-border-color: transparent;
@@ -101,7 +108,6 @@
 
 .border {
     -fx-border-color: #D7D7D7;
-
 }
 
 .textCenter{
@@ -110,8 +116,8 @@
 
 }
 
-.table-cell {
-    -fx-alignment: BASELINE_CENTER;
+.table-cell{
+    -fx-alignment: CENTER;
 }
 
 
@@ -144,6 +150,25 @@
     -fx-text-fill: white;
 }
 
+#datePostingDate date-picker-popup .mfx-date-cell:selected {
+    -fx-background-color: #252B48;
+    -fx-font-family: 'Open Sans Bold';
+    -fx-text-fill: white;
+}
+
+#dateFrom date-picker-popup .mfx-date-cell:selected {
+    -fx-background-color: #252B48;
+    -fx-font-family: 'Open Sans Bold';
+    -fx-text-fill: white;
+}
+
+#dateTo date-picker-popup .mfx-date-cell:selected {
+    -fx-background-color: #252B48;
+    -fx-font-family: 'Open Sans Bold';
+    -fx-text-fill: white;
+}
+
+
 
 
 .button:hover{
@@ -152,5 +177,15 @@
 .button:visited{
     -fx-background-color: #F7E987;
 }
+
+
+#txtNotes.text-field{
+    -fx-background-color: white;
+}
+
+#txtNotes.text-field:focused{
+    -fx-border-color: #252B48;
+}
+
 
 

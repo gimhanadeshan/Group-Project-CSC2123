@@ -197,8 +197,9 @@ public class MonitoringAlertsFormController implements Initializable, LookupHabi
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Alerts saved successfully!");
 
 
-            } catch (NumberFormatException | SQLException e) {
-                showAlert(Alert.AlertType.ERROR, "Database Error", "Error in saving Alerts");
+            } catch (SQLException e) {
+               // showAlert(Alert.AlertType.ERROR, "Database Error", "Error in saving Alerts");
+                showAlert(Alert.AlertType.ERROR, "Database Error", STR."Error in saving Alerts:\n\{e.getMessage()}");
             }
         } else {
             showAlert(Alert.AlertType.ERROR, "Validation Error", "Some fields are invalid");
@@ -225,7 +226,8 @@ public class MonitoringAlertsFormController implements Initializable, LookupHabi
 
 
             } catch (NumberFormatException | SQLException e) {
-                showAlert(Alert.AlertType.ERROR, "Database Error", "Error in updating Alerts");
+                //showAlert(Alert.AlertType.ERROR, "Database Error", "Error in updating Alerts");
+                showAlert(Alert.AlertType.ERROR, "Database Error", STR."Error in updating Alerts:\n\{e.getMessage()}");
             }
         } else {
             showAlert(Alert.AlertType.ERROR, "Validation Error", "Some fields are invalid");

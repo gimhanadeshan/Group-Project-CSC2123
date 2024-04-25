@@ -1,6 +1,7 @@
 package com.example.wildlife_hms;
 import io.github.palexdev.materialfx.utils.StringUtils;
 import io.github.palexdev.materialfx.utils.others.FunctionalStringConverter;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
@@ -22,12 +23,19 @@ import javafx.util.StringConverter;
 
 
 import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.sql.Date;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class ObservationsFormController implements Initializable ,LookupHabitatData,LookupSpeciesData {
 
@@ -66,8 +74,6 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
     @FXML
     public MFXTextField txtObservationID;
 
-    @FXML
-    public MFXTextField txtObserverName;
 
     @FXML
     private MFXTextField txtHabitatName;
@@ -83,6 +89,10 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
     @FXML
     private TextField txtSpeciesId;
 
+    @FXML
+    private MFXFilterComboBox<UserModel> combObserverName;
+
+    private static final String IMAGE_PATH_PREFIX = "file:///";
 
     int id = 0;
 
@@ -92,6 +102,10 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
 
     HabitatController habitatController = new HabitatController();
     SpeciesController speciesController = new SpeciesController();
+
+
+
+    UserDetailsController userDetailsController=new UserDetailsController();
 
     List<File> files=new ArrayList<>();
 
@@ -113,6 +127,30 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
         combSpeciesID.setConverter(converter1);
         combSpeciesID.setFilterFunction(filterFunction1);
         combSpeciesID.setOnAction(_ -> lookupSpeciesName());
+
+
+        List<UserModel> researcherUsers = userDetailsController.getUsers().stream()
+                .filter(userModel -> userModel != null && "Researcher".equalsIgnoreCase(userModel.getRoll()))
+                .collect(Collectors.toList());
+
+        StringConverter<UserModel> converter2 = FunctionalStringConverter.to(userModel -> {
+            if (userModel == null) {
+                return "";
+            } else {
+                return STR."\{userModel.getFirstName()} \{userModel.getLastName()}";
+            }
+        });
+
+        Function<String, Predicate<UserModel>> filterFunction2 = s -> userModel ->
+                StringUtils.containsIgnoreCase(converter2.toString(userModel), s);
+
+        combObserverName.setItems(FXCollections.observableArrayList(researcherUsers)); // Set researcher users as items
+        combObserverName.setConverter(converter2);
+        combObserverName.setFilterFunction(filterFunction2);
+
+
+
+
 
 
         // Set up drag and drop functionality
@@ -139,7 +177,7 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
                     showAlert(Alert.AlertType.WARNING, "Exceeded Limit", "You can only upload a maximum of three documents.");
                 } else {
                     for (File file : files) {
-                        displayFileWithIcon(file);
+                        displayImageWithRemoveIcon(file);
                     }
                 }
             }
@@ -149,7 +187,7 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
 
 
         // Load the background image
-        Image backgroundImage = new Image("drag-drop.jpeg");
+        Image backgroundImage = new Image("icons8-drag-and-drop-100.png");
 
         // Create a BackgroundImage
         BackgroundImage background = new BackgroundImage(
@@ -194,7 +232,7 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
 
 
         id = observationsModel.getObservationID();
-        txtObserverName.setText(observationsModel.getObserverName());
+        combObserverName.setText(observationsModel.getObserverName());
         txtNotes.setText(observationsModel.getNotes());
         dateObservationDate.setValue(observationsModel.getObservationDate().toLocalDate());
         txtHabitatId.setText(String.valueOf(observationsModel.getHabitatID()));
@@ -204,12 +242,12 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
         // Assuming observationsModel has a method to retrieve selected files as a String
         String attachmentsString = observationsModel.getAttachments();
 
-// Convert the attachmentsString to a list of File objects
-        List<File> selectedFiles = stringToFileList(attachmentsString,"\n");
+        // Convert the attachmentsString to a list of File objects
+       List<File> selectedFiles = stringToFileList(attachmentsString,"\n");
 
-// Display information about selected files in selectedFilesPane
+        // Display information about selected files in selectedFilesPane
         for (File file : selectedFiles) {
-            displayFileWithIcon(file); // You need to implement this method to display file information
+            displayImageWithRemoveIcon(file);
         }
 
 
@@ -221,8 +259,8 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
 
     @FXML
     void clearObservations() {
-        txtObservationID.clear();
-        txtObserverName.clear();
+
+        combObserverName.clearSelection();
         txtNotes.clear();
         selectedFilesPane.getChildren().clear(); // Clear all elements in selectedFilesPane
         dateObservationDate.setValue(null); // Clear date value
@@ -232,6 +270,7 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
         txtSpeciesId.clear();
         txtHabitatName.clear();
         txtSpeciesName.clear();
+        txtObservationID.clear();
 
 
     }
@@ -249,7 +288,7 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
 
 
     private boolean validateFields() {
-        return !txtObserverName.getText().isEmpty() && !txtHabitatId.getText().isEmpty() && !txtNotes.getText().isEmpty() && !txtSpeciesId.getText().isEmpty() && !dateObservationDate.getText().isEmpty();
+        return !combObserverName.getText().isEmpty() && !txtHabitatId.getText().isEmpty() && !txtNotes.getText().isEmpty() && !txtSpeciesId.getText().isEmpty() && !dateObservationDate.getText().isEmpty();
     }
 
 
@@ -272,22 +311,15 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
             try {
                 PreparedStatement statement = connectDB.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-                statement.setString(1, txtObserverName.getText());
+                statement.setString(1, combObserverName.getText());
                 statement.setDate(2, Date.valueOf(dateObservationDate.getValue()));
                 statement.setString(3, txtNotes.getText());
                 statement.setInt(4, Integer.parseInt((txtHabitatId.getText())));
                 statement.setInt(5, Integer.parseInt((txtSpeciesId.getText())));
                 // Process attachments
-                StringBuilder attachments = new StringBuilder();
-                for (Node node : selectedFilesPane.getChildren()) {
-                    if (node instanceof VBox fileBox) {
-                        Label filePathLabel = (Label) fileBox.getChildren().get(1);
-                        String filePath = filePathLabel.getText();
-                        attachments.append(filePath).append("\n"); // Separate file paths using a delimiter
-                    }
-                }
-                // Set the attachments string to the prepared statement
-                statement.setString(6, attachments.toString().trim());
+                // Save attachment file paths
+                String attachmentPaths = getAttachmentFilePaths();
+                statement.setString(6, attachmentPaths);
                 statement.executeUpdate();
 
                 ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -315,6 +347,7 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
         }
     }
 
+
     @FXML
     void updateObservations() {
         if (validateFields()) {
@@ -322,23 +355,16 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
             try {
                 PreparedStatement statement = connectDB.prepareStatement(query);
 
-                statement.setString(1, txtObserverName.getText());
+                statement.setString(1, combObserverName.getText());
                 statement.setDate(2, Date.valueOf(dateObservationDate.getValue()));
                 statement.setString(3, txtNotes.getText());
                 statement.setInt(4, Integer.parseInt(txtHabitatId.getText()));
                 statement.setInt(5, Integer.parseInt(txtSpeciesId.getText()));
 
                 // Process attachments
-                StringBuilder attachments = new StringBuilder();
-                for (Node node : selectedFilesPane.getChildren()) {
-                    if (node instanceof VBox fileBox) {
-                        Label filePathLabel = (Label) fileBox.getChildren().get(1);
-                        String filePath = filePathLabel.getText();
-                        attachments.append(filePath).append("\n"); // Separate file paths using a delimiter
-                    }
-                }
-                // Set the attachments string to the prepared statement
-                statement.setString(6, attachments.toString().trim()); // Trim to remove extra newline at the end
+                // Save attachment file paths
+                String attachmentPaths = getAttachmentFilePaths();
+                statement.setString(6, attachmentPaths);
 
                 statement.setInt(7, id);
                 statement.executeUpdate();
@@ -496,19 +522,20 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
     }
 
 
-    public void OpenMultipleFileFileChooser() {
+    public void OpenMultipleImageFileChooser() {
+
         // Check if the maximum limit of files has been reached
         if (selectedFilesPane.getChildren().size() >= 3) {
-            showAlert(Alert.AlertType.WARNING, "Exceeded Limit", "You can only select a maximum of three documents.");
+            showAlert(Alert.AlertType.WARNING, "Exceeded Limit", "You can only select a maximum of three images.");
             return;
         }
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select Files");
+        fileChooser.setTitle("Select Images");
 
-        // Limit file selection to a maximum of three files if more than three files are selected
+        // Limit file selection to images only
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("All Files", "*.*")
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.bmp", "*.jpeg")
         );
 
         List<File> selectedFiles = fileChooser.showOpenMultipleDialog(new Stage()); // Show file chooser dialog
@@ -519,96 +546,90 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
                 selectedFiles = selectedFiles.subList(0, 3);
             }
             for (File selectedFile : selectedFiles) {
-                //Create an ImageView to display the icon
-                ImageView iconView = new ImageView();
-                iconView.setFitWidth(30); // Set width of the icon
-                iconView.setFitHeight(30); // Set height of the icon
+                //Create an ImageView to display the image
+                ImageView imageView = new ImageView();
+                imageView.setFitWidth(100); // Set width of the image view
+                imageView.setFitHeight(100); // Set height of the image view
 
-                // Try to load the icon for the file
+                // Try to load the image
                 try {
-                    // Use the default system icon for the file
-                    Image icon = new Image(selectedFile.toURI().toString());
-                    iconView.setImage(icon);
+                    Image image = new Image(selectedFile.toURI().toString());
+                    imageView.setImage(image);
                 } catch (Exception e) {
-                    // If icon loading fails, use a default icon (you can customize this)
-                    Image defaultIcon = new Image("icons8-document-50.png");
-                    iconView.setImage(defaultIcon);
+                    e.printStackTrace(); // Handle image loading failure
+                    continue; // Skip to the next file
                 }
 
-                // Create a label to display the file path
-                Label filePathLabel = new Label(selectedFile.getAbsolutePath());
-
-                ImageView removeIcon = new ImageView(new Image("icons8-close-50.png")); // Replace "remove-icon.png" with your remove icon file
+                ImageView removeIcon = new ImageView(new Image("icons8-close-50.png"));
                 removeIcon.setFitWidth(16); // Adjust as needed
                 removeIcon.setFitHeight(16); // Adjust as needed
 
-                // Create a VBox to hold the icon and file path label
-                VBox fileBox = new VBox(iconView, filePathLabel, removeIcon);
-                fileBox.setSpacing(5); // Set spacing between icon and label
+                // Create a VBox to hold the image and remove icon
+                VBox imageBox = new VBox(imageView, removeIcon);
+                imageBox.setSpacing(5); // Set spacing between image and remove icon
 
                 removeIcon.setOnMouseClicked(event -> {
-                    selectedFilesPane.getChildren().remove(fileBox);
+                    selectedFilesPane.getChildren().remove(imageBox);
                 });
 
                 // Add the VBox to the FlowPane
-
-                selectedFilesPane.getChildren().add(fileBox);
+                selectedFilesPane.getChildren().add(imageBox);
             }
         } else {
-            System.out.println("No file selected.");
+            System.out.println("No image selected.");
         }
     }
 
 
-    private void displayFileWithIcon(File file) {
+    private void displayImageWithRemoveIcon(File file) {
+        if (isImageFile(file)) {
+            // Create an ImageView to display the image
+            ImageView imageView = new ImageView();
+            imageView.setFitWidth(100); // Set width of the image
+            imageView.setFitHeight(100); // Set height of the image
+            imageView.setPreserveRatio(true); // Preserve image aspect ratio
 
+            // Try to load the image
+            try {
+                Image image = new Image(file.toURI().toString());
+                imageView.setImage(image);
+            } catch (Exception e) {
+                e.printStackTrace(); // Handle image loading error
+                return;
+            }
 
-        // Create an ImageView to display the icon
-        ImageView iconView = new ImageView();
-        iconView.setFitWidth(30); // Set width of the icon
-        iconView.setFitHeight(30); // Set height of the icon
+            // Create a remove icon
+            ImageView removeIcon = new ImageView(new Image("icons8-close-50.png"));
+            removeIcon.setFitWidth(16); // Set width of the remove icon
+            removeIcon.setFitHeight(16); // Set height of the remove icon
 
-        // Try to load the icon for the file
-        try {
-            // Use the default system icon for the file
-            Image icon = new Image(file.toURI().toString());
-            iconView.setImage(icon);
+            // Create a VBox to hold the image and remove icon
+            VBox imageBox = new VBox(imageView, removeIcon);
+            imageBox.setSpacing(5); // Set spacing between image and remove icon
 
-        } catch (Exception e) {
-            // If icon loading fails, use a default icon (you can customize this)
-            Image defaultIcon = new Image("icons8-document-50.png");
-            iconView.setImage(defaultIcon);
+            // Add event handler to remove the image when the remove icon is clicked
+            removeIcon.setOnMouseClicked(event -> selectedFilesPane.getChildren().remove(imageBox));
+
+            // Add the VBox to the selectedFilesPane
+            selectedFilesPane.getChildren().add(imageBox);
+        } else {
+            showAlert(Alert.AlertType.WARNING, "Invalid File Type", "Only image files are allowed.");
         }
-
-        // Create a label to display the file path
-        Label filePathLabel = new Label(file.getAbsolutePath());
-
-
-
-        ImageView removeIcon = new ImageView(new Image("icons8-close-50.png")); // Replace "remove-icon.png" with your remove icon file
-        removeIcon.setFitWidth(16); // Adjust as needed
-        removeIcon.setFitHeight(16); // Adjust as needed
-
-       //removeIcon.setOnMouseEntered(event -> removeIcon.setStyle("-fx-background-color: lightgrey;"));
-        //removeIcon.setOnMouseExited(event -> removeIcon.setStyle("-fx-background-color: transparent;"));
-
-
-        // Create a VBox to hold the icon and file path label
-        VBox fileBox = new VBox(iconView, filePathLabel,removeIcon);
-        fileBox.setSpacing(5); // Set spacing between icon and label
-        fileBox.getBorder();
-
-        removeIcon.setOnMouseClicked(event -> {
-
-            fileBox.getChildren().removeAll(iconView, filePathLabel, removeIcon);
-        });
-
-        // Add the VBox to the FlowPane
-
-        selectedFilesPane.getChildren().add(fileBox);
-
-
     }
+
+    private boolean isImageFile(File file) {
+        String fileName = file.getName();
+        int lastDotIndex = fileName.lastIndexOf('.');
+        if (lastDotIndex != -1) {
+            String fileExtension = fileName.substring(lastDotIndex + 1).toLowerCase();
+            // Check if the file extension corresponds to an image format
+            return fileExtension.equals("jpg") || fileExtension.equals("jpeg") ||
+                    fileExtension.equals("png") || fileExtension.equals("gif") ||
+                    fileExtension.equals("bmp");
+        }
+        return false;
+    }
+
 
 
 
@@ -617,7 +638,7 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
 
     public static List<File> stringToFileList(String filePaths, String delimiter) {
         List<File> fileList = new ArrayList<>();
-        String[] paths = filePaths.split(delimiter);
+        String[] paths  = filePaths.split(delimiter);
 
         for (String path : paths) {
             File file = new File(path.trim()); // Trim to remove any leading or trailing spaces
@@ -632,8 +653,63 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
     }
 
 
+    private String getAttachmentFilePaths() {
+        StringBuilder attachmentPaths = new StringBuilder();
 
+        for (Node attachment : selectedFilesPane.getChildren()) {
+            if (attachment instanceof VBox) {
+                VBox fileBox = (VBox) attachment;
+                boolean firstImageFound = false; // Flag to track if the first image has been found
+                for (Node node : fileBox.getChildren()) {
+                    if (node instanceof ImageView && !firstImageFound) {
+                        ImageView imageView = (ImageView) node;
+                        String imagePath = getImagePathFromImageView(imageView);
+                        if (imagePath != null) {
+                            attachmentPaths.append(imagePath).append("\n");
+                            firstImageFound = true; // Set the flag to true after finding the first image
+                        }
+                    }
+                }
+            }
+        }
+
+        return attachmentPaths.toString();
+    }
+
+    private String getImagePathFromImageView(ImageView imageView) {
+        Image image = imageView.getImage();
+        if (image != null && image.getUrl() != null) {
+            String url = image.getUrl();
+            try {
+                // Convert the URL string to a URI
+                URI uri = new URI(url);
+                // Get the path component of the URI
+                String path = uri.getPath();
+                // Decode the path to handle any percent-encoded characters
+                String decodedPath = URLDecoder.decode(path, StandardCharsets.UTF_8);
+                return decodedPath;
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        return null;
+    }
+
+
+
+
+    public void OpenHabitatForm() throws IOException {
+        habitatController.openHabitatForm();
+    }
+
+    public void OpenSpeciesForm() throws IOException {
+        speciesController.openSpeciesForm();
+    }
+
+    
 
 
 
 }
+

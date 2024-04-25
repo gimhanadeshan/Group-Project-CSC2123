@@ -4,8 +4,10 @@
 <?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
 <?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -17,9 +19,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER_LEFT" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="860.0" styleClass="grid-background" vgap="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.ObservationsFormController">
+<GridPane alignment="CENTER_LEFT" hgap="30.0" maxWidth="1100.0" prefHeight="670.0" prefWidth="860.0" vgap="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.ObservationsFormController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
@@ -27,110 +30,130 @@
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="126.19998779296876" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="274.40001449584963" minHeight="10.0" prefHeight="83.59999389648438" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="274.40001449584963" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="274.40001449584963" minHeight="10.0" prefHeight="86.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="446.39998779296883" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="446.39998779296883" minHeight="10.0" prefHeight="270.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="270.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <StackPane prefHeight="30.0" prefWidth="300.0" GridPane.columnSpan="2">
+      <StackPane alignment="TOP_LEFT" maxHeight="-Infinity" prefHeight="50.0" prefWidth="300.0" GridPane.columnSpan="4">
          <children>
-            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
-               <image>
-                  <Image url="@../../../img/icons8-observation-100.png" />
-               </image>
-               <StackPane.margin>
-                  <Insets />
-               </StackPane.margin>
-            </ImageView>
-            <Label prefHeight="27.0" prefWidth="239.0" text="Observations Entry" textFill="#252b48" StackPane.alignment="CENTER_LEFT">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <StackPane.margin>
-                  <Insets left="50.0" />
-               </StackPane.margin>
-            </Label>
+            <HBox maxHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="10.0" styleClass="border">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../img/icons8-observation-100.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="50.0" text="Observation ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </StackPane>
-      <MFXTextField fx:id="txtObservationID" disable="true" floatingText="ObservationID" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="1" />
-      <MFXFilterComboBox fx:id="combHabitatID" floatingText="HabitatID" onAction="#lookupHabitatName" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <MFXFilterComboBox fx:id="combSpeciesID" floatingText="SpeciesID" layoutX="260.0" layoutY="97.0" onAction="#lookupSpeciesName" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      <MFXDatePicker fx:id="dateObservationDate" floatMode="INLINE" floatingText="ObservationDate" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="4" GridPane.rowIndex="3">
+      <MFXTextField fx:id="txtObservationID" disable="true" floatingText="ObservationID" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="1" />
+      <MFXFilterComboBox fx:id="combHabitatID" floatingText="Habitat ID" maxWidth="1.7976931348623157E308" onAction="#lookupHabitatName" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <MFXFilterComboBox fx:id="combSpeciesID" floatingText="Species ID" layoutX="260.0" layoutY="97.0" maxWidth="1.7976931348623157E308" onAction="#lookupSpeciesName" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+      <MFXDatePicker fx:id="dateObservationDate" floatMode="INLINE" floatingText="Observation Date" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3">
          <children>
-            <TextArea fx:id="txtNotes" prefHeight="80.0" prefWidth="624.0" promptText="Notes" styleClass="txt-border" />
+            <TextArea fx:id="txtNotes" prefHeight="80.0" prefWidth="624.0" promptText="Notes &lt;Maxiumum 255  characters&gt;" styleClass="txt-border" />
          </children>
       </StackPane>
       <TextField fx:id="txtHabitatId" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
       <TextField fx:id="txtSpeciesId" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
       <MFXTextField fx:id="txtHabitatName" accessibleRole="TEXT_AREA" disable="true" floatingText="Habitate Name" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
       <MFXTextField fx:id="txtSpeciesName" accessibleRole="TEXT_AREA" disable="true" floatingText="Species Name" layoutX="416.0" layoutY="202.0" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.rowIndex="2" GridPane.rowSpan="2">
          <children>
-            <MFXTextField fx:id="txtObserverName" floatingText="ObserverName" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" />
-         </children>
-      </StackPane>
-      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="4">
-         <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <VBox>
                <children>
-                  <MFXButton fx:id="btnAttachments" buttonType="RAISED" onAction="#OpenMultipleFileFileChooser" prefHeight="30.0" prefWidth="90.0" text="Browse ">
+                  <Hyperlink maxWidth="1.7976931348623157E308" onAction="#OpenHabitatForm" prefHeight="50.0" text="Habitat Form">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../img/icons8-file-30.png" />
+                              <Image url="@../../../img/icons8-habitat-100.png" />
                            </image>
                         </ImageView>
-                     </graphic></MFXButton>
-                  <MFXButton fx:id="btnSave" buttonType="RAISED" onAction="#saveObservations" prefHeight="30.0" prefWidth="90.0" text="Save">
+                     </graphic>
+                  </Hyperlink>
+                  <Hyperlink maxWidth="1.7976931348623157E308" onAction="#OpenSpeciesForm" prefHeight="50.0" text="Species Form">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../img/icons8-save-button-50.png" />
+                              <Image url="@../../../img/icons8-animal-100.png" />
                            </image>
                         </ImageView>
-                     </graphic></MFXButton>
-                  <MFXButton fx:id="btnUpdate" buttonType="RAISED" onAction="#updateObservations" prefHeight="30.0" prefWidth="90.0" text="Update">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../img/icons8-update-30.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></MFXButton>
-                  <MFXButton fx:id="btnClear" buttonType="RAISED" onAction="#clearObservations" prefHeight="30.0" prefWidth="90.0" text="Clear">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../img/icons8-undo-50.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></MFXButton>
+                     </graphic>
+                  </Hyperlink>
                </children>
-            </HBox>
-         </children>
-      </StackPane>
-      <FlowPane fx:id="selectedFilesPane" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" onDragEntered="#docDragEntered" onDragExited="#docDragExit" prefHeight="270.0" prefWidth="569.0" styleClass="border" vgap="10.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="5">
+            </VBox>
+         </children></StackPane>
+      <FlowPane fx:id="selectedFilesPane" hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onDragEntered="#docDragEntered" onDragExited="#docDragExit" prefHeight="270.0" prefWidth="569.0" styleClass="border" vgap="10.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
          <padding>
             <Insets bottom="10.0" left="20.0" top="10.0" />
          </padding></FlowPane>
-      <ImageView fitHeight="150.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5">
-         <image>
-            <Image url="@../../../img/login.png" />
-         </image>
-      </ImageView>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.rowIndex="4">
+         <children>
+            <MFXButton fx:id="btnAttachments" buttonType="RAISED" onAction="#OpenMultipleImageFileChooser" prefHeight="40.0" prefWidth="90.0" text="Browse ">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/icons8-file-30.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MFXButton>
+            <MFXButton fx:id="btnSave" buttonType="RAISED" onAction="#saveObservations" prefHeight="40.0" prefWidth="90.0" text="Save">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/icons8-save-button-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MFXButton>
+            <MFXButton fx:id="btnUpdate" buttonType="RAISED" disable="true" onAction="#updateObservations" prefHeight="40.0" prefWidth="90.0" text="Update">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/icons8-update-30.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MFXButton>
+            <MFXButton fx:id="btnClear" buttonType="RAISED" onAction="#clearObservations" prefHeight="40.0" prefWidth="90.0" text="Clear">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/icons8-undo-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MFXButton>
+         </children>
+      </VBox>
+      <MFXFilterComboBox fx:id="combObserverName" floatingText="Observer Name" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
    </children>
    <padding>
-      <Insets bottom="20.0" left="50.0" right="50.0" top="10.0" />
+      <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
    </padding>
    <stylesheets>
       <URL value="@css/style.css" />
       <URL value="@css/Common.css" />
    </stylesheets>
+   <styleClass>
+      <String fx:value="grid-background" />
+      <String fx:value="form-background" />
+   </styleClass>
 </GridPane>

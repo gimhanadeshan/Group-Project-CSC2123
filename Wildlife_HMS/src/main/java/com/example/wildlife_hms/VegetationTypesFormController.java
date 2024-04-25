@@ -56,7 +56,7 @@ public class VegetationTypesFormController  implements Initializable, LookupHabi
     DatabaseConnection connectNow=new DatabaseConnection();
     Connection connectDB = connectNow.getConnection();
 
-    HabitatFormController habitatFormController=new HabitatFormController();
+    HabitatController habitatController=new HabitatController();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -70,13 +70,12 @@ public class VegetationTypesFormController  implements Initializable, LookupHabi
     void initCombobox() {
         StringConverter<HabitatModel> converter = FunctionalStringConverter.to(habitatModel -> (habitatModel == null) ? "" : STR."\{habitatModel.getHaId()} | \{habitatModel.getName()}");
         Function<String, Predicate<HabitatModel>> filterFunction = s -> habitatModel -> StringUtils.containsIgnoreCase(converter.toString(habitatModel), s);
-        filterCombo.setItems(habitatFormController.getHabitat());
+        filterCombo.setItems(habitatController.getHabitat());
         filterCombo.setConverter(converter);
         filterCombo.setFilterFunction(filterFunction);
 
         filterCombo.setOnAction(event -> lookupHabitatName());
 
-        // Set default selection based on text
 
     }
 

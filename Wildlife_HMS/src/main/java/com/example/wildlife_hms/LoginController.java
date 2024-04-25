@@ -86,6 +86,7 @@ public class LoginController {
                             try {
                                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
                                 Parent load = fxmlLoader.load();
+
                                 DashboardController controller = fxmlLoader.getController();
                                 controller.setUserName(unameField.getText());
                                 controller.btnDashboardOnAction();

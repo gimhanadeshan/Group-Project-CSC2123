@@ -46,6 +46,14 @@
 
 .grid-background {
 	-fx-background-color: white;
-	-fx-background-radius: 10;
+	-fx-background-radius: 5;
 	-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.12, -1.0, 2.0);
 }
+
+.form-background{
+	-fx-background-color:  #f2f2f2;
+
+
+}
+
+

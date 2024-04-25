@@ -51,6 +51,9 @@ public class UserDetailsController implements Initializable,ButtonAction {
     private TableColumn<UserModel, String> colFname;
 
     @FXML
+    private TableColumn<UserModel, String> colUserName;
+
+    @FXML
     private TableColumn<UserModel, String> colGender;
 
     @FXML
@@ -142,6 +145,8 @@ public class UserDetailsController implements Initializable,ButtonAction {
         colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
         colDp.setCellValueFactory(new PropertyValueFactory<>("dp"));
         colActive.setCellValueFactory(new PropertyValueFactory<>("active") );
+        colUserName.setCellValueFactory(new PropertyValueFactory<>("userName"));
+
 
 
 
@@ -288,6 +293,7 @@ public class UserDetailsController implements Initializable,ButtonAction {
                     userRegisterFormController.getData(userModel);
                     userRegisterFormController.btnRegister.setDisable(true);
                     userRegisterFormController.btnClear.setDisable(true);
+                    userRegisterFormController.btnUpdate.setDisable(false);
                     userRegisterFormController.pwdPassword.setVisible(false);
                     userRegisterFormController.pwdConfirmPassword.setVisible(false);
                     Stage stage = new Stage();
