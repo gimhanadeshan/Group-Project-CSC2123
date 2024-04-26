@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 25, 2024 at 08:13 AM
+-- Generation Time: Apr 26, 2024 at 11:06 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -56,7 +56,15 @@ CREATE TABLE IF NOT EXISTS `alerttypes` (
   `AlertType` varchar(50) NOT NULL,
   `Remarks` text NOT NULL,
   PRIMARY KEY (`AlertTypeID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `alerttypes`
+--
+
+INSERT INTO `alerttypes` (`AlertTypeID`, `AlertType`, `Remarks`) VALUES
+(3, 'gh', 'ghb'),
+(2, 'ghjh', 'tgh');
 
 -- --------------------------------------------------------
 
@@ -70,7 +78,15 @@ CREATE TABLE IF NOT EXISTS `conservationstatus` (
   `ConservationStatus` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Remark` text NOT NULL,
   PRIMARY KEY (`ConservationStatusID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `conservationstatus`
+--
+
+INSERT INTO `conservationstatus` (`ConservationStatusID`, `ConservationStatus`, `Remark`) VALUES
+(4, 'hjk6', 'gn'),
+(2, 'gh67', 'ghb5');
 
 -- --------------------------------------------------------
 
@@ -153,8 +169,8 @@ CREATE TABLE IF NOT EXISTS `monitoringalerts` (
 --
 
 INSERT INTO `monitoringalerts` (`AlertID`, `AL_ID`, `AlertType`, `AlertDescription`, `AlertDate`, `HabitatID`, `AlertStatus`) VALUES
-(15, 'AL00015', 'HabitatDegradation', 'Increased logging activity in the area', '2024-04-23', 83, NULL),
-(16, 'AL00016', 'InvasiveSpecies', 'Presence of invasive plants observed', '2024-04-16', 84, NULL);
+(15, 'AL00015', 'HabitatDegradation', 'Increased logging activity in the area', '2024-04-23', 83, 'Pending'),
+(16, 'AL00016', 'InvasiveSpecies', 'Presence of invasive plants observed', '2024-04-16', 84, 'Under Review');
 
 -- --------------------------------------------------------
 
@@ -184,6 +200,25 @@ CREATE TABLE IF NOT EXISTS `observations` (
 INSERT INTO `observations` (`ObservationID`, `OB_ID`, `HabitatID`, `SpeciesID`, `ObserverName`, `ObservationDate`, `Notes`, `Attachments`) VALUES
 (24, 'OB00024', 83, 11, 'John Doe', '2024-04-23', 'Spotted a Bengal Tiger near the river', '/D:/Wildlife_HMS/src/main/resources/observationAttachments/welcome.jpeg\n/D:/Wildlife_HMS/src/main/resources/observationAttachments/welcome.jpeg\n/C:/Users/Gimhan/Pictures/Screenshots/Screenshot 2023-09-15 121733.png\n'),
 (25, 'OB00025', 84, 12, 'Jane Smith', '2024-04-22', 'Red Fox family observed near the marsh', '/C:/Users/Gimhan/Pictures/Screenshots/Screenshot 2023-06-17 114141.png\n/C:/Users/Gimhan/Pictures/Screenshots/Screenshot 2023-11-18 230102.png\n');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `population`
+--
+
+DROP TABLE IF EXISTS `population`;
+CREATE TABLE IF NOT EXISTS `population` (
+  `PopulationID` int NOT NULL AUTO_INCREMENT,
+  `PO_ID` varchar(8) DEFAULT NULL,
+  `HabitatID` int NOT NULL,
+  `SpeciesID` int NOT NULL,
+  `PopulationSize` int NOT NULL,
+  `LastSurveyDate` date NOT NULL,
+  PRIMARY KEY (`PopulationID`),
+  KEY `HabitatID` (`HabitatID`,`SpeciesID`),
+  KEY `SpeciesID` (`SpeciesID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -231,7 +266,8 @@ CREATE TABLE IF NOT EXISTS `useraccounts` (
   `Gender` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `DP` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `Active` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`,`Email`)
 ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -241,7 +277,44 @@ CREATE TABLE IF NOT EXISTS `useraccounts` (
 INSERT INTO `useraccounts` (`id`, `username`, `password`, `RegisterDate`, `FirstName`, `LastName`, `Email`, `Roll`, `Gender`, `DP`, `Active`) VALUES
 (10, 'admin', '123', '2024-04-20', 'Gimhana', 'Deshan', '', 'Admin', 'Male', 'file:/D:/Wildlife_HMS/src/main/resources/img/icons8-user-100-1.png', 1),
 (9, 'gimhana', '8008', '2024-04-20', 'Gimhana', 'Deshan', '', 'Researcher', 'Male', 'file:/D:/Wildlife_HMS/src/main/resources/userProfile/Photograph.jpg', 1),
-(11, 'janith', '123', '2024-04-23', 'Janith', 'Sandaruwan', '', 'Researcher', 'Male', 'file:/D:/My_Photo/Camera/IMG_20230708_124730.jpg', 0);
+(11, 'janith', '123', '2024-04-23', 'Janith', 'Sandaruwan', '', 'Researcher', 'Male', 'file:/D:/My_Photo/Camera/IMG_20230708_124730.jpg', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userroles`
+--
+
+DROP TABLE IF EXISTS `userroles`;
+CREATE TABLE IF NOT EXISTS `userroles` (
+  `UserTypeID` int NOT NULL AUTO_INCREMENT,
+  `UserType` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `HabitatManagement` tinyint(1) NOT NULL,
+  `UserManagement` tinyint(1) NOT NULL,
+  `FieldDataCollection` tinyint(1) NOT NULL,
+  `Research` tinyint(1) NOT NULL,
+  `Reporting` tinyint(1) NOT NULL,
+  `Setteings` tinyint(1) NOT NULL,
+  `OtherFiles` tinyint(1) NOT NULL,
+  `Create` tinyint(1) NOT NULL,
+  `Delete` tinyint(1) NOT NULL,
+  `Update` tinyint(1) NOT NULL,
+  `View` tinyint(1) NOT NULL,
+  PRIMARY KEY (`UserTypeID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `userroles`
+--
+
+INSERT INTO `userroles` (`UserTypeID`, `UserType`, `HabitatManagement`, `UserManagement`, `FieldDataCollection`, `Research`, `Reporting`, `Setteings`, `OtherFiles`, `Create`, `Delete`, `Update`, `View`) VALUES
+(1, 'Administrator', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 'Wildlife Biologist    ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, 'Field Technician ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(4, 'Researcher   ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(5, 'GIS Specialist   ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(6, 'Community Liaison ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(7, 'Educator/Outreach Coordinator', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -292,6 +365,13 @@ ALTER TABLE `monitoringalerts`
 ALTER TABLE `observations`
   ADD CONSTRAINT `observations_ibfk_1` FOREIGN KEY (`SpeciesID`) REFERENCES `species` (`SpeciesID`),
   ADD CONSTRAINT `observations_ibfk_2` FOREIGN KEY (`HabitatID`) REFERENCES `habitats` (`HabitatID`);
+
+--
+-- Constraints for table `population`
+--
+ALTER TABLE `population`
+  ADD CONSTRAINT `population_ibfk_1` FOREIGN KEY (`HabitatID`) REFERENCES `habitats` (`HabitatID`),
+  ADD CONSTRAINT `population_ibfk_2` FOREIGN KEY (`SpeciesID`) REFERENCES `species` (`SpeciesID`);
 
 --
 -- Constraints for table `vegetationtypes`
