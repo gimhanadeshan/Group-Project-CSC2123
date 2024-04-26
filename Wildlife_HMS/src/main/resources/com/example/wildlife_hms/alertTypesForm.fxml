@@ -51,7 +51,7 @@
       <MFXTextField fx:id="txtAlertType" disable="true" floatingText="Alert Type*" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="1" />
       <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
          <children>
-            <MFXTextField fx:id="txtRemarks" floatingText="Remarks*" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="500.0" />
+            <MFXTextField fx:id="txtRemarks" disable="true" floatingText="Remarks*" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="500.0" />
          </children>
       </StackPane>
       <MFXFilterComboBox fx:id="combSelectAlertType" floatingText="Select Alert Type" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="2" />
@@ -59,7 +59,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <MFXButton fx:id="btnNew" buttonType="RAISED" prefHeight="40.0" text="New">
+                  <MFXButton fx:id="btnNew" buttonType="RAISED" onAction="#newAlertType" prefHeight="40.0" text="New">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -68,7 +68,7 @@
                         </ImageView>
                      </graphic>
                   </MFXButton>
-                  <MFXButton fx:id="btnSave" buttonType="RAISED" disable="true" layoutX="10.0" layoutY="40.0" prefHeight="40.0" text="Save">
+                  <MFXButton fx:id="btnSave" buttonType="RAISED" disable="true" layoutX="10.0" layoutY="40.0" onAction="#saveAlertType" prefHeight="40.0" text="Save">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -77,7 +77,7 @@
                         </ImageView>
                      </graphic>
                   </MFXButton>
-                  <MFXButton fx:id="btnDelete" buttonType="RAISED" disable="true" layoutX="76.0" layoutY="10.0" prefHeight="40.0" text="Delete">
+                  <MFXButton fx:id="btnDelete" buttonType="RAISED" disable="true" layoutX="76.0" layoutY="10.0" onAction="#deleteAlertType" prefHeight="40.0" text="Delete">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -86,7 +86,7 @@
                         </ImageView>
                      </graphic>
                   </MFXButton>
-                  <MFXButton fx:id="btnUpdate" buttonType="RAISED" disable="true" layoutX="148.0" layoutY="10.0" prefHeight="40.0" text="Update">
+                  <MFXButton fx:id="btnUpdate" buttonType="RAISED" disable="true" layoutX="148.0" layoutY="10.0" onAction="#updateAlertType" prefHeight="40.0" text="Update">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -95,7 +95,7 @@
                         </ImageView>
                      </graphic>
                   </MFXButton>
-                  <MFXButton fx:id="btnUndo" buttonType="RAISED" disable="true" layoutX="10.0" layoutY="10.0" prefHeight="40.0" text="Undo">
+                  <MFXButton fx:id="btnUndo" buttonType="RAISED" disable="true" layoutX="10.0" layoutY="10.0" onAction="#clearAlertType" prefHeight="40.0" text="Undo">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>

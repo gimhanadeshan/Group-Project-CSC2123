@@ -1,16 +1,22 @@
 package com.example.wildlife_hms;
 
 import io.github.palexdev.materialfx.controls.MFXComboBox;
+import io.github.palexdev.materialfx.controls.MFXFilterComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import io.github.palexdev.materialfx.utils.StringUtils;
+import io.github.palexdev.materialfx.utils.others.FunctionalStringConverter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 
 public class SpeciesFormController implements Initializable {
@@ -47,9 +53,9 @@ public class SpeciesFormController implements Initializable {
     private MFXTextField txtSpeciesId;
 
     @FXML
-    private MFXComboBox<String> combConversationStatus;
+    private MFXFilterComboBox<ConservationStatusModel> combConversationStatus;
 
-
+    OtherMasterFilesController controller=new OtherMasterFilesController();
 
     int id=0;
 
@@ -57,7 +63,12 @@ public class SpeciesFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        combConversationStatus.getItems().addAll("Endangered","Least Concern","Not Evaluated");
+       // combConversationStatus.getItems().addAll("Endangered","Least Concern","Not Evaluated");
+        StringConverter<ConservationStatusModel> converter = FunctionalStringConverter.to(conservationStatusModel -> (conservationStatusModel == null) ? "" : STR."\{conservationStatusModel.getConservationStatus()}");
+        Function<String,Predicate<ConservationStatusModel>> filterFunction = s -> conservationStatusModel -> StringUtils.containsIgnoreCase(converter.toString(conservationStatusModel), s);
+        combConversationStatus.setItems(controller.getConservationStatus());
+        combConversationStatus.setConverter(converter);
+        combConversationStatus.setFilterFunction(filterFunction);
 
     }
 

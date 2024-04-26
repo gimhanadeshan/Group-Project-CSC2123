@@ -33,7 +33,6 @@
   </rowConstraints>
    <children>
       <MFXTextField fx:id="txtAlertid" disable="true" floatingText="AlertID" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="1" />
-      <MFXTextField fx:id="txtAlertType" floatingText="Alert Type*" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <MFXFilterComboBox fx:id="filterCombo" floatingText="Habitat ID*" maxWidth="1.7976931348623157E308" onAction="#lookupHabitatName" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       <MFXDatePicker fx:id="dateAlertDate" floatMode="INLINE" floatingText="Alert Date*" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="2" />
       <MFXTextField fx:id="txtHabitatName" accessibleRole="TEXT_AREA" disable="true" floatingText="Habitate Name" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -99,6 +98,8 @@
             </HBox>
          </children>
       </StackPane>
+      <MFXFilterComboBox fx:id="combAlertStatus" floatingText="Alert Status" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <MFXFilterComboBox fx:id="combAlertType" floatingText="Alert Type" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
    <padding>
       <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />

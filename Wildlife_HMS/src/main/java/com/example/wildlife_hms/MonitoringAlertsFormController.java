@@ -60,6 +60,12 @@ public class MonitoringAlertsFormController implements Initializable, LookupHabi
     @FXML
     private MFXTextField txtHabitatName;
 
+    @FXML
+    private MFXFilterComboBox<AlertStatusModel> combAlertStatus;
+
+    @FXML
+    private MFXFilterComboBox<AlertTypeModel> combAlertType;
+
 
 
 
@@ -71,6 +77,7 @@ public class MonitoringAlertsFormController implements Initializable, LookupHabi
     Connection connectDB = connectNow.getConnection();
 
     HabitatController habitatController=new HabitatController();
+    OtherMasterFilesController otherMasterFilesController=new OtherMasterFilesController();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -86,6 +93,21 @@ public class MonitoringAlertsFormController implements Initializable, LookupHabi
 
         filterCombo.setOnAction(event -> lookupHabitatName());
 
+        StringConverter<AlertTypeModel> converter1 = FunctionalStringConverter.to(alertTypeModel -> (alertTypeModel == null) ? "" : STR."\{alertTypeModel.getAlertType()}");
+        Function<String, Predicate<AlertTypeModel>> filterFunction1 = s -> alertTypeModel -> StringUtils.containsIgnoreCase(converter1.toString(alertTypeModel), s);
+        combAlertType.setItems(otherMasterFilesController.getAlertTypes());
+        combAlertType.setConverter(converter1);
+        combAlertType.setFilterFunction(filterFunction1);
+
+
+        StringConverter<AlertStatusModel> converter2 = FunctionalStringConverter.to(alertStatusModel -> (alertStatusModel == null) ? "" : STR."\{alertStatusModel.getAlertStatus()}");
+        Function<String, Predicate<AlertStatusModel>> filterFunction2 = s -> alertStatusModel -> StringUtils.containsIgnoreCase(converter2.toString(alertStatusModel), s);
+        combAlertStatus.setItems(otherMasterFilesController.getAlertStatus());
+        combAlertStatus.setConverter(converter2);
+        combAlertStatus.setFilterFunction(filterFunction2);
+
+
+
 
     }
 
@@ -98,11 +120,12 @@ public class MonitoringAlertsFormController implements Initializable, LookupHabi
 
 
         id=alertModel.getAlertId();
-        txtAlertType.setText(alertModel.getAlertType());
+        combAlertType.setText(alertModel.getAlertType());
         txtAlertDescription.setText(alertModel.getAlertDisc());
         dateAlertDate.setValue(alertModel.getAlertDate().toLocalDate());
         txtHabitatId.setText(String.valueOf(alertModel.getHabitatID()));
         txtAlertid.setText(alertModel.getAlId());
+        combAlertStatus.setText(alertModel.getAlertStatus());
 
 
         lookupHabitatNameForGetData();
@@ -117,11 +140,12 @@ public class MonitoringAlertsFormController implements Initializable, LookupHabi
     public void clear(){
         txtAlertid.clear();
         txtHabitatId.clear();
-        txtAlertType.clear();
+        combAlertType.clearSelection();
         txtAlertDescription.clear();
         dateAlertDate.setValue(null);
         txtHabitatName.clear();
         filterCombo.clearSelection();
+        combAlertStatus.clearSelection();
 
 
 
@@ -140,7 +164,7 @@ public class MonitoringAlertsFormController implements Initializable, LookupHabi
 
 
     private boolean validateFields() {
-        return !txtAlertType.getText().isEmpty() && !txtHabitatId.getText().isEmpty() && !txtAlertDescription.getText().isEmpty() && !dateAlertDate.getText().isEmpty();
+        return !combAlertType.getText().isEmpty() && !txtHabitatId.getText().isEmpty() && !txtAlertDescription.getText().isEmpty() && !dateAlertDate.getText().isEmpty();
     }
 
 
@@ -169,15 +193,16 @@ public class MonitoringAlertsFormController implements Initializable, LookupHabi
 
         if (validateFields()) {
 
-            String query = "Insert into monitoringalerts(AlertType,AlertDescription,AlertDate,HabitatID)values(?,?,?,?)";
+            String query = "Insert into monitoringalerts(AlertType,AlertDescription,AlertDate,HabitatID,AlertStatus)values(?,?,?,?,?)";
 
             try {
                 PreparedStatement statement = connectDB.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
-                statement.setString(1, txtAlertType.getText());
+                statement.setString(1, combAlertType.getText());
                 statement.setString(2, txtAlertDescription.getText());
                 statement.setDate(3, Date.valueOf(dateAlertDate.getValue()));
                 statement.setInt(4, Integer.parseInt((txtHabitatId.getText())));
+                statement.setString(5, combAlertStatus.getText());
                 statement.executeUpdate();
 
                 ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -210,15 +235,16 @@ public class MonitoringAlertsFormController implements Initializable, LookupHabi
     void updateAlerts() {
         if (validateFields()) {
 
-            String query = "UPDATE monitoringalerts SET AlertType=?,AlertDescription=?,AlertDate=?,HabitatID=? where AlertID=?";
+            String query = "UPDATE monitoringalerts SET AlertType=?,AlertDescription=?,AlertDate=?,HabitatID=?,AlertStatus=? where AlertID=?";
             try {
                 PreparedStatement statement = connectDB.prepareStatement(query);
 
-                statement.setString(1, txtAlertType.getText());
+                statement.setString(1, combAlertType.getText());
                 statement.setString(2, txtAlertDescription.getText());
                 statement.setDate(3, Date.valueOf(dateAlertDate.getValue()));
                 statement.setInt(4, Integer.parseInt((txtHabitatId.getText())));
-                statement.setInt(5, id);
+                statement.setString(5, combAlertStatus.getText());
+                statement.setInt(6, id);
                 statement.executeUpdate();
 
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Alerts updated successfully!");

@@ -87,6 +87,8 @@ public class DashboardController implements Initializable {
     @FXML
     private VBox of;
 
+    public Label userID;
+
 
 
 
@@ -108,15 +110,21 @@ public class DashboardController implements Initializable {
 
 
 
+
+
     }
+
+
 
 
 
 
     public void setUserName(String username) {
 
+        userID.setText(username);
         user.setText(STR."Welcome \{username}");
         user.setAlignment(Pos.BASELINE_CENTER);
+
 
 
         // Retrieve and set profile picture
@@ -132,9 +140,6 @@ public class DashboardController implements Initializable {
                 if (image != null) {
                     Image profileImage = new Image(image);
                     profile.setImage(profileImage);
-                } else {
-                    // Handle case where profile picture is null
-                    // For example, set a default profile picture
                 }
             }
             connectDB.close();
@@ -144,8 +149,12 @@ public class DashboardController implements Initializable {
         }
 
 
-
     }
+
+
+
+
+
 
 
     @FXML
@@ -370,6 +379,17 @@ public class DashboardController implements Initializable {
     public void otherMasterFiles() throws IOException {
         OtherMasterFilesController controller=new OtherMasterFilesController();
         loadForm("otherMasterFiles.fxml", controller);
+    }
+
+    public void userProfile() throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("userProfile.fxml"));
+        Parent load = fxmlLoader.load();
+        UserProfileController controller=fxmlLoader.getController();
+        controller.setUserProfile(userID.getText());
+
+        ancMain.getChildren().clear();
+        ancMain.getChildren().add(load);
     }
 
 

@@ -17,6 +17,8 @@ public class AlertModel {
 
     private String habitatName;
 
+    private String alertStatus;
+
 
     public AlertModel(int alertId, String alId, String alertType, String alertDisc, Date alertDate,int habitatID) {
         this.alertId = alertId;
@@ -27,7 +29,7 @@ public class AlertModel {
         this.habitatID = habitatID;
     }
 
-    public AlertModel(int alertId, String alId, String alertType, String alertDisc, Date alertDate,int habitatID,String haId,String habitatName) {
+    public AlertModel(int alertId, String alId, String alertType, String alertDisc, Date alertDate,int habitatID,String haId,String habitatName,String alertStatus) {
         this.alertId = alertId;
         this.alId = alId;
         this.alertType = alertType;
@@ -36,6 +38,7 @@ public class AlertModel {
         this.habitatID = habitatID;
         this.haId=haId;
         this.habitatName=habitatName;
+        this.alertStatus=alertStatus;
     }
 
     public int getAlertId() {
@@ -105,5 +108,13 @@ public class AlertModel {
 
     public void setHabitatName(String habitatName) {
         this.habitatName = habitatName;
+    }
+
+    public String getAlertStatus() {
+        return alertStatus;
+    }
+
+    public void setAlertStatus(String alertStatus) {
+        this.alertStatus = alertStatus;
     }
 }

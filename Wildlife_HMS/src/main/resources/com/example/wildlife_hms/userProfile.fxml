@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane hgap="30.0" maxHeight="-Infinity" prefHeight="450.0" prefWidth="750.0" vgap="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.UserProfileController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="200.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <VBox styleClass="border" GridPane.rowIndex="1" GridPane.rowSpan="5">
+         <children>
+            <StackPane fx:id="stackPaneDp" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" styleClass="border">
+               <children>
+                  <ImageView fx:id="profile" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="90.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="lblFullName" prefHeight="50.0" />
+                  <Label fx:id="lblEmail" layoutX="10.0" layoutY="10.0" prefHeight="50.0" />
+                  <Label fx:id="lblRole" layoutX="10.0" layoutY="60.0" prefHeight="50.0" />
+                  <Label fx:id="lblUserName" layoutX="110.0" layoutY="71.0" prefHeight="50.0" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="3">
+         <children>
+            <HBox minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="10.0" styleClass="border">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../img/icons8-user-100-1.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="50.0" text="User Profile">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+      <StackPane alignment="TOP_LEFT" maxHeight="-Infinity" prefHeight="400.0" prefWidth="200.0" styleClass="border" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="5">
+         <children>
+            <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="400.0" prefWidth="100.0">
+               <children>
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="10.0" styleClass="border">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="10.0" top="15.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../../../img/icons8-form-100.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="50.0" text="Change Passwoard">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblValidatationMsg" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" textFill="#c41414">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Label prefHeight="50.0" prefWidth="150.0" text="Enter Old Passwoard" />
+                        <MFXPasswordField fx:id="pwdOld" floatMode="DISABLED" prefWidth="200.0">
+                           <font>
+                              <Font size="10.0" />
+                           </font></MFXPasswordField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Label prefHeight="50.0" prefWidth="150.0" text="Enter New Passwoard" />
+                        <MFXPasswordField fx:id="pwdNew" floatMode="DISABLED" graphicTextGap="15.0" prefWidth="200.0">
+                           <font>
+                              <Font size="10.0" />
+                           </font></MFXPasswordField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="160.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Label prefHeight="50.0" prefWidth="150.0" text="Confirm Passwoard" />
+                        <MFXPasswordField fx:id="pwdConfirm" floatMode="DISABLED" prefWidth="200.0">
+                           <font>
+                              <Font size="10.0" />
+                           </font></MFXPasswordField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <MFXButton fx:id="btnSubmit" buttonType="RAISED" onAction="#passwordChange" prefHeight="40.0" text="Submit">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/icons8-submit-50.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </MFXButton>
+                        <MFXButton fx:id="btnReset" buttonType="RAISED" onAction="#reset" prefHeight="40.0" text="Reset">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../img/icons8-reset-50.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </MFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@css/Common.css" />
+      <URL value="@css/style.css" />
+   </stylesheets>
+</GridPane>

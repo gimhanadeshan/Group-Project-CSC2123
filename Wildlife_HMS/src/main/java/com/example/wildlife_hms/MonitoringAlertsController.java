@@ -55,6 +55,9 @@ public class MonitoringAlertsController implements Initializable,ButtonAction {
     private TableColumn<HabitatModel, String> colHabitatName;
 
     @FXML
+    private TableColumn<AlertModel, String> colAlertStatus;
+
+    @FXML
     public TableView<AlertModel> tblAlert;
 
     @FXML
@@ -93,7 +96,9 @@ public class MonitoringAlertsController implements Initializable,ButtonAction {
                         output.getDate("AlertDate"),
                         output.getInt("HabitatID"),
                         output.getString("HA_ID"),
-                        output.getString("HabitatName")
+                        output.getString("HabitatName"),
+                        output.getString("AlertStatus")
+
 
                 );
 
@@ -118,6 +123,7 @@ public class MonitoringAlertsController implements Initializable,ButtonAction {
         colAlertDate.setCellValueFactory(new PropertyValueFactory<AlertModel,Date>("alertDate"));
         colHabitatID.setCellValueFactory(new PropertyValueFactory<>("haId"));
         colHabitatName.setCellValueFactory(new PropertyValueFactory<>("habitatName"));
+        colAlertStatus.setCellValueFactory(new PropertyValueFactory<>("alertStatus"));
 
 
     }
@@ -169,7 +175,8 @@ public class MonitoringAlertsController implements Initializable,ButtonAction {
                         resultSet.getDate("AlertDate"),
                         resultSet.getInt("HabitatID"),
                         resultSet.getString("HA_ID"),
-                        resultSet.getString("HabitatName")
+                        resultSet.getString("HabitatName"),
+                        resultSet.getString("AlertStatus")
 
                 );
                 searchResults.add(alerts);

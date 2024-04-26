@@ -135,7 +135,7 @@ public class OtherMasterFilesController implements Initializable {
             ResultSet output = statement.executeQuery(query);
             while (output.next()) {
                 AlertTypeModel at = new AlertTypeModel(
-                        output.getInt("AlertTypeID "),
+                        output.getInt("AlertTypeID"),
                         output.getString("AlertType"),
                         output.getString("Remarks"));
 
@@ -170,7 +170,7 @@ public class OtherMasterFilesController implements Initializable {
                 ConservationStatusModel cs = new ConservationStatusModel(
                         output.getInt("ConservationStatusID"),
                         output.getString("ConservationStatus"),
-                        output.getString("Remarks"));
+                        output.getString("Remark"));
 
                 conservationStatusModels.addAll(cs);
             }

@@ -44,7 +44,10 @@
                   </ImageView>
                </children>
             </HBox>
-            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label fx:id="userID" layoutX="136.0" layoutY="21.0" visible="false" />
+               </children></Pane>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label fx:id="user" alignment="CENTER" prefHeight="50.0" prefWidth="138.0">
@@ -52,7 +55,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="profile" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true">
+                  <ImageView fx:id="profile" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#userProfile" pickOnBounds="true">
                      <image>
                         <Image url="@../../../img/icons8-user-100-1.png" />
                      </image>

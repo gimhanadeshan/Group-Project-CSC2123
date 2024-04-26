@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import java.lang.String?>
 <?import java.net.URL?>
@@ -72,7 +72,6 @@
             </HBox>
          </children>
       </StackPane>
-      <MFXComboBox fx:id="combConversationStatus" allowEdit="true" floatingText="Conservation Status*" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="2" />
       <StackPane prefHeight="50.0" prefWidth="200.0" styleClass="border" GridPane.columnSpan="3">
          <children>
             <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0">
@@ -94,6 +93,7 @@
             </HBox>
          </children>
       </StackPane>
+      <MFXFilterComboBox fx:id="combConversationStatus" floatingText="Conversation Status" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="2" />
    </children>
    <padding>
       <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />

@@ -32,7 +32,7 @@ public class LoginController {
     private MFXPasswordField pwdField;
 
     @FXML
-    private MFXTextField unameField;
+    public MFXTextField unameField;
 
 
 

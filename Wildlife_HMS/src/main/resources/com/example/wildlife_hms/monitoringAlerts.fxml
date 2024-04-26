@@ -56,6 +56,7 @@
                   <TableColumn fx:id="colHabitatName" editable="false" prefWidth="141.60003662109375" text="Habitat Name" visible="false" />
                   <TableColumn fx:id="colHabitatID" editable="false" prefWidth="150.39996337890625" text="Habitat ID" />
                   <TableColumn fx:id="colAlertDate" editable="false" minWidth="0.0" prefWidth="139.1999969482422" text="Alert Date" />
+                  <TableColumn fx:id="colAlertStatus" editable="false" prefWidth="75.0" text="Alert Status" />
                   <TableColumn fx:id="colAlertDesc" editable="false" minWidth="0.0" prefWidth="252.00006103515625" sortable="false" text="Alert Discription" />
                   <TableColumn fx:id="colUpdate" prefWidth="75.0" sortable="false" text="Upadate" />
                   <TableColumn fx:id="colDelete" prefWidth="75.0" sortable="false" text="Delete" />

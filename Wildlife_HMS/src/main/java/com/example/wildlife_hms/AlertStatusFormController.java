@@ -58,6 +58,12 @@ public class AlertStatusFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        initCombo();
+
+
+    }
+
+    void initCombo(){
         StringConverter<AlertStatusModel> converter = FunctionalStringConverter.to(statusModel -> (statusModel == null) ? "" : STR."\{statusModel.getAlertStatus()}");
         Function<String, Predicate<AlertStatusModel>> filterFunction = s -> statusModel -> StringUtils.containsIgnoreCase(converter.toString(statusModel), s);
         combSelectAlertStatus.setItems(controller.getAlertStatus());
@@ -65,10 +71,7 @@ public class AlertStatusFormController implements Initializable {
         combSelectAlertStatus.setFilterFunction(filterFunction);
 
         combSelectAlertStatus.setOnAction(event -> getData());
-
-
     }
-
 
     @FXML
     void getData() {
@@ -152,6 +155,7 @@ public class AlertStatusFormController implements Initializable {
 
                 clearAlertStatus();
                 showAlert(Alert.AlertType.INFORMATION, "Success", "AlertStatus saved successfully!");
+                initCombo();
                 disableForm();
 
             } catch (NumberFormatException | SQLException e) {
@@ -179,6 +183,7 @@ public class AlertStatusFormController implements Initializable {
 
                 clearAlertStatus();
                 showAlert(Alert.AlertType.INFORMATION, "Success", "AlertStatus updated successfully!");
+                initCombo();
                 disableForm();
 
             } catch (NumberFormatException | SQLException e) {
@@ -205,6 +210,7 @@ public class AlertStatusFormController implements Initializable {
                 statement.executeUpdate();
             }
             clearAlertStatus();
+            initCombo();
             disableForm();
         } catch (SQLException e) {
             showAlert(Alert.AlertType.ERROR, "Database Error", "Error in deleting AlertStatus");
