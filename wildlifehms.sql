@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 26, 2024 at 11:06 AM
+-- Generation Time: Apr 28, 2024 at 06:25 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -218,7 +218,14 @@ CREATE TABLE IF NOT EXISTS `population` (
   PRIMARY KEY (`PopulationID`),
   KEY `HabitatID` (`HabitatID`,`SpeciesID`),
   KEY `SpeciesID` (`SpeciesID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `population`
+--
+
+INSERT INTO `population` (`PopulationID`, `PO_ID`, `HabitatID`, `SpeciesID`, `PopulationSize`, `LastSurveyDate`) VALUES
+(1, 'PL00001', 83, 11, 600, '2024-04-28');
 
 -- --------------------------------------------------------
 
@@ -267,54 +274,52 @@ CREATE TABLE IF NOT EXISTS `useraccounts` (
   `DP` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `Active` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `username_2` (`username`),
   UNIQUE KEY `username` (`username`,`Email`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `useraccounts`
 --
 
 INSERT INTO `useraccounts` (`id`, `username`, `password`, `RegisterDate`, `FirstName`, `LastName`, `Email`, `Roll`, `Gender`, `DP`, `Active`) VALUES
-(10, 'admin', '123', '2024-04-20', 'Gimhana', 'Deshan', '', 'Admin', 'Male', 'file:/D:/Wildlife_HMS/src/main/resources/img/icons8-user-100-1.png', 1),
-(9, 'gimhana', '8008', '2024-04-20', 'Gimhana', 'Deshan', '', 'Researcher', 'Male', 'file:/D:/Wildlife_HMS/src/main/resources/userProfile/Photograph.jpg', 1),
-(11, 'janith', '123', '2024-04-23', 'Janith', 'Sandaruwan', '', 'Researcher', 'Male', 'file:/D:/My_Photo/Camera/IMG_20230708_124730.jpg', 1);
+(14, 'chaturanga', '12345', '2024-04-26', 'Chaturanga', 'Lakmal', 'biologist@example.com', 'Wildlife Biologist', 'Male', 'file:/D:/Wildlife_HMS/target/classes/img/icons8-user-100-1.png', 0),
+(15, 'janith', '111', '2024-04-27', 'Janith', 'Sandaruwan', '', 'Field Technician', 'Female', 'file:/D:/Wildlife_HMS/target/classes/img/icons8-user-100-1.png', 1),
+(19, 'admin', '123', '2024-04-28', 'Gimhana', 'Deshan', '', 'Administrator', 'Male', 'file:/D:/Wildlife_HMS/target/classes/img/icons8-user-100-1.png', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userroles`
+-- Table structure for table `userpermissions`
 --
 
-DROP TABLE IF EXISTS `userroles`;
-CREATE TABLE IF NOT EXISTS `userroles` (
-  `UserTypeID` int NOT NULL AUTO_INCREMENT,
-  `UserType` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `HabitatManagement` tinyint(1) NOT NULL,
-  `UserManagement` tinyint(1) NOT NULL,
-  `FieldDataCollection` tinyint(1) NOT NULL,
-  `Research` tinyint(1) NOT NULL,
-  `Reporting` tinyint(1) NOT NULL,
-  `Setteings` tinyint(1) NOT NULL,
-  `OtherFiles` tinyint(1) NOT NULL,
-  `Create` tinyint(1) NOT NULL,
-  `Delete` tinyint(1) NOT NULL,
-  `Update` tinyint(1) NOT NULL,
-  `View` tinyint(1) NOT NULL,
-  PRIMARY KEY (`UserTypeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+DROP TABLE IF EXISTS `userpermissions`;
+CREATE TABLE IF NOT EXISTS `userpermissions` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `HabitatManagement` tinyint(1) DEFAULT NULL,
+  `UserManagement` tinyint(1) DEFAULT NULL,
+  `FieldDataCollection` tinyint(1) DEFAULT NULL,
+  `Research` tinyint(1) DEFAULT NULL,
+  `Reporting` tinyint(1) DEFAULT NULL,
+  `Settings` tinyint(1) DEFAULT NULL,
+  `OtherFiles` tinyint(1) DEFAULT NULL,
+  `CreateP` tinyint(1) DEFAULT NULL,
+  `DeleteP` tinyint(1) DEFAULT NULL,
+  `UpdateP` tinyint(1) DEFAULT NULL,
+  `View` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `UserName` (`UserName`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `userroles`
+-- Dumping data for table `userpermissions`
 --
 
-INSERT INTO `userroles` (`UserTypeID`, `UserType`, `HabitatManagement`, `UserManagement`, `FieldDataCollection`, `Research`, `Reporting`, `Setteings`, `OtherFiles`, `Create`, `Delete`, `Update`, `View`) VALUES
-(1, 'Administrator', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 'Wildlife Biologist    ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(3, 'Field Technician ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(4, 'Researcher   ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(5, 'GIS Specialist   ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(6, 'Community Liaison ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(7, 'Educator/Outreach Coordinator', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `userpermissions` (`ID`, `UserName`, `HabitatManagement`, `UserManagement`, `FieldDataCollection`, `Research`, `Reporting`, `Settings`, `OtherFiles`, `CreateP`, `DeleteP`, `UpdateP`, `View`) VALUES
+(8, 'chaturanga', 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1),
+(9, 'janith', 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1),
+(12, 'admin', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -372,6 +377,12 @@ ALTER TABLE `observations`
 ALTER TABLE `population`
   ADD CONSTRAINT `population_ibfk_1` FOREIGN KEY (`HabitatID`) REFERENCES `habitats` (`HabitatID`),
   ADD CONSTRAINT `population_ibfk_2` FOREIGN KEY (`SpeciesID`) REFERENCES `species` (`SpeciesID`);
+
+--
+-- Constraints for table `userpermissions`
+--
+ALTER TABLE `userpermissions`
+  ADD CONSTRAINT `userpermissions_ibfk_1` FOREIGN KEY (`UserName`) REFERENCES `useraccounts` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `vegetationtypes`
