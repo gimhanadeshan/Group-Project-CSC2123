@@ -55,6 +55,8 @@ public class AlertStatusFormController implements Initializable {
     OtherMasterFilesController controller =new OtherMasterFilesController();
 
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

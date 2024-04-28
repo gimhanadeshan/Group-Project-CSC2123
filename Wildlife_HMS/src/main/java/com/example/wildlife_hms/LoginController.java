@@ -6,6 +6,7 @@ import io.github.palexdev.materialfx.controls.MFXProgressSpinner;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -79,6 +80,10 @@ public class LoginController {
             while (queryResult.next()) {
                 if (queryResult.getInt(1) == 1) {
 
+                    String username = unameField.getText();
+                    UserPermissionsModel userPermissions = UserPermissionsModel.getUserPermissionsByUsername(username);
+
+
                     PauseTransition pause = new PauseTransition(Duration.seconds(1));
                     pause.setOnFinished(_ -> {
                         // Successful login
@@ -88,8 +93,10 @@ public class LoginController {
                                 Parent load = fxmlLoader.load();
 
                                 DashboardController controller = fxmlLoader.getController();
-                                controller.setUserName(unameField.getText());
+                                controller.setUserName(username);
+                                controller.setUserPermissions(userPermissions);
                                 controller.btnDashboardOnAction();
+
                                 Stage stage = new Stage();
                                 stage.setScene(new Scene(load));
                                 stage.show();

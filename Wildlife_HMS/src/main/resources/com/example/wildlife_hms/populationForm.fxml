@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<GridPane hgap="40.0" maxHeight="-Infinity" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.PopulationFormController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <StackPane prefHeight="70.0" prefWidth="618.0" GridPane.columnSpan="3" GridPane.rowIndex="4">
+         <children>
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="260.0" spacing="10.0">
+               <children>
+                  <MFXButton fx:id="btnSave" buttonType="RAISED" onAction="#savePopulation" prefHeight="40.0" prefWidth="75.0" text="Save">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/icons8-save-button-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MFXButton>
+                  <MFXButton fx:id="btnClear" buttonType="RAISED" layoutX="96.0" layoutY="10.0" onAction="#clearPopulation" prefHeight="40.0" prefWidth="75.0" text="Undo">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/icons8-undo-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MFXButton>
+                  <MFXButton fx:id="btnUpdate" buttonType="RAISED" disable="true" onAction="#updatePopulation" prefHeight="40.0" prefWidth="90.0" text="Update">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/icons8-update-30.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MFXButton>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+      <MFXTextField fx:id="txtSpeciesName" disable="true" floatingText="Species Name" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <MFXFilterComboBox fx:id="combHabitatID" floatingText="Habitat ID" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" selectable="true" GridPane.rowIndex="2" />
+      <TextField fx:id="txtHabitatId" disable="true" editable="false" prefHeight="30.0" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <StackPane prefHeight="50.0" prefWidth="200.0" styleClass="border" GridPane.columnSpan="3">
+         <children>
+            <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../img/icons8-apple-seed-100.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="50.0" text="Polulation Update Form">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
+      <MFXFilterComboBox fx:id="combSpeciesID" floatingText="Species ID" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" selectable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <MFXTextField fx:id="txtHabitatName" disable="true" floatingText="Habitat Name" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="3" />
+      <MFXDatePicker fx:id="dateLastSurveyDate" floatMode="INLINE" floatingText="Last Survey Date" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <MFXTextField fx:id="txtSize" floatingText="Size" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <MFXTextField fx:id="txtPopulationID" disable="true" floatingText="Population ID" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="1" />
+      <TextField fx:id="txtSpeciesId" disable="true" editable="false" layoutX="523.0" layoutY="326.0" prefHeight="30.0" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+   </children>
+   <padding>
+      <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@css/Common.css" />
+      <URL value="@css/style.css" />
+   </stylesheets>
+   <styleClass>
+      <String fx:value="grid-background" />
+      <String fx:value="form-background" />
+   </styleClass>
+</GridPane>

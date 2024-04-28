@@ -122,7 +122,7 @@
 
 
 
-#checkBoxActive {
+#checkBoxActive{
     -mfx-main: #252B48;
     -mfx-gray: #252B48;
     -fx-text-fill: #252B48;
@@ -168,6 +168,11 @@
     -fx-text-fill: white;
 }
 
+#dateLastSurveyDate date-picker-popup .mfx-date-cell:selected {
+    -fx-background-color: #252B48;
+    -fx-font-family: 'Open Sans Bold';
+    -fx-text-fill: white;
+}
 
 
 
@@ -189,3 +194,13 @@
 
 
 
+
+.check{
+    -mfx-main: red;
+    -mfx-gray: red;
+    -fx-text-fill: red;
+}
+
+.warning{
+    -fx-text-fill: red;
+}

@@ -4,6 +4,7 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -47,8 +48,6 @@ public class HabitatFormController implements Initializable{
     private MFXTextField txtid;
 
     int id=0;
-
-
 
 
 

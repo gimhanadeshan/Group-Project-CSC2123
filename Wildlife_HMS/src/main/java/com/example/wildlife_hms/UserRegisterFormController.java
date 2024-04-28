@@ -92,7 +92,7 @@ public class UserRegisterFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         dateRegDate.setValue(LocalDate.now());
-        combRoll.getItems().addAll("User","Admin","Researcher");
+        combRoll.getItems().addAll("Administrator","Wildlife Biologist","Field Technician","Researcher","GIS Specialist","Community Liaison","Educator/Outreach Coordinator");
 
         imageViewDp.setOnDragOver(event -> {
             if (event.getGestureSource() != imageViewDp && event.getDragboard().hasFiles()) {
@@ -226,8 +226,8 @@ public class UserRegisterFormController implements Initializable {
 
                 // Set the active status based on the checkbox state
                 statement.setBoolean(10, checkBoxActive.isSelected());
-
                 statement.executeUpdate();
+                setDefaultUserPermissions(txtUsername.getText());
 
                 clear();
                 regMsgLable.setAlignment(Pos.BASELINE_CENTER);
@@ -319,6 +319,91 @@ public class UserRegisterFormController implements Initializable {
 
 
 
+    private void setDefaultUserPermissions(String username) {
+        try {
+            String query = "INSERT INTO userpermissions (UserName, HabitatManagement, UserManagement,FieldDataCollection,Research,Reporting,Settings,OtherFiles,CreateP,DeleteP,UpdateP,View) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement statement = connectDB.prepareStatement(query);
+
+            String roll = combRoll.getText();
+            switch (roll) {
+                case "Administrator":
+                    statement.setString(1, username);
+                    for(int i=2;i<=12;i++) {
+                        statement.setBoolean(i, true);
+                    }
+                    break;
+                case "Wildlife Biologist":
+
+                    statement.setString(1, username);
+                    statement.setBoolean(2, true);
+                    statement.setBoolean(3, false);
+                    statement.setBoolean(4, true);
+                    statement.setBoolean(5, false);
+                    statement.setBoolean(6, true);
+                    statement.setBoolean(7, false);
+                    statement.setBoolean(8, false);
+                    statement.setBoolean(9, true);
+                    statement.setBoolean(10, true);
+                    statement.setBoolean(11, true);
+                    statement.setBoolean(12, true);
+
+                    break;
+
+                case "Field Technician":
+
+                    statement.setString(1, username);
+                    statement.setBoolean(2, true);
+                    statement.setBoolean(3, false);
+                    statement.setBoolean(4, true);
+                    statement.setBoolean(5, false);
+                    statement.setBoolean(6, true);
+                    statement.setBoolean(7, false);
+                    statement.setBoolean(8, false);
+                    statement.setBoolean(9, true);
+                    statement.setBoolean(10, false);
+                    statement.setBoolean(11, true);
+                    statement.setBoolean(12, true);
+
+                    break;
+
+                case "Researcher":
+
+                    statement.setString(1, username);
+                    statement.setBoolean(2, false);
+                    statement.setBoolean(3, false);
+                    statement.setBoolean(4, false);
+                    statement.setBoolean(5, true);
+                    statement.setBoolean(6, true);
+                    statement.setBoolean(7, false);
+                    statement.setBoolean(8, false);
+                    statement.setBoolean(9, true);
+                    statement.setBoolean(10, false);
+                    statement.setBoolean(11, true);
+                    statement.setBoolean(12, true);
+
+                    break;
+
+                default:
+                    statement.setString(1, username);
+                    statement.setBoolean(2, true);
+                    statement.setBoolean(3, false);
+                    statement.setBoolean(4, false);
+                    statement.setBoolean(5, false);
+                    statement.setBoolean(6, true);
+                    statement.setBoolean(7, false);
+                    statement.setBoolean(8, false);
+                    statement.setBoolean(9, false);
+                    statement.setBoolean(10, false);
+                    statement.setBoolean(11, false);
+                    statement.setBoolean(12, true);
+                    break;
+            }
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

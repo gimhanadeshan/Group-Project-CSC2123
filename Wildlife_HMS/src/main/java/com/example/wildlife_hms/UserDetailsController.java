@@ -1,6 +1,7 @@
 package com.example.wildlife_hms;
 
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -67,7 +68,8 @@ public class UserDetailsController implements Initializable,ButtonAction {
     @FXML
     public TableView<UserModel> tblUsers;
 
-
+    @FXML
+    private MFXButton btnNew;
 
 
 
@@ -78,23 +80,38 @@ public class UserDetailsController implements Initializable,ButtonAction {
     Connection connectDB = connectNow.getConnection();
 
 
+    public void setUserPermissions(UserPermissionsModel userPermissions){
+
+        if(userPermissions.isUpdate()){
+            initUpdateButton();
+            colUpdate.setVisible(true);
+        }else {
+            colUpdate.setVisible(false);
+        }
+
+        if (userPermissions.isDelete()){
+            initDeleteButton();
+            colDelete.setVisible(true);
+        }else {
+            colDelete.setVisible(false);
+        }
+
+        if(userPermissions.isCreate()){
+            btnNew.setVisible(true);btnNew.setManaged(true);
+        }else {
+            btnNew.setVisible(false);btnNew.setManaged(false);
+        }
+    }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-        initUpdateButton();
-        initDeleteButton();
         showUsers();
         initDpColumn();
         initActiveColumn();
-
-
-
-
-
-
-
 
 
 

@@ -25,6 +25,7 @@ import javafx.util.Duration;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,15 +44,27 @@ public class DashboardController implements Initializable {
     @FXML
     public ImageView profile;
     public StackPane ancMain;
-    public HBox btnSpecies;
-    public HBox btnEnvironmentalConditions;
-    public HBox btnVegetationTypes;
-    public HBox btnDashboard;
-    public HBox btnMonitoringAlerts;
-    public HBox btnUserRegister;
-    public HBox btnHabitat;
 
-    public HBox btnObservation;
+    @FXML
+    private HBox reporting;
+
+    @FXML
+    private HBox researsh;
+    public HBox btnDashboard;
+    @FXML
+    private HBox userManagement;
+
+    @FXML
+    private HBox settings;
+
+    @FXML
+    private HBox fieldDataCollection;
+
+    @FXML
+    public HBox habitatManagement;
+
+    @FXML
+    private HBox other;
 
     @FXML
     private HBox btnLogout;
@@ -90,6 +103,99 @@ public class DashboardController implements Initializable {
     public Label userID;
 
 
+    @FXML
+    private HBox habitatForm;
+    @FXML
+    private HBox alertForm;
+
+    @FXML
+    private HBox conditionForm;
+
+    @FXML
+    private HBox observationForm;
+
+    @FXML
+    private HBox observationForm1;
+
+    @FXML
+    private HBox populationForm;
+
+    @FXML
+    private HBox speciesForm;
+
+
+
+
+    UserPermissionsModel userPermissions;
+
+
+
+    public void setUserPermissions(UserPermissionsModel userPermissions) {
+
+
+        if(userPermissions.isHabitatManagement()){
+            habitatManagement.setVisible(true);habitatManagement.setManaged(true);
+        }else {
+            habitatManagement.setVisible(false);habitatManagement.setManaged(false);
+        }
+
+        if(userPermissions.isUserManagement()){
+            userManagement.setVisible(true);userManagement.setManaged(true);
+        }else {
+            userManagement.setVisible(false);userManagement.setManaged(false);
+        }
+
+        if(userPermissions.isFieldDataCollection()){
+            fieldDataCollection.setVisible(true);fieldDataCollection.setManaged(true);
+        }else {
+            fieldDataCollection.setVisible(false);fieldDataCollection.setManaged(false);
+        }
+
+        if(userPermissions.isResearch()){
+            researsh.setVisible(true);researsh.setManaged(true);
+        }else {
+            researsh.setVisible(false);researsh.setManaged(false);
+        }
+
+        if(userPermissions.isReporting()){
+            reporting.setVisible(true);reporting.setManaged(true);
+        }else {
+            reporting.setVisible(false);reporting.setManaged(false);
+        }
+
+        if(userPermissions.isOtherFiles()){
+            other.setVisible(true);other.setManaged(true);
+        }else {
+            other.setVisible(false);other.setManaged(false);
+        }
+
+        if(userPermissions.isSettings()){
+            settings.setVisible(true);settings.setManaged(true);
+        }else {
+            settings.setVisible(false);settings.setManaged(false);
+        }
+
+        if (userPermissions.isCreate()){
+            habitatForm.setVisible(true);habitatForm.setManaged(true);
+            alertForm.setVisible(true);alertForm.setManaged(true);
+            conditionForm.setVisible(true);conditionForm.setManaged(true);
+            observationForm.setVisible(true);observationForm.setManaged(true);
+            observationForm1.setVisible(true);observationForm1.setManaged(true);
+            populationForm.setVisible(true);populationForm.setManaged(true);
+            speciesForm.setVisible(true);speciesForm.setManaged(true);
+
+        }else{
+            habitatForm.setVisible(false);habitatForm.setManaged(false);
+            alertForm.setVisible(false);alertForm.setManaged(false);
+            conditionForm.setVisible(false);conditionForm.setManaged(false);
+            observationForm.setVisible(false);observationForm.setManaged(false);
+            observationForm1.setVisible(false);observationForm1.setManaged(false);
+            populationForm.setVisible(false);populationForm.setManaged(false);
+            speciesForm.setVisible(false);speciesForm.setManaged(false);
+        }
+
+
+    }
 
 
 
@@ -113,9 +219,6 @@ public class DashboardController implements Initializable {
 
 
     }
-
-
-
 
 
 
@@ -220,7 +323,10 @@ public class DashboardController implements Initializable {
 
 
 
+
+
     public void loadForm(String fxmlPath, Object controller) throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
         Parent load = fxmlLoader.load();
         ancMain.getChildren().clear();
@@ -231,21 +337,37 @@ public class DashboardController implements Initializable {
 
 
     public void btnHabitatOnAction() throws IOException {
-        HabitatController controller = new HabitatController();
-        loadForm("habitat.fxml", controller);
+
+        userPermissions = UserPermissionsModel.getUserPermissionsByUsername(userID.getText());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("habitat.fxml"));
+        Parent load = fxmlLoader.load();
+        HabitatController controller=fxmlLoader.getController();
+        controller.setUserPermissions(userPermissions);
+
+        ancMain.getChildren().clear();
+        ancMain.getChildren().add(load);
 
     }
 
     public void btnHabitatFormOnAction() throws IOException {
+
         HabitatFormController controller = new HabitatFormController();
         loadForm("habitatForm.fxml", controller);
 
     }
 
-    public void btnSpeciesOnAction() throws IOException {
+      public void btnSpeciesOnAction() throws IOException {
 
-        SpeciesController controller=new SpeciesController();
-        loadForm("species.fxml", controller);
+          userPermissions = UserPermissionsModel.getUserPermissionsByUsername(userID.getText());
+
+          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("species.fxml"));
+          Parent load = fxmlLoader.load();
+          SpeciesController controller=fxmlLoader.getController();
+          controller.setUserPermissions(userPermissions);
+
+          ancMain.getChildren().clear();
+          ancMain.getChildren().add(load);
 
 
     }
@@ -260,8 +382,16 @@ public class DashboardController implements Initializable {
 
     public void btnEnvironmentalConditionsOnAction() throws IOException {
 
-        EnvironmentalConditionsController controller=new EnvironmentalConditionsController();
-        loadForm("environmentalConditions.fxml", controller);
+        userPermissions = UserPermissionsModel.getUserPermissionsByUsername(userID.getText());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("environmentalConditions.fxml"));
+        Parent load = fxmlLoader.load();
+        EnvironmentalConditionsController controller=fxmlLoader.getController();
+        controller.setUserPermissions(userPermissions);
+
+        ancMain.getChildren().clear();
+        ancMain.getChildren().add(load);
+
 
 
     }
@@ -274,19 +404,26 @@ public class DashboardController implements Initializable {
 
     }
 
-    public void btnVegetationTypesOnAction() throws IOException {
+    public void btnPopulationOnAction() throws IOException {
 
 
-        VegetationTypesController controller=new VegetationTypesController();
-        loadForm("vegetationTypes.fxml", controller);
+        userPermissions = UserPermissionsModel.getUserPermissionsByUsername(userID.getText());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("population.fxml"));
+        Parent load = fxmlLoader.load();
+        PopulationController controller=fxmlLoader.getController();
+        controller.setUserPermissions(userPermissions);
+
+        ancMain.getChildren().clear();
+        ancMain.getChildren().add(load);
 
     }
 
-    public void btnVegetationTypesFormOnAction() throws IOException {
+    public void btnPopulationFormOnAction() throws IOException {
 
 
         VegetationTypesFormController controller=new VegetationTypesFormController();
-        loadForm("vegetationTypesForm.fxml", controller);
+        loadForm("populationForm.fxml", controller);
 
     }
 
@@ -301,8 +438,15 @@ public class DashboardController implements Initializable {
 
     public void btnMonitoringAlertsOnAction() throws IOException {
 
-        MonitoringAlertsController controller=new MonitoringAlertsController();
-        loadForm("monitoringAlerts.fxml", controller);
+        userPermissions = UserPermissionsModel.getUserPermissionsByUsername(userID.getText());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("monitoringAlerts.fxml"));
+        Parent load = fxmlLoader.load();
+        MonitoringAlertsController controller=fxmlLoader.getController();
+        controller.setUserPermissions(userPermissions);
+
+        ancMain.getChildren().clear();
+        ancMain.getChildren().add(load);
 
     }
 
@@ -316,8 +460,15 @@ public class DashboardController implements Initializable {
     public void btnUserRegisterOnAction() throws IOException {
 
 
-        UserDetailsController controller=new UserDetailsController();
-        loadForm("userDetails.fxml", controller);
+        userPermissions = UserPermissionsModel.getUserPermissionsByUsername(userID.getText());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("userDetails.fxml"));
+        Parent load = fxmlLoader.load();
+        UserDetailsController controller=fxmlLoader.getController();
+        controller.setUserPermissions(userPermissions);
+
+        ancMain.getChildren().clear();
+        ancMain.getChildren().add(load);
 
 
     }
@@ -331,11 +482,27 @@ public class DashboardController implements Initializable {
 
     }
 
+    public void userPermissions() throws IOException {
+
+        UserPermissionsController controller=new UserPermissionsController();
+        loadForm("userPermissions.fxml", controller);
+
+
+    }
+
 
 
     public void btnOnActionObservation() throws IOException {
-        ObservationsController controller=new ObservationsController();
-        loadForm("observation.fxml", controller);
+
+        userPermissions = UserPermissionsModel.getUserPermissionsByUsername(userID.getText());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("observation.fxml"));
+        Parent load = fxmlLoader.load();
+        ObservationsController controller=fxmlLoader.getController();
+        controller.setUserPermissions(userPermissions);
+
+        ancMain.getChildren().clear();
+        ancMain.getChildren().add(load);
     }
 
     public void btnOnActionObservationForm() throws IOException {
@@ -390,6 +557,11 @@ public class DashboardController implements Initializable {
 
         ancMain.getChildren().clear();
         ancMain.getChildren().add(load);
+    }
+
+    public void companyInfo() throws IOException {
+        //OtherMasterFilesController controller=new OtherMasterFilesController();
+       // loadForm("otherMasterFiles.fxml", controller);
     }
 
 

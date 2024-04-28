@@ -50,15 +50,11 @@ public class UserProfileController implements Initializable {
     @FXML
     private Label lblUserName;
 
-
-
     @FXML
     private Label lblValidatationMsg;
 
     DatabaseConnection connectNow = new DatabaseConnection();
     Connection connectDB = connectNow.getConnection();
-
-
 
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.wildlife_hms;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXFilterComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.utils.StringUtils;
@@ -62,12 +63,8 @@ public class EnvironmentalConditionsController implements Initializable,ButtonAc
     @FXML
     private TableView<EnvironmentalConditionsModel> tblEnvironmentalCondition;
 
-
-
-
-
-
-
+    @FXML
+    private MFXButton btnNew;
 
 
     @FXML
@@ -83,11 +80,36 @@ public class EnvironmentalConditionsController implements Initializable,ButtonAc
     Connection connectDB = connectNow.getConnection();
 
 
+    public void setUserPermissions(UserPermissionsModel userPermissions){
+
+        if(userPermissions.isUpdate()){
+            initUpdateButton();
+            colUpdate.setVisible(true);
+        }else {
+            colUpdate.setVisible(false);
+        }
+
+        if (userPermissions.isDelete()){
+            initDeleteButton();
+            colDelete.setVisible(true);
+        }else {
+            colDelete.setVisible(false);
+        }
+
+        if(userPermissions.isCreate()){
+            btnNew.setVisible(true);btnNew.setManaged(true);
+        }else {
+            btnNew.setVisible(false);btnNew.setManaged(false);
+        }
+
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        initUpdateButton();
-        initDeleteButton();
+
+
         showConditions();
 
         

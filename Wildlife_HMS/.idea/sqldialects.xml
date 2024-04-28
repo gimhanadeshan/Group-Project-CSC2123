@@ -7,5 +7,6 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/wildlife_hms/SpeciesFormController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/wildlife_hms/SubDashboardController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/wildlife_hms/UserDetailsController.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/wildlife_hms/UserPermissionsFormController.java" dialect="GenericSQL" />
   </component>
 </project>

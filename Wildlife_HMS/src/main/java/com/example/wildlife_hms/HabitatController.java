@@ -2,6 +2,7 @@ package com.example.wildlife_hms;
 
 
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -38,18 +39,12 @@ public class HabitatController implements Initializable,ButtonAction {
     Connection connectDB = connectNow.getConnection();
 
 
-
     @FXML
     private TableView<HabitatModel> tblHabitat;
 
 
     @FXML
     private TextField txtSearch;
-
-
-
-
-
 
     @FXML
     private TableColumn<HabitatModel, String> colDesc;
@@ -66,21 +61,47 @@ public class HabitatController implements Initializable,ButtonAction {
     @FXML
     private TableColumn<HabitatModel, Double> colSize;
 
+    @FXML
+    private MFXButton btnNew;
 
 
 
+    public void setUserPermissions(UserPermissionsModel userPermissions){
+
+        if(userPermissions.isUpdate()){
+            initUpdateButton();
+            colUpdate.setVisible(true);
+        }else {
+            colUpdate.setVisible(false);
+        }
+
+        if (userPermissions.isDelete()){
+            initDeleteButton();
+            colDelete.setVisible(true);
+        }else {
+            colDelete.setVisible(false);
+        }
+
+        if(userPermissions.isCreate()){
+            btnNew.setVisible(true);btnNew.setManaged(true);
+        }else {
+            btnNew.setVisible(false);btnNew.setManaged(false);
+        }
+    }
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        initUpdateButton();
-        initDeleteButton();
         showHabitat();
 
-
     }
+
+
+
+
+
 
     public ObservableList<HabitatModel>getHabitat() {
 
@@ -156,7 +177,7 @@ public class HabitatController implements Initializable,ButtonAction {
         try {
             String query = "SELECT * FROM habitats WHERE HabitatName LIKE ? OR HabitatID = ?";
             PreparedStatement statement = connectDB.prepareStatement(query);
-            statement.setString(1, "%" + srch + "%");
+            statement.setString(1, STR."%\{srch}%");
             // Assuming srch is an integer representing HabitatID, change the condition to equality
             try {
                 int habitatId = parseInt(srch);
@@ -318,6 +339,9 @@ public class HabitatController implements Initializable,ButtonAction {
 
         showHabitat();
     }
+
+
+
 
 
 

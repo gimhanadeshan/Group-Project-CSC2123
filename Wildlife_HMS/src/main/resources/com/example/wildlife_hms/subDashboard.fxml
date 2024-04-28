@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -9,6 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -23,9 +26,8 @@
    </columnConstraints>
    <rowConstraints>
       <RowConstraints prefHeight="130.0" />
-      <RowConstraints maxHeight="147.20000152587895" minHeight="10.0" prefHeight="115.19999389648441" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
@@ -139,6 +141,44 @@
             <Insets bottom="10.0" top="10.0" />
          </padding>
       </VBox>
+      <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="213.0" prefWidth="321.0" spacing="10.0" styleClass="border" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.valignment="TOP">
+         <children>
+            <MFXFilterComboBox floatingText="Select Habitat" prefHeight="50.0" prefWidth="200.0" />
+            <MFXButton buttonType="RAISED" prefHeight="40.0" prefWidth="150.0" text="Generate Report">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/icons8-submit-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MFXButton>
+         </children>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </VBox>
+      <StackPane alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" styleClass="border" GridPane.columnSpan="2" GridPane.rowIndex="1">
+         <children>
+            <HBox prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../../../icons8-document-50.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="50.0" text="Wildlife Habitat Assessment Report">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </StackPane>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
