@@ -14,14 +14,22 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static java.lang.Integer.expand;
 import static java.lang.Integer.parseInt;
 
 public class ObservationsController implements Initializable,ButtonAction  {
@@ -60,6 +68,10 @@ public class ObservationsController implements Initializable,ButtonAction  {
     private TableColumn<ObservationsModel, Integer> colUpdate;
 
     @FXML
+    private TableColumn<ObservationsModel, Integer> colPrint;
+
+
+    @FXML
     private TableView<ObservationsModel> tblObservations;
 
     @FXML
@@ -93,6 +105,12 @@ public class ObservationsController implements Initializable,ButtonAction  {
             btnNew.setVisible(true);btnNew.setManaged(true);
         }else {
             btnNew.setVisible(false);btnNew.setManaged(false);
+        }
+        if(userPermissions.isView()){
+            initPrintButton();
+            colPrint.setVisible(true);
+        }else {
+            colPrint.setVisible(false);
         }
 
 
@@ -169,6 +187,8 @@ public class ObservationsController implements Initializable,ButtonAction  {
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.setTitle("Observations Entry");
+        Image icon= new Image("icons8-form-100.png");
+        stage.getIcons().add(icon);
         stage.initModality(Modality.APPLICATION_MODAL); // Set modality to application modal
         stage.showAndWait(); // Show the stage and wait for it to be closed
 
@@ -293,6 +313,8 @@ public class ObservationsController implements Initializable,ButtonAction  {
                     //controller.selectedFilesPane.setDisable(true);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
+                    Image icon= new Image("icons8-form-100.png");
+                    stage.getIcons().add(icon);
                     stage.setResizable(false);
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.showAndWait();
@@ -343,6 +365,65 @@ public class ObservationsController implements Initializable,ButtonAction  {
                 }
             }
         });
+    }
+
+
+    public void initPrintButton() {
+        colPrint.setCellFactory(param -> new TableCell<>() {
+            private final Button printButton = new Button();
+            private final ImageView imageView = new ImageView(new Image("icons8-preview-20.png")); // Path to your update image
+
+            {
+
+                printButton.setStyle("-fx-background-color: transparent;");
+                printButton.setOnMouseEntered(event -> printButton.setStyle("-fx-background-color: lightgrey;"));
+                printButton.setOnMouseExited(event -> printButton.setStyle("-fx-background-color: transparent;"));
+                printButton.setGraphic(imageView);
+                printButton.setOnAction(event -> {
+                    ObservationsModel observationsModel = getTableView().getItems().get(getIndex());
+
+
+                        printObservation(observationsModel.getObservationID());
+
+
+
+                });
+            }
+
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(printButton);
+                }
+            }
+        });
+    }
+
+    public void printObservation(int obsID) {
+        try {
+
+            JasperDesign design = JRXmlLoader.load("src/main/resources/com/example/wildlife_hms/observation.jrxml");
+
+            // Compile the JasperReport
+            JasperReport jasperReport = JasperCompileManager.compileReport(design);
+
+            // Fill the report with data
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put(JRParameter.REPORT_CONNECTION, connectDB); // Pass the connection
+            parameters.put("Parameter1",obsID); // Pass the observation ID as parameter
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameters, connectDB);
+
+            // View the report
+            JasperViewer viewer = new JasperViewer(jasperPrint, false);
+            viewer.setExtendedState(JasperViewer.MAXIMIZED_BOTH); // Maximize the viewer window
+            viewer.setVisible(true);
+
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

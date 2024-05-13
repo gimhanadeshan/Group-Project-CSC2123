@@ -45,8 +45,8 @@
 }
 
 .table-view .column-header-background{
-    -fx-background-color: #5B9A8B;
-    -fx-text-background-color: black;
+    -fx-background-color: #252B48;
+    -fx-text-background-color: white;
     -fx-padding: 10px;
 
 
@@ -102,7 +102,7 @@
 }
 
 .table-view > .column-header-background > .show-hide-columns-button {
-    -fx-background-color: #5B9A8B;
+    -fx-background-color: #252B48;
 }
 
 
@@ -117,10 +117,28 @@
 }
 
 .table-cell{
+    -fx-alignment: CENTER-LEFT;
+}
+
+#colId.table-cell,#colUpdate.table-cell,#colDelete.table-cell,#colAlertDate.table-cell,#colAlertId{
     -fx-alignment: CENTER;
 }
 
+#colSize.table-cell,#colSpeciesId.table-cell,#colObservationId.table-cell,#colHabitatID.table-cell,#colObservationDate.table-cell,#colPrint.table-cell{
+    -fx-alignment:CENTER;
+}
 
+#colConditionId.table-cell,#colPostingDate.table-cell,#colPopulationId.table-cell,#colPopulationSize.table-cell,#colConditionValue.table-cell,#colDate.table-cell{
+    -fx-alignment:CENTER;
+}
+
+#colDp.table-cell,#colActive.table-cell,#colUpdatePermission.table-cell,#colCreate.table-cell,#colDelete.table-cell,#colView.table-cell,#colUserName.table-cell{
+    -fx-alignment:CENTER;
+}
+
+#colHabitatCount.table-cell,#colTotalSpecies.table-cell,#colTotalObservation.table-cell,#colHabitatSize.table-cell{
+    -fx-alignment:CENTER;
+}
 
 #checkBoxActive{
     -mfx-main: #252B48;
@@ -193,7 +211,11 @@
 }
 
 
+#colAlertStatus.table-cell{
+    -fx-text-fill: orange;
 
+
+}
 
 .check{
     -mfx-main: red;

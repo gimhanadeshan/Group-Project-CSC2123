@@ -51,14 +51,14 @@
          <children>
             <TableView fx:id="tblEnvironmentalCondition" prefHeight="276.0" prefWidth="750.0" stylesheets="@css/style.css" tableMenuButtonVisible="true">
                <columns>
-                  <TableColumn fx:id="colConditionId" editable="false" prefWidth="150.0" text="Condition ID" />
-                  <TableColumn fx:id="colConditionType" editable="false" prefWidth="150.0" text="Condition Type" />
-                  <TableColumn fx:id="colConditionValue" editable="false" minWidth="0.0" prefWidth="150.0" text="Condition Value" />
+                  <TableColumn fx:id="colConditionId" editable="false" prefWidth="50.0" text="Condition ID" />
+                  <TableColumn fx:id="colConditionType" editable="false" prefWidth="75.0" text="Condition Type" />
+                  <TableColumn fx:id="colConditionValue" editable="false" minWidth="0.0" prefWidth="50.0" text="Condition Value" />
                   <TableColumn fx:id="colHabitatID" editable="false" prefWidth="150.0" text="Habitate ID" visible="false" />
-                  <TableColumn fx:id="colHabitatName" editable="false" minWidth="0.0" prefWidth="150.0" text="Habitate Name" />
-                  <TableColumn fx:id="colPostingDate" editable="false" prefWidth="150.0" text="Posting Date" />
-                  <TableColumn fx:id="colUpdate" prefWidth="75.0" sortable="false" text="Upadate" />
-                  <TableColumn fx:id="colDelete" prefWidth="75.0" sortable="false" text="Delete" />
+                  <TableColumn fx:id="colHabitatName" editable="false" minWidth="0.0" prefWidth="75.0" text="Habitate Name" />
+                  <TableColumn fx:id="colPostingDate" editable="false" prefWidth="75.0" text="Posting Date" />
+                  <TableColumn fx:id="colUpdate" prefWidth="50.0" sortable="false" text="Update" />
+                  <TableColumn fx:id="colDelete" prefWidth="50.0" sortable="false" text="Delete" />
                </columns>
                <styleClass>
                   <String fx:value="transparent" />

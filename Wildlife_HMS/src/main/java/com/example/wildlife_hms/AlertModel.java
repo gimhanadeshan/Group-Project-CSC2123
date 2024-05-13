@@ -20,13 +20,12 @@ public class AlertModel {
     private String alertStatus;
 
 
-    public AlertModel(int alertId, String alId, String alertType, String alertDisc, Date alertDate,int habitatID) {
-        this.alertId = alertId;
-        this.alId = alId;
+    public AlertModel(String alertType,Date alertDate,String habitatName,String alertDisc,String alertStatus ) {
+        this.habitatName = habitatName;
         this.alertType = alertType;
         this.alertDisc = alertDisc;
         this.alertDate = alertDate;
-        this.habitatID = habitatID;
+        this.alertStatus = alertStatus;
     }
 
     public AlertModel(int alertId, String alId, String alertType, String alertDisc, Date alertDate,int habitatID,String haId,String habitatName,String alertStatus) {

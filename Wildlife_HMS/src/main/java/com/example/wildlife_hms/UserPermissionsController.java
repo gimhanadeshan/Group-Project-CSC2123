@@ -198,6 +198,8 @@ public class UserPermissionsController implements Initializable {
 
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
+                    Image icon= new Image("icons8-form-100.png");
+                    stage.getIcons().add(icon);
                     stage.setResizable(false);
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.showAndWait();

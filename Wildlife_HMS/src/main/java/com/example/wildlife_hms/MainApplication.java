@@ -4,6 +4,7 @@ import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -17,10 +18,12 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader startLoader = new FXMLLoader(MainApplication.class.getResource("start.fxml"));
         Scene startScene = new Scene(startLoader.load());
+        Image icon= new Image("icons8-habitat-100.png");
 
         stage.initStyle(TRANSPARENT);
         stage.initStyle(UNDECORATED);
         stage.setScene(startScene);
+        stage.getIcons().add(icon);
        // stage.setOpacity(0.5);
         stage.show();
 

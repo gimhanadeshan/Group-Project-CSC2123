@@ -20,6 +20,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperDesignViewer;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 import java.io.File;
@@ -335,8 +340,12 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
                     updateStatement.executeUpdate();
                 }
 
+                int observationId = generatedKeys.getInt(1);
+
                 clearObservations();
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Observation saved successfully!");
+                printObservation(observationId);
+
 
 
             } catch (SQLException e) {
@@ -370,7 +379,10 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
                 statement.executeUpdate();
 
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Observation updated successfully!");
+                printObservation(id);
                 afterUpdateOperation();
+
+
 
             } catch (NumberFormatException e) {
                 showAlert(Alert.AlertType.ERROR, "Validation Error", "Invalid HabitatID or SpeciesID");
@@ -707,9 +719,33 @@ public class ObservationsFormController implements Initializable ,LookupHabitatD
         speciesController.openSpeciesForm();
     }
 
-    
 
 
+
+
+    private void printObservation(int obsID) {
+        try {
+
+            JasperDesign design = JRXmlLoader.load("src/main/resources/com/example/wildlife_hms/observation.jrxml");
+
+            // Compile the JasperReport
+            JasperReport jasperReport = JasperCompileManager.compileReport(design);
+
+            // Fill the report with data
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put(JRParameter.REPORT_CONNECTION, connectDB); // Pass the connection
+            parameters.put("Parameter1",obsID); // Pass the observation ID as parameter
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connectDB);
+
+            // View the report
+            JasperViewer viewer = new JasperViewer(jasperPrint, false);
+            viewer.setExtendedState(JasperViewer.MAXIMIZED_BOTH); // Maximize the viewer window
+            viewer.setVisible(true);
+
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }
 

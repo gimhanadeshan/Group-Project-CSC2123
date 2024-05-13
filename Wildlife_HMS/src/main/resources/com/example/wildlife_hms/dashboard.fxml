@@ -19,14 +19,14 @@
 
 <BorderPane fx:id="bpDashboard" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.DashboardController">
    <top>
-      <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="58.0" prefWidth="1139.0" spacing="20.0" style="-fx-background-color: #5B9A8B;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="58.0" prefWidth="1139.0" spacing="20.0" style="-fx-background-color: #252B48;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="20.0" fitWidth="20.0" onMouseClicked="#toggleScrollPane" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../img/icons8-menu-100.png" />
+                  <Image url="@../../../img/icons8-menu1-50.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" prefHeight="67.0" prefWidth="169.0" text="Wildlife HMS ">
+            <Label prefHeight="67.0" prefWidth="169.0">
                <font>
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
@@ -50,7 +50,7 @@
                </children></Pane>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="user" alignment="CENTER" prefHeight="50.0" prefWidth="138.0">
+                  <Label fx:id="user" alignment="CENTER" prefHeight="50.0" prefWidth="138.0" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -206,7 +206,7 @@
                                     <Label prefWidth="140.0" text="Habitat Overview Report" />
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                              <HBox alignment="CENTER" onMouseClicked="#alertReport" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
                                     <Label prefWidth="140.0" text="Alerts Reports" />
                                  </children>
@@ -214,6 +214,11 @@
                               <HBox alignment="CENTER" onMouseClicked="#btnOnActionObservationSummaryReport" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
                                     <Label prefWidth="140.0" text="Observation Summary " />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="149.0" onMouseClicked="#habitatAssessmentReport" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
+                                 <children>
+                                    <Label prefWidth="140.0" text="Habitat Assessment Report" />
                                  </children>
                               </HBox>
                            </children>

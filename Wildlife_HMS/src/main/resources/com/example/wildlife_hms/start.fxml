@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="549.0" prefWidth="817.0" styleClass="white-background" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane prefHeight="549.0" prefWidth="817.0" style="-fx-background-color: #252B48;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MFXProgressBar StackPane.alignment="BOTTOM_CENTER">
          <StackPane.margin>
@@ -24,7 +24,7 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Line endX="126.4000244140625" endY="71.5" startX="34.40000915527344" startY="71.5" stroke="#0000005d" strokeLineJoin="BEVEL" />
+            <Line endX="126.4000244140625" endY="71.5" startX="34.40000915527344" startY="71.5" stroke="#ffffff5c" strokeLineJoin="BEVEL" />
             <Label alignment="CENTER" prefHeight="30.0" prefWidth="100.0" text="HMS" textFill="#5b9a8b">
                <font>
                   <Font name="System Bold Italic" size="18.0" />

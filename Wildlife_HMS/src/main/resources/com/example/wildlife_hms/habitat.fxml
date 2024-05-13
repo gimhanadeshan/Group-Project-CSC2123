@@ -51,13 +51,13 @@
          <children>
             <TableView fx:id="tblHabitat" editable="true" prefHeight="144.0" prefWidth="762.0" tableMenuButtonVisible="true">
                <columns>
-                  <TableColumn fx:id="colId" editable="false" prefWidth="75.0" sortable="false" text=" ID" />
-                  <TableColumn fx:id="colName" editable="false" prefWidth="100.0" sortable="false" text="Name" />
-                  <TableColumn fx:id="colLocation" editable="false" minWidth="0.0" prefWidth="100.0" sortable="false" text="Location" />
-                  <TableColumn fx:id="colSize" editable="false" prefWidth="100.0" sortable="false" text="Size" />
-                  <TableColumn fx:id="colDesc" editable="false" minWidth="0.0" prefWidth="100.0" sortable="false" text="Description" />
-                  <TableColumn fx:id="colUpdate" prefWidth="75.0" sortable="false" text="Upadate" />
-                  <TableColumn fx:id="colDelete" prefWidth="75.0" sortable="false" text="Delete" />
+                  <TableColumn fx:id="colId" editable="false" prefWidth="50.0" text=" ID" />
+                  <TableColumn fx:id="colName" editable="false" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="colLocation" editable="false" prefWidth="75.0" sortable="false" text="Location" />
+                  <TableColumn fx:id="colSize" editable="false" prefWidth="50.0" text="Size" />
+                  <TableColumn fx:id="colDesc" editable="false" minWidth="0.0" prefWidth="150.0" sortable="false" text="Description" />
+                  <TableColumn fx:id="colUpdate" prefWidth="50.0" sortable="false" text="Update" />
+                  <TableColumn fx:id="colDelete" prefWidth="50.0" sortable="false" text="Delete" />
                </columns>
                <styleClass>
                   <String fx:value="transparent" />

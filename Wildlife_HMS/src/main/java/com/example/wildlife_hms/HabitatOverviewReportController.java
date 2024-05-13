@@ -82,7 +82,7 @@ public class HabitatOverviewReportController implements Initializable {
 
 
         ObservableList<HabitatOverviewReportModel> habitatsReport= FXCollections.observableArrayList();
-        String query="Select h.HabitatName,h.Size,h.Description,o.SpeciesID as TotalSpecies,COUNT(o.ObservationID) as TotalObservation from habitats h,observations as o WHERE h.HabitatID=o.HabitatID GROUP BY HabitatName HAVING count(SpeciesID) ";
+        String query="Select h.HabitatName,h.Size,h.Description,COUNT(o.SpeciesID) as TotalSpecies,COUNT(o.ObservationID) as TotalObservation from habitats h,observations as o WHERE h.HabitatID=o.HabitatID GROUP BY HabitatName HAVING count(SpeciesID) ";
         try {
             Statement statement=connectDB.createStatement();
             ResultSet output =statement.executeQuery(query);

@@ -560,8 +560,18 @@ public class DashboardController implements Initializable {
     }
 
     public void companyInfo() throws IOException {
-        //OtherMasterFilesController controller=new OtherMasterFilesController();
-       // loadForm("otherMasterFiles.fxml", controller);
+        CompanyDetailsController controller=new CompanyDetailsController();
+        loadForm("companyDetails.fxml", controller);
+    }
+
+    public void alertReport() throws IOException {
+        AlertReportController controller=new AlertReportController();
+        loadForm("alertReport.fxml", controller);
+    }
+
+    public void habitatAssessmentReport() throws IOException {
+        HabitatAssessmentReportFilterController controller=new HabitatAssessmentReportFilterController();
+        loadForm("habitatAssessmentReportFilter.fxml", controller);
     }
 
 

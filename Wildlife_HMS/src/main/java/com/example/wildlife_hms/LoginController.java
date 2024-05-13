@@ -13,6 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -97,8 +98,12 @@ public class LoginController {
                                 controller.setUserPermissions(userPermissions);
                                 controller.btnDashboardOnAction();
 
+                                Image icon= new Image("icons8-habitat-100.png");
+
                                 Stage stage = new Stage();
                                 stage.setScene(new Scene(load));
+                                stage.getIcons().add(icon);
+                                stage.setTitle("Wildlife Habitat Management System");
                                 stage.show();
 
                                 // Close current window

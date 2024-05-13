@@ -80,7 +80,7 @@
                 <TableColumn fx:id="colCommonName" prefWidth="75.0" text="Common Name" />
                 <TableColumn fx:id="colScientificName" prefWidth="75.0" text="Scientific Name" />
                   <TableColumn fx:id="colConservationStatus" prefWidth="75.0" text="Conservation Status" />
-                  <TableColumn fx:id="colHabitatCount" prefWidth="75.0" text="Habitat Count" />
+                  <TableColumn fx:id="colHabitatCount" prefWidth="50.0" text="Habitat Count" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -90,7 +90,7 @@
                         <Image url="@../../../img/icons8-form-100.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="50.0" text="Curd Permissions ">
+                  <Label prefHeight="50.0" text="CRUD Permissions ">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

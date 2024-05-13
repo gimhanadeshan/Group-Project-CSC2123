@@ -72,15 +72,15 @@
          <children>
             <TableView fx:id="tblPopulations" prefHeight="276.0" prefWidth="699.0" stylesheets="@css/style.css" tableMenuButtonVisible="true">
                <columns>
-                  <TableColumn fx:id="colPopulationId" editable="false" prefWidth="75.0" sortable="false" text="Population ID" />
-                  <TableColumn fx:id="colPopulationSize" editable="false" prefWidth="100.0" sortable="false" text="Population Size" />
-                  <TableColumn fx:id="colDate" editable="false" minWidth="0.0" prefWidth="100.0" sortable="false" text="Last Survey Date" />
-                  <TableColumn fx:id="colHabitatID" editable="false" prefWidth="75.0" sortable="false" text="Habitat ID" />
-                  <TableColumn fx:id="colHabitatName" editable="false" prefWidth="141.60003662109375" sortable="false" text="Habitat Name" visible="false" />
-                  <TableColumn fx:id="colSpeciesId" editable="false" minWidth="0.0" prefWidth="75.0" sortable="false" text="Species ID" />
-                  <TableColumn fx:id="colSpeciesName" editable="false" minWidth="0.0" prefWidth="139.1999969482422" sortable="false" text="Species Name" visible="false" />
-                  <TableColumn fx:id="colUpdate" prefWidth="75.0" sortable="false" text="Update" />
-                  <TableColumn fx:id="colDelete" prefWidth="75.0" sortable="false" text="Delete" />
+                  <TableColumn fx:id="colPopulationId" editable="false" prefWidth="50.0" sortable="false" text="Population ID" />
+                  <TableColumn fx:id="colPopulationSize" editable="false" prefWidth="75.0" sortable="false" text="Population Size" />
+                  <TableColumn fx:id="colDate" editable="false" minWidth="0.0" prefWidth="75.0" sortable="false" text="Last Survey Date" />
+                  <TableColumn fx:id="colHabitatID" editable="false" prefWidth="50.0" sortable="false" text="Habitat ID" />
+                  <TableColumn fx:id="colHabitatName" editable="false" prefWidth="75.0" sortable="false" text="Habitat Name" visible="false" />
+                  <TableColumn fx:id="colSpeciesId" editable="false" minWidth="0.0" prefWidth="50.0" sortable="false" text="Species ID" />
+                  <TableColumn fx:id="colSpeciesName" editable="false" minWidth="0.0" prefWidth="75.0" sortable="false" text="Species Name" visible="false" />
+                  <TableColumn fx:id="colUpdate" prefWidth="50.0" sortable="false" text="Update" />
+                  <TableColumn fx:id="colDelete" prefWidth="50.0" sortable="false" text="Delete" />
                </columns>
                <styleClass>
                   <String fx:value="transparent" />

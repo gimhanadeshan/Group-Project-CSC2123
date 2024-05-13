@@ -143,7 +143,7 @@
             </MFXButton>
          </children>
       </VBox>
-      <MFXFilterComboBox fx:id="combObserverName" floatingText="Observer Name" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <MFXFilterComboBox fx:id="combObserverName" allowEdit="true" floatingText="Observer Name" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
    </children>
    <padding>
       <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />

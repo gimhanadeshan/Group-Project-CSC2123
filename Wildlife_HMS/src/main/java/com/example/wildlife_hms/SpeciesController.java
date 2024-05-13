@@ -145,6 +145,8 @@ public class SpeciesController implements Initializable,ButtonAction {
         controller.btnUpdate.setDisable(true);
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        Image icon= new Image("icons8-form-100.png");
+        stage.getIcons().add(icon);
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL); // Set modality to application modal
         stage.showAndWait(); // Show the stage and wait for it to be closed
@@ -264,6 +266,8 @@ public class SpeciesController implements Initializable,ButtonAction {
                     controller.btnUpdate.setDisable(false);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
+                    Image icon= new Image("icons8-form-100.png");
+                    stage.getIcons().add(icon);
                     stage.setResizable(false);
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.showAndWait();
