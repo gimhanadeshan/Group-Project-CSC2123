@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 28, 2024 at 06:25 PM
+-- Generation Time: May 13, 2024 at 08:11 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.0.26
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `alertstatus` (
   `AlertStatus` varchar(50) NOT NULL,
   `Remarks` text NOT NULL,
   PRIMARY KEY (`AlertStatusID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `alertstatus`
@@ -41,8 +41,15 @@ CREATE TABLE IF NOT EXISTS `alertstatus` (
 
 INSERT INTO `alertstatus` (`AlertStatusID`, `AlertStatus`, `Remarks`) VALUES
 (1, 'Under Review', 'Indicates that the alert is currently being assessed or evaluated.'),
-(3, 'Pending', 'Suggests that action is pending or awaiting further information before resolution.'),
-(4, 'Closed', 'Signifies that the alert has been resolved and no further action is required.');
+(2, 'Pending', 'Suggests that action is pending or awaiting further information before resolution.'),
+(3, 'In Progress', 'Shows that steps are being taken to address the alert but it\'s not yet resolved.'),
+(4, 'Closed', 'Signifies that the alert has been resolved and no further action is required.'),
+(5, 'Deferred', 'Indicates that the alert resolution has been postponed or delayed for some reason.'),
+(6, 'Cancelled', 'Shows that the alert is no longer valid or relevant and has been cancelled.'),
+(7, 'Awaiting Approval', 'Indicates that the proposed resolution is awaiting approval from a higher authority.'),
+(8, 'Escalated', 'Suggests that the alert has been escalated to higher levels of management or expertise for resolution.'),
+(9, 'On Hold', ' Signifies that the alert resolution process has been temporarily halted.'),
+(10, 'Reopened', ' Indicates that a previously closed alert has been reopened due to recurrence or unresolved issues.');
 
 -- --------------------------------------------------------
 
@@ -56,15 +63,47 @@ CREATE TABLE IF NOT EXISTS `alerttypes` (
   `AlertType` varchar(50) NOT NULL,
   `Remarks` text NOT NULL,
   PRIMARY KEY (`AlertTypeID`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `alerttypes`
 --
 
 INSERT INTO `alerttypes` (`AlertTypeID`, `AlertType`, `Remarks`) VALUES
-(3, 'gh', 'ghb'),
-(2, 'ghjh', 'tgh');
+(1, 'Poaching', 'Indicates illegal hunting or capturing of wildlife in the habitat.'),
+(2, 'Habitat Destruction', 'Signifies significant damage or destruction to the natural habitat.'),
+(3, 'Pollution', 'Indicates contamination of the habitat by harmful substances or pollutants.'),
+(4, 'Human Activity', ' Suggests disturbance caused by human activities such as construction, logging, or farming.'),
+(5, 'Climate Change', 'Indicates adverse effects on the habitat due to changes in climate patterns.'),
+(6, 'Predator Presence', 'Signifies the presence of predators that pose a threat to the habitat\'s species.'),
+(7, 'Disease Outbreak', 'Indicates the outbreak of a contagious disease affecting wildlife in the habitat.'),
+(8, 'Invasive Plants', 'Signifies the presence of non-native plant species that may harm the habitat\'s ecosystem.'),
+(9, 'Invasive Animals', 'Indicates the presence of non-native animal species that may disrupt the habitat\'s balance.'),
+(10, 'Habitat Fragmentation', 'Suggests the breaking up of habitat into smaller, isolated patches due to human activities or natural processes.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `companydetails`
+--
+
+DROP TABLE IF EXISTS `companydetails`;
+CREATE TABLE IF NOT EXISTS `companydetails` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Address` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `TelNo` varchar(14) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `companydetails`
+--
+
+INSERT INTO `companydetails` (`ID`, `Name`, `Address`, `Email`, `TelNo`, `Logo`) VALUES
+(1, 'HabitatGuard Solutions', '123 Greenway Ave,Wildlife Park City.', 'info@habitatguardsolutions.com', '+1 (555) 123-4', 'file:/C:/Users/Gimhan/Desktop/logo.png');
 
 -- --------------------------------------------------------
 
@@ -78,15 +117,20 @@ CREATE TABLE IF NOT EXISTS `conservationstatus` (
   `ConservationStatus` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Remark` text NOT NULL,
   PRIMARY KEY (`ConservationStatusID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `conservationstatus`
 --
 
 INSERT INTO `conservationstatus` (`ConservationStatusID`, `ConservationStatus`, `Remark`) VALUES
-(4, 'hjk6', 'gn'),
-(2, 'gh67', 'ghb5');
+(1, 'Least Concern (LC)', 'Species that are abundant and widespread, with no immediate threat of extinction.'),
+(2, 'Near Threatened (NT)', 'Species that are close to qualifying for a threatened status but are not yet considered threatened.'),
+(3, 'Vulnerable (VU)', 'Species that are facing a high risk of extinction in the wild in the near future.'),
+(4, 'Endangered (EN)', 'Species that are at a very high risk of extinction in the wild.'),
+(5, 'Critically Endangered (CR)', 'Species that are at an extremely high risk of extinction in the wild, with very few individuals remaining.'),
+(6, 'Extinct in the Wild (EW)', 'Species that exist only in captivity or in a controlled environment, with no remaining wild populations.'),
+(7, 'Extinct (EX)', 'Species that no longer exist, with no surviving individuals.');
 
 -- --------------------------------------------------------
 
@@ -105,16 +149,15 @@ CREATE TABLE IF NOT EXISTS `environmentalconditions` (
   PRIMARY KEY (`ConditionID`),
   UNIQUE KEY `EC_ID` (`EC_ID`),
   KEY `HabitatID` (`HabitatID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `environmentalconditions`
 --
 
 INSERT INTO `environmentalconditions` (`ConditionID`, `EC_ID`, `ConditionType`, `ConditionValue`, `HabitatID`, `PostingDate`) VALUES
-(9, 'EC00009', 'Temperature', '25.50', 83, '2024-04-23'),
-(10, 'EC00010', 'Humidity', '70.20', 83, '2024-04-23'),
-(11, 'EC00011', 'pH', '6.80', 85, '2024-04-23');
+(1, 'EC00001', 'Temperature', '25.50', 1, '2024-05-13'),
+(2, 'EC00002', 'Humidity', '70.20', 1, '2024-05-13');
 
 -- --------------------------------------------------------
 
@@ -133,16 +176,16 @@ CREATE TABLE IF NOT EXISTS `habitats` (
   PRIMARY KEY (`HabitatID`),
   UNIQUE KEY `HabitatID` (`HabitatID`),
   UNIQUE KEY `HA_ID` (`HA_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `habitats`
 --
 
 INSERT INTO `habitats` (`HabitatID`, `HA_ID`, `HabitatName`, `Location`, `Size`, `Description`) VALUES
-(83, 'HA00083', 'Forest Reserve', '35.6895, -78.9196', '50.00', 'Lush green forest with diverse flora and fauna'),
-(84, 'HA00084', 'Wetland Preserve', '40.7128, -74.0060', '300.00', 'Rich in aquatic life and waterfowl'),
-(85, 'HA00085', 'Grassland Habitat', '36.7783, -119.4179', '700.00', 'Open grassy landscape supporting herbivores');
+(1, 'HA00001', 'Forest Reserve', '(35.6895, -78.9196)', '500.00', 'Lush green forest with diverse flora and fauna'),
+(2, 'HA00002', 'Wetland Preserve', '(40.7128, -74.0060)', '300.00', 'Rich in aquatic life and waterfowl'),
+(3, 'HA00003', 'Grassland Habitat', '(36.7783, -119.4179)', '700.00', 'Open grassy landscape supporting herbivores');
 
 -- --------------------------------------------------------
 
@@ -162,15 +205,14 @@ CREATE TABLE IF NOT EXISTS `monitoringalerts` (
   PRIMARY KEY (`AlertID`),
   UNIQUE KEY `AL_ID` (`AL_ID`),
   KEY `HabitatID` (`HabitatID`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `monitoringalerts`
 --
 
 INSERT INTO `monitoringalerts` (`AlertID`, `AL_ID`, `AlertType`, `AlertDescription`, `AlertDate`, `HabitatID`, `AlertStatus`) VALUES
-(15, 'AL00015', 'HabitatDegradation', 'Increased logging activity in the area', '2024-04-23', 83, 'Pending'),
-(16, 'AL00016', 'InvasiveSpecies', 'Presence of invasive plants observed', '2024-04-16', 84, 'Under Review');
+(1, 'AL00001', 'Habitat Destruction', 'Increased logging activity in the area', '2024-05-13', 1, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -191,15 +233,14 @@ CREATE TABLE IF NOT EXISTS `observations` (
   PRIMARY KEY (`ObservationID`),
   KEY `SpeciesID` (`SpeciesID`),
   KEY `HabitatID` (`HabitatID`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `observations`
 --
 
 INSERT INTO `observations` (`ObservationID`, `OB_ID`, `HabitatID`, `SpeciesID`, `ObserverName`, `ObservationDate`, `Notes`, `Attachments`) VALUES
-(24, 'OB00024', 83, 11, 'John Doe', '2024-04-23', 'Spotted a Bengal Tiger near the river', '/D:/Wildlife_HMS/src/main/resources/observationAttachments/welcome.jpeg\n/D:/Wildlife_HMS/src/main/resources/observationAttachments/welcome.jpeg\n/C:/Users/Gimhan/Pictures/Screenshots/Screenshot 2023-09-15 121733.png\n'),
-(25, 'OB00025', 84, 12, 'Jane Smith', '2024-04-22', 'Red Fox family observed near the marsh', '/C:/Users/Gimhan/Pictures/Screenshots/Screenshot 2023-06-17 114141.png\n/C:/Users/Gimhan/Pictures/Screenshots/Screenshot 2023-11-18 230102.png\n');
+(1, 'OB00001', 1, 1, 'John Doe', '2024-05-13', 'Spotted a Bengal Tiger near the river', '/D:/Wildlife_HMS/src/main/resources/observationAttachments/welcome.jpeg\n');
 
 -- --------------------------------------------------------
 
@@ -225,7 +266,7 @@ CREATE TABLE IF NOT EXISTS `population` (
 --
 
 INSERT INTO `population` (`PopulationID`, `PO_ID`, `HabitatID`, `SpeciesID`, `PopulationSize`, `LastSurveyDate`) VALUES
-(1, 'PL00001', 83, 11, 600, '2024-04-28');
+(1, 'PL00001', 1, 1, 37, '2024-05-13');
 
 -- --------------------------------------------------------
 
@@ -243,16 +284,16 @@ CREATE TABLE IF NOT EXISTS `species` (
   `Description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`SpeciesID`),
   UNIQUE KEY `SP_ID` (`SP_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `species`
 --
 
 INSERT INTO `species` (`SpeciesID`, `SP_ID`, `CommonName`, `ScientificName`, `ConservationStatus`, `Description`) VALUES
-(11, 'SP00011', 'Bengal Tiger', 'Panthera tigris tigris', 'Endangered', 'Large carnivorous mammal native to Asia'),
-(12, 'SP00012', 'Red Fox', 'Vulpes vulpes', 'Least Concern', 'Small omnivorous mammal with a distinctive coat'),
-(13, 'SP00013', 'Oak Tree', 'Quercus robur', 'Not Evaluated', 'Deciduous tree species common in temperate regions');
+(1, 'SP00001', 'Bengal Tiger', 'Panthera tigris tigris', 'Endangered (EN)', 'Large carnivorous mammal native to Asia'),
+(2, 'SP00002', 'Red Fox', 'Vulpes vulpes', 'Least Concern (LC)', 'Small omnivorous mammal with a distinctive coat'),
+(3, 'SP00003', 'Oak Tree', 'Quercus robur', 'Near Threatened (NT)', 'Deciduous tree species common in temperate regions');
 
 -- --------------------------------------------------------
 
@@ -276,16 +317,14 @@ CREATE TABLE IF NOT EXISTS `useraccounts` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_2` (`username`),
   UNIQUE KEY `username` (`username`,`Email`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `useraccounts`
 --
 
 INSERT INTO `useraccounts` (`id`, `username`, `password`, `RegisterDate`, `FirstName`, `LastName`, `Email`, `Roll`, `Gender`, `DP`, `Active`) VALUES
-(14, 'chaturanga', '12345', '2024-04-26', 'Chaturanga', 'Lakmal', 'biologist@example.com', 'Wildlife Biologist', 'Male', 'file:/D:/Wildlife_HMS/target/classes/img/icons8-user-100-1.png', 0),
-(15, 'janith', '111', '2024-04-27', 'Janith', 'Sandaruwan', '', 'Field Technician', 'Female', 'file:/D:/Wildlife_HMS/target/classes/img/icons8-user-100-1.png', 1),
-(19, 'admin', '123', '2024-04-28', 'Gimhana', 'Deshan', '', 'Administrator', 'Male', 'file:/D:/Wildlife_HMS/target/classes/img/icons8-user-100-1.png', 1);
+(1, 'admin', '123', '2024-05-13', 'Gimhana', 'Deshan', 'admin@gmail.com', 'Administrator', 'Male', 'file:/D:/Wildlife_HMS/target/classes/img/icons8-user-100.png', 1);
 
 -- --------------------------------------------------------
 
@@ -310,16 +349,14 @@ CREATE TABLE IF NOT EXISTS `userpermissions` (
   `View` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `UserName` (`UserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `userpermissions`
 --
 
 INSERT INTO `userpermissions` (`ID`, `UserName`, `HabitatManagement`, `UserManagement`, `FieldDataCollection`, `Research`, `Reporting`, `Settings`, `OtherFiles`, `CreateP`, `DeleteP`, `UpdateP`, `View`) VALUES
-(8, 'chaturanga', 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1),
-(9, 'janith', 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1),
-(12, 'admin', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+(1, 'admin', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -337,16 +374,7 @@ CREATE TABLE IF NOT EXISTS `vegetationtypes` (
   PRIMARY KEY (`VegetationID`),
   UNIQUE KEY `VG_ID` (`VG_ID`),
   KEY `HabitatID` (`HabitatID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `vegetationtypes`
---
-
-INSERT INTO `vegetationtypes` (`VegetationID`, `VG_ID`, `VegetationName`, `Description`, `HabitatID`) VALUES
-(9, 'VG00009', 'Evergreen Forest', 'Dense forest with year-round greenery', 83),
-(10, 'VG00010', 'Marshland', 'Wetland area with water-tolerant vegetation', 84),
-(11, 'VG00011', 'Savanna', 'Grassland with scattered trees', 85);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Constraints for dumped tables
