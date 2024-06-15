@@ -9,21 +9,25 @@ import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable {
     @FXML
     private MFXButton cancelBtn;
 
@@ -36,8 +40,27 @@ public class LoginController {
     @FXML
     public MFXTextField unameField;
 
+    @FXML
+    private AnchorPane ancLogin;
 
 
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        Image backgroundImage = new Image("login_img.jpeg");
+        BackgroundImage background = new BackgroundImage(
+                backgroundImage,
+                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT
+        );
+
+        Background background1 = new Background(background);
+        ancLogin.setBackground(background1);
+
+    }
 
 
 
@@ -98,12 +121,15 @@ public class LoginController {
                                 controller.setUserPermissions(userPermissions);
                                 controller.btnDashboardOnAction();
 
-                                Image icon= new Image("icons8-habitat-100.png");
+                                CompanyDetailsModel company=getCompany();
+                                String imagePath = company.getLogo().trim();
+
+                                Image icon= new Image(imagePath);
 
                                 Stage stage = new Stage();
                                 stage.setScene(new Scene(load));
                                 stage.getIcons().add(icon);
-                                stage.setTitle("Wildlife Habitat Management System");
+                                stage.setTitle(company.getName());
                                 stage.show();
 
                                 // Close current window
@@ -157,6 +183,31 @@ public class LoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    private CompanyDetailsModel getCompany() {
+
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String query = "SELECT * FROM companydetails WHERE ID=1;";
+        CompanyDetailsModel company = null;
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet output = statement.executeQuery(query);
+
+            // Check if the ResultSet has any rows
+            if (output.next()) {
+                company = new CompanyDetailsModel(
+                        output.getString("Name"),
+                        output.getString("Logo")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return company;
     }
 
 }

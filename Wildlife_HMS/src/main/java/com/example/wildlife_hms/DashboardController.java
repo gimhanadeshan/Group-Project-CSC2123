@@ -2,8 +2,7 @@ package com.example.wildlife_hms;
 
 import io.github.palexdev.materialfx.controls.MFXProgressSpinner;
 import javafx.animation.TranslateTransition;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.geometry.Pos;
-import javafx.scene.control.cell.PropertyValueFactory;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -22,10 +21,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.ByteArrayInputStream;
+
 import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -211,10 +208,6 @@ public class DashboardController implements Initializable {
         um.setVisible(false);um.setManaged(false);
         se.setVisible(false);se.setManaged(false);
         of.setVisible(false);of.setManaged(false);
-
-
-
-
 
 
 

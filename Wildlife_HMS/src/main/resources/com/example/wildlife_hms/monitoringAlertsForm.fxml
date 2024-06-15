@@ -4,7 +4,6 @@
 <?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
 <?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -18,7 +17,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="gpAlertForm" hgap="40.0" maxHeight="-Infinity" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.MonitoringAlertsFormController">
+<GridPane fx:id="gpAlertForm" hgap="40.0" maxHeight="-Infinity" maxWidth="1000.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="750.0" styleClass="grid-background" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.MonitoringAlertsFormController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
@@ -108,8 +107,4 @@
       <URL value="@css/Common.css" />
       <URL value="@css/style.css" />
    </stylesheets>
-   <styleClass>
-      <String fx:value="grid-background" />
-      <String fx:value="form-background" />
-   </styleClass>
 </GridPane>

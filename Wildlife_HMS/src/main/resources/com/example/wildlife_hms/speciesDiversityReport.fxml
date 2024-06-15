@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
 <?import java.lang.String?>
 <?import java.net.URL?>
@@ -97,7 +96,7 @@
             <HBox maxHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <MFXFilterComboBox fx:id="combCommonName" floatingText="Common Name" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" />
-                  <MFXComboBox fx:id="combConservationStatus" floatingText="Conservation Status" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" />
+                  <MFXFilterComboBox fx:id="combConservationStatus" floatingText="Conservation Status" prefHeight="50.0" prefWidth="200.0" />
                   <MFXButton buttonType="RAISED" onAction="#filteredSpeciesDiversityData" prefHeight="50.0" prefWidth="110.0" text="Add Filter">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">

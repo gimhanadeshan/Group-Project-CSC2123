@@ -41,7 +41,7 @@ public class SpeciesDiversityReportController implements Initializable {
     private MFXFilterComboBox<SpeciesModel> combCommonName;
 
     @FXML
-    private MFXComboBox<String> combConservationStatus;
+    private MFXFilterComboBox<ConservationStatusModel> combConservationStatus;
 
     @FXML
     private TableView<SpeciesDiversityReportModel> tblSpeciesDiversity;
@@ -52,6 +52,7 @@ public class SpeciesDiversityReportController implements Initializable {
     Connection connectDB = connectNow.getConnection();
 
     SpeciesController speciesController=new SpeciesController();
+    OtherMasterFilesController otherMasterFilesController=new OtherMasterFilesController();
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -62,7 +63,11 @@ public class SpeciesDiversityReportController implements Initializable {
         combCommonName.setConverter(converter);
         combCommonName.setFilterFunction(filterFunction);
 
-        combConservationStatus.getItems().addAll("Endangered","Least Concern","Not Evaluated");
+        StringConverter<ConservationStatusModel> converter1 = FunctionalStringConverter.to(ConservationStatusModel -> (ConservationStatusModel == null) ? "" : STR."\{ConservationStatusModel.getConservationStatus()}");
+        Function<String, Predicate<ConservationStatusModel>> filterFunction1 = s -> ConservationStatusModel -> StringUtils.containsIgnoreCase(converter1.toString(ConservationStatusModel), s);
+        combConservationStatus.setItems(otherMasterFilesController.getConservationStatus());
+        combConservationStatus.setConverter(converter1);
+        combConservationStatus.setFilterFunction(filterFunction1);
 
 
 
@@ -129,7 +134,7 @@ public class SpeciesDiversityReportController implements Initializable {
 
         // Get selected conservation status
         if (combConservationStatus.getSelectionModel().getSelectedItem() != null) {
-            selectedConservationStatus = combConservationStatus.getValue();
+            selectedConservationStatus = combConservationStatus.getSelectionModel().getSelectedItem().getConservationStatus();
         } else {
             selectedConservationStatus = null;
         }

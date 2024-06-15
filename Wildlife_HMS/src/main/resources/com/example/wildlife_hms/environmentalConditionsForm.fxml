@@ -4,7 +4,6 @@
 <?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
 <?import io.github.palexdev.materialfx.controls.MFXFilterComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
@@ -19,7 +18,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane hgap="40.0" maxHeight="-Infinity" maxWidth="1000.0" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.EnvironmentalConditionsFormController">
+<GridPane hgap="40.0" maxHeight="-Infinity" maxWidth="1000.0" prefHeight="500.0" prefWidth="750.0" styleClass="grid-background" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.EnvironmentalConditionsFormController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
       <ColumnConstraints hgrow="SOMETIMES" prefWidth="250.0" />
@@ -110,10 +109,6 @@
       <URL value="@css/Common.css" />
       <URL value="@css/style.css" />
    </stylesheets>
-   <styleClass>
-      <String fx:value="form-background" />
-      <String fx:value="grid-background" />
-   </styleClass>
    <padding>
       <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
    </padding>

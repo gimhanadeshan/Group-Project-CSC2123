@@ -17,6 +17,11 @@ public class CompanyDetailsModel {
         this.logo = logo;
     }
 
+    public CompanyDetailsModel(String name, String logo) {
+        this.name = name;
+        this.logo = logo;
+    }
+
     public String getName() {
         return name;
     }

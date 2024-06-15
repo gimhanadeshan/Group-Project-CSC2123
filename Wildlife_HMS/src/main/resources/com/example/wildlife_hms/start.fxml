@@ -1,47 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXProgressBar?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<StackPane prefHeight="549.0" prefWidth="817.0" style="-fx-background-color: #252B48;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="549.0" prefWidth="817.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <MFXProgressBar StackPane.alignment="BOTTOM_CENTER">
-         <StackPane.margin>
-            <Insets bottom="50.0" />
-         </StackPane.margin>
-      </MFXProgressBar>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="60.0" prefWidth="100.0" StackPane.alignment="BOTTOM_CENTER">
-         <children>
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="100.0" text="Wildlife" textFill="#5b9a8b">
-               <font>
-                  <Font name="System Bold Italic" size="18.0" />
-               </font>
-            </Label>
-            <Line endX="126.4000244140625" endY="71.5" startX="34.40000915527344" startY="71.5" stroke="#ffffff5c" strokeLineJoin="BEVEL" />
-            <Label alignment="CENTER" prefHeight="30.0" prefWidth="100.0" text="HMS" textFill="#5b9a8b">
-               <font>
-                  <Font name="System Bold Italic" size="18.0" />
-               </font>
-            </Label>
-         </children>
-         <StackPane.margin>
-            <Insets bottom="150.0" />
-         </StackPane.margin>
-      </VBox>
-      <ImageView fitHeight="242.0" fitWidth="244.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+      <MFXProgressBar layoutX="308.0" layoutY="468.0" />
+      <ImageView fx:id="imageViewDp" fitHeight="313.0" fitWidth="416.0" layoutX="252.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../img/login.png" />
+            <Image url="@../../../logo.jpeg" />
          </image>
-         <StackPane.margin>
-            <Insets top="75.0" />
-         </StackPane.margin>
       </ImageView>
    </children>
-</StackPane>
+</AnchorPane>

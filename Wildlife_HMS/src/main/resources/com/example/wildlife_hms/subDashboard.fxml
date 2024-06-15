@@ -86,7 +86,7 @@
             <Insets bottom="10.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="3">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3">
          <children>
             <StackPane prefHeight="50.0" prefWidth="200.0">
                <children>
@@ -141,7 +141,7 @@
             <Insets bottom="10.0" top="10.0" />
          </padding>
       </VBox>
-      <LineChart fx:id="lineChart" title="Habitat Population" GridPane.columnSpan="2" GridPane.rowIndex="1">
+      <LineChart fx:id="lineChart" styleClass="grid-background" title="Habitat Population" GridPane.columnSpan="2" GridPane.rowIndex="1">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -149,13 +149,19 @@
           <NumberAxis side="LEFT" />
         </yAxis>
          <GridPane.margin>
-            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+            <Insets />
          </GridPane.margin>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
       </LineChart>
-      <PieChart fx:id="pieChart" title="Overview" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">
+      <PieChart fx:id="pieChart" styleClass="grid-background" title="Overview" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">
          <GridPane.margin>
-            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+            <Insets />
          </GridPane.margin>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
       </PieChart>
    </children>
    <padding>

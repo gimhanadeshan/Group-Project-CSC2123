@@ -63,7 +63,7 @@
          <children>
             <ImageView fx:id="imageViewDp" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../img/icons8-user-100.png" />
+                  <Image url="@../../../img/icons8-user-100-1.png" />
                </image>
             </ImageView>
          </children></StackPane>

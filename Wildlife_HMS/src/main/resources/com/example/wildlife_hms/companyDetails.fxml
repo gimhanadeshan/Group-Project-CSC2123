@@ -18,6 +18,8 @@
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
       <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
@@ -31,7 +33,7 @@
    <children>
       <StackPane fx:id="stackPaneDp" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" GridPane.rowSpan="4" GridPane.valignment="TOP">
          <children>
-            <ImageView fx:id="imageViewDp" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="border" StackPane.alignment="CENTER">
+            <ImageView fx:id="imageViewDp" fitHeight="131.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" styleClass="border" StackPane.alignment="CENTER">
                <image>
                   <Image url="@../../../img/icons8-user-100-1.png" />
                </image>
