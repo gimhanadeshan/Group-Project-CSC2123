@@ -39,8 +39,8 @@ The **Wildlife Habitat Management System** is a desktop application designed to 
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/wildlife-habitat-management-system.git
-   cd wildlife-habitat-management-system
+   git clone https://github.com/your-username/Wildlife_HMS.git
+   cd Wildlife_HMS
    ```
 
 2. **Set Up the Database**
