@@ -54,7 +54,7 @@
             </HBox>
          </children>
       </StackPane>
-      <MFXComboBox fx:id="combRoll" floatingText="User Roll*" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="3" />
+      <MFXComboBox fx:id="combRoll" floatingText="User Role*" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="3" />
       <StackPane alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
          <children>
             <MFXTextField fx:id="txtEmail" floatingText="Email" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="400.0" />
