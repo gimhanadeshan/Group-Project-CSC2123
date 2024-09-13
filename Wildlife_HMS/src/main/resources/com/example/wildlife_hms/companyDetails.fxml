@@ -35,7 +35,7 @@
          <children>
             <ImageView fx:id="imageViewDp" fitHeight="131.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" styleClass="border" StackPane.alignment="CENTER">
                <image>
-                  <Image url="@../../../img/icons8-user-100-1.png" />
+                  <Image url="@../../../icons8-company-100.png" />
                </image>
             </ImageView>
          </children></StackPane>
