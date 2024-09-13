@@ -77,7 +77,7 @@
                   <TableColumn fx:id="colFname" editable="false" prefWidth="150.0" text="First Name" />
                   <TableColumn fx:id="colLname" editable="false" prefWidth="150.0" sortable="false" text="Last Name" visible="false" />
                   <TableColumn fx:id="colGender" editable="false" prefWidth="150.39996337890625" sortable="false" text="Gender" visible="false" />
-                  <TableColumn fx:id="colRoll" editable="false" minWidth="0.0" prefWidth="150.0" text="Roll" />
+                  <TableColumn fx:id="colRoll" editable="false" minWidth="0.0" prefWidth="150.0" text="Role" />
                   <TableColumn fx:id="colEmail" editable="false" minWidth="0.0" prefWidth="150.0" text="Email" visible="false" />
                   <TableColumn fx:id="colActive" editable="false" minWidth="0.0" prefWidth="150.0" text="Active" />
                   <TableColumn fx:id="colDate" editable="false" minWidth="0.0" prefWidth="150.0" text="Date" />
