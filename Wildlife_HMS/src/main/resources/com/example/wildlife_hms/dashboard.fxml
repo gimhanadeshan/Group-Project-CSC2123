@@ -122,22 +122,22 @@
                            <children>
                               <HBox fx:id="h2" alignment="CENTER" onMouseClicked="#btnHabitatOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="Habitat Details" />
+                                    <Label prefWidth="140.0" text="Habitats" />
                                  </children>
                               </HBox>
                               <HBox fx:id="habitatForm" alignment="CENTER" layoutX="10.0" layoutY="56.0" onMouseClicked="#btnHabitatFormOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="Habitat Form" />
+                                    <Label prefWidth="140.0" text="Create Habitat " />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" onMouseClicked="#btnSpeciesOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="Species Details" />
+                                    <Label prefWidth="140.0" text="Species" />
                                  </children>
                               </HBox>
                               <HBox fx:id="speciesForm" alignment="CENTER" onMouseClicked="#btnSpeciesFormOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="Species Form" />
+                                    <Label prefWidth="140.0" text="Create Species" />
                                  </children>
                               </HBox>
                            </children>
@@ -160,22 +160,22 @@
                            <children>
                               <HBox fx:id="observationForm" alignment="CENTER" onMouseClicked="#btnOnActionObservationForm" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="Observation Form" />
+                                    <Label prefWidth="140.0" text="New Observation" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" onMouseClicked="#btnOnActionObservation" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="Observation Details" />
+                                    <Label prefWidth="140.0" text="Observations" />
                                  </children>
                               </HBox>
                               <HBox fx:id="alertForm" alignment="CENTER" onMouseClicked="#btnMonitoringAlertsFormOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="Alerts Form" />
+                                    <Label prefWidth="140.0" text="New Alerts" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" onMouseClicked="#btnMonitoringAlertsOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="Alerts Details" />
+                                    <Label prefWidth="140.0" text="Alerts" />
                                  </children>
                               </HBox>
                            </children>
@@ -241,12 +241,12 @@
                            <children>
                               <HBox fx:id="observationForm1" alignment="CENTER" onMouseClicked="#btnOnActionObservationForm" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="Observation Form" />
+                                    <Label prefWidth="140.0" text="New Observation " />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" onMouseClicked="#btnOnActionObservation" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="Observation Details" />
+                                    <Label prefWidth="140.0" text="Observations" />
                                  </children>
                               </HBox>
                               <HBox fx:id="btnEnvironmentalConditions" alignment="CENTER" onMouseClicked="#btnEnvironmentalConditionsOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved">
@@ -256,7 +256,7 @@
                               </HBox>
                               <HBox fx:id="conditionForm" alignment="CENTER" onMouseClicked="#btnEnvironmentalConditionsFormOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved">
                                  <children>
-                                    <Label prefWidth="140.0" text="Conditions Form" />
+                                    <Label prefWidth="140.0" text="Create Conditions " />
                                  </children>
                               </HBox>
                               <HBox fx:id="btnVegetationTypes" alignment="CENTER" onMouseClicked="#btnPopulationOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved">
@@ -266,7 +266,7 @@
                               </HBox>
                               <HBox fx:id="populationForm" alignment="CENTER" onMouseClicked="#btnPopulationFormOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved">
                                  <children>
-                                    <Label prefWidth="140.0" text="Population Form" />
+                                    <Label prefWidth="140.0" text="New Population " />
                                  </children>
                               </HBox>
                            </children>
@@ -294,7 +294,7 @@
                               </HBox>
                               <HBox alignment="CENTER" onMouseClicked="#btnUserRegisterFormOnAction" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="User Registration" />
+                                    <Label prefWidth="140.0" text="Create Users " />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="56.0" onMouseClicked="#userPermissions" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
@@ -345,17 +345,17 @@
                            <children>
                               <HBox alignment="CENTER" onMouseClicked="#alertStatusForm" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="Alert Status Form" />
+                                    <Label prefWidth="140.0" text="Alert Status " />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" onMouseClicked="#alertTypesForm" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="Alert Types Form" />
+                                    <Label prefWidth="140.0" text="Alert Types " />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="56.0" onMouseClicked="#conservationStatusForm" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
                                  <children>
-                                    <Label prefWidth="140.0" text="Conservation Status Form" />
+                                    <Label prefWidth="140.0" text="Conservation Status " />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="103.0" onMouseClicked="#otherMasterFiles" prefHeight="46.0" prefWidth="250.0" spacing="10.0" styleClass="mouse-moved" stylesheets="@css/style.css">
