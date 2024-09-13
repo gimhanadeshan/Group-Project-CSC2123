@@ -5,6 +5,8 @@
 
 The **Wildlife Habitat Management System** is a desktop application designed to help manage and monitor wildlife habitats. The system is built using JavaFX for the front-end interface, MySQL for the back-end database, and several other tools like MaterialFX, JasperReports, and SceneBuilder. It aims to provide a user-friendly interface for managing habitat data, monitoring wildlife, and generating insightful reports.
 
+![Screenshot 2024-09-13 211635](https://github.com/user-attachments/assets/8d7b0582-e82d-4309-89ce-444c2973d3d9)
+
 ## Features
 
 - **User Management**: Admins can manage users, assign roles, and control access.
