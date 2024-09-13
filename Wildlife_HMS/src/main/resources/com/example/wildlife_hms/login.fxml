@@ -52,11 +52,6 @@
                   </ImageView>
                </graphic>
             </Hyperlink>
-            <ImageView fitHeight="98.0" fitWidth="103.0" layoutX="126.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../logo.jpeg" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
    </right>
