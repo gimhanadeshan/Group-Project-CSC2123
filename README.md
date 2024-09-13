@@ -45,7 +45,7 @@ The **Wildlife Habitat Management System** is a desktop application designed to 
 
 2. **Set Up the Database**
 
-   - Install MySQL and create a database named `wildlife_habitat_db`.
+   - Install MySQL and create a database named `wildlifehms`.
    - Execute the SQL scripts located in the `database` folder to create tables and insert initial data.
 
 3. **Configure Database Connection**
