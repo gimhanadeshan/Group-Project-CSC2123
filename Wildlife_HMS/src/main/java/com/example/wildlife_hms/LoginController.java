@@ -7,6 +7,7 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import org.mindrot.jbcrypt.BCrypt;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,10 +22,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -49,7 +47,7 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        Image backgroundImage = new Image("login_img.jpeg");
+        Image backgroundImage = new Image("start.png");
         BackgroundImage background = new BackgroundImage(
                 backgroundImage,
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
@@ -94,37 +92,40 @@ public class LoginController implements Initializable {
         loginMsg.setText("Logging in...");
         loginMsg.setAlignment(Pos.CENTER);
 
-        String verifyLogin = STR."SELECT count(1) FROM useraccounts WHERE username='\{unameField.getText()}' AND password='\{pwdField.getText()}' AND Active=1 ";
+        String username = unameField.getText();
+        String password = pwdField.getText();
 
+        String verifyLogin = "SELECT password, Active FROM useraccounts WHERE username=?";
 
-        try {
-            Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifyLogin);
+        try (PreparedStatement statement = connectDB.prepareStatement(verifyLogin)) {
+            statement.setString(1, username);
+            ResultSet queryResult = statement.executeQuery();
 
-            while (queryResult.next()) {
-                if (queryResult.getInt(1) == 1) {
+            if (queryResult.next()) {
+                String hashedPassword = queryResult.getString("password");
+                boolean isActive = queryResult.getBoolean("Active");
 
-                    String username = unameField.getText();
-                    UserPermissionsModel userPermissions = UserPermissionsModel.getUserPermissionsByUsername(username);
-
+                if (isActive && BCrypt.checkpw(password, hashedPassword)) {
+                    // Successful login
+                    String finalUsername = username;
+                    UserPermissionsModel userPermissions = UserPermissionsModel.getUserPermissionsByUsername(finalUsername);
 
                     PauseTransition pause = new PauseTransition(Duration.seconds(1));
                     pause.setOnFinished(_ -> {
-                        // Successful login
                         Platform.runLater(() -> {
                             try {
                                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
                                 Parent load = fxmlLoader.load();
 
                                 DashboardController controller = fxmlLoader.getController();
-                                controller.setUserName(username);
+                                controller.setUserName(finalUsername);
                                 controller.setUserPermissions(userPermissions);
                                 controller.btnDashboardOnAction();
 
-                                CompanyDetailsModel company=getCompany();
+                                CompanyDetailsModel company = getCompany();
                                 String imagePath = company.getLogo().trim();
 
-                                Image icon= new Image(imagePath);
+                                Image icon = new Image(imagePath);
 
                                 Stage stage = new Stage();
                                 stage.setScene(new Scene(load));
@@ -142,8 +143,6 @@ public class LoginController implements Initializable {
                     });
                     pause.play();
                 } else {
-
-
                     // Invalid login
                     Platform.runLater(() -> {
                         loginMsg.setGraphic(null);
@@ -151,6 +150,13 @@ public class LoginController implements Initializable {
                         loginMsg.setAlignment(Pos.BASELINE_CENTER);
                     });
                 }
+            } else {
+                // Username not found
+                Platform.runLater(() -> {
+                    loginMsg.setGraphic(null);
+                    loginMsg.setText("Invalid Login. Please try again.");
+                    loginMsg.setAlignment(Pos.BASELINE_CENTER);
+                });
             }
         } catch (SQLException e) {
             e.printStackTrace();

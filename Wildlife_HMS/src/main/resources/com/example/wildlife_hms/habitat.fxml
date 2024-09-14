@@ -71,20 +71,20 @@
       </StackPane>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <children>
-            <MFXButton buttonType="RAISED" onAction="#refreshHabitatTable" prefHeight="40.0" prefWidth="100.0" text="Refersh">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../img/icons8-refresh-100.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </MFXButton>
             <MFXButton fx:id="btnNew" buttonType="RAISED" onAction="#openHabitatForm" prefHeight="40.0" prefWidth="75.0" text="New">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../img/icons8-add-new-50.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MFXButton>
+            <MFXButton buttonType="RAISED" onAction="#refreshHabitatTable" prefHeight="40.0" prefWidth="100.0" text="Refersh">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/icons8-refresh-100.png" />
                      </image>
                   </ImageView>
                </graphic>

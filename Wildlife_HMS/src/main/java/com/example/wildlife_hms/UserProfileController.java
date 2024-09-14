@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -112,47 +113,58 @@ public class UserProfileController implements Initializable {
 
     public void passwordChange() {
         String username = lblUserName.getText();
-        String oldPassword = pwdOld.getText(); // Corrected
-        String newPassword = pwdNew.getText(); // Corrected
-        String confirmPassword = pwdConfirm.getText(); // Corrected
+        String oldPassword = pwdOld.getText();
+        String newPassword = pwdNew.getText();
+        String confirmPassword = pwdConfirm.getText();
 
-        if (!newPassword.isEmpty() && !oldPassword.isEmpty() && !confirmPassword.isEmpty()) { // Corrected condition
+        if (username.isEmpty() || oldPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+            lblValidatationMsg.setText("Please fill in all fields.");
+            return;
+        }
 
-            // Check if the old password matches the one stored in the database
-            String query = "SELECT password FROM useraccounts WHERE username =?";
+        if (!newPassword.equals(confirmPassword)) {
+            lblValidatationMsg.setText("New password and confirm password do not match.");
+            return;
+        }
 
-            try {
-                PreparedStatement statement = connectDB.prepareStatement(query);
-                statement.setString(1, username);
-                ResultSet rs = statement.executeQuery();
+        String query = "SELECT password FROM useraccounts WHERE username = ?";
+        try (PreparedStatement statement = connectDB.prepareStatement(query)) {
+            statement.setString(1, username);
+
+            try (ResultSet rs = statement.executeQuery()) {
                 if (rs.next()) {
-                    String storedPassword = rs.getString("password");
-                    if (storedPassword.equals(oldPassword)) {
-                        if (newPassword.equals(confirmPassword)) {
-                            // Update the password in the database
-                            String updateQuery = "UPDATE useraccounts SET password = ? WHERE username = ?";
-                            PreparedStatement updateStatement = connectDB.prepareStatement(updateQuery);
-                            updateStatement.setString(1, newPassword);
-                            updateStatement.setString(2, username);
-                            updateStatement.executeUpdate();
-                            reset();
-                            lblValidatationMsg.setText("Password updated successfully.");
+                    String storedHashedPassword = rs.getString("password");
 
-                        } else {
-                            lblValidatationMsg.setText("New password and confirm password do not match.");
+                    // Check if the old password matches the stored hashed password
+                    if (BCrypt.checkpw(oldPassword, storedHashedPassword)) {
+                        // Update the password with the new hashed password
+                        String updateQuery = "UPDATE useraccounts SET password = ? WHERE username = ?";
+                        try (PreparedStatement updateStatement = connectDB.prepareStatement(updateQuery)) {
+                            String newHashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+                            updateStatement.setString(1, newHashedPassword);
+                            updateStatement.setString(2, username);
+
+                            int rowsAffected = updateStatement.executeUpdate();
+                            if (rowsAffected > 0) {
+                                lblValidatationMsg.setText("Password updated successfully.");
+                            } else {
+                                lblValidatationMsg.setText("Password update failed. Please try again.");
+                            }
                         }
                     } else {
                         lblValidatationMsg.setText("Old password is incorrect.");
-                        reset();
                     }
+                } else {
+                    lblValidatationMsg.setText("Username not found.");
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                // Handle database error
             }
-        } else {
-            lblValidatationMsg.setText("Please fill in all fields.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            lblValidatationMsg.setText("Database error occurred.");
         }
+
+        // Reset form fields
+        reset();
     }
 
 

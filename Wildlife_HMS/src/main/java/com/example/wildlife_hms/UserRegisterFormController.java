@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+import org.mindrot.jbcrypt.BCrypt;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -207,24 +207,24 @@ public class UserRegisterFormController implements Initializable {
             try {
                 PreparedStatement statement = connectDB.prepareStatement(query);
                 statement.setString(1, txtUsername.getText());
-                statement.setString(2, pwdPassword.getText());
+
+                // Hash the password before storing
+                String hashedPassword = BCrypt.hashpw(pwdPassword.getText(), BCrypt.gensalt());
+                statement.setString(2, hashedPassword);
+
                 statement.setDate(3, Date.valueOf(dateRegDate.getValue()));
                 statement.setString(4, txtFname.getText());
                 statement.setString(5, txtLname.getText());
                 statement.setString(6, txtEmail.getText());
                 statement.setString(7, combRoll.getText());
 
-                // Check which radio button is selected for gender
                 if (rBtnMale.isSelected()) {
                     statement.setString(8, "Male");
                 } else {
                     statement.setString(8, "Female");
                 }
 
-                // Save the image path to the database
                 statement.setString(9, imageViewDp.getImage() != null ? imageViewDp.getImage().getUrl() : null);
-
-                // Set the active status based on the checkbox state
                 statement.setBoolean(10, checkBoxActive.isSelected());
                 statement.executeUpdate();
                 setDefaultUserPermissions(txtUsername.getText());
@@ -233,12 +233,13 @@ public class UserRegisterFormController implements Initializable {
                 regMsgLable.setAlignment(Pos.BASELINE_CENTER);
                 regMsgLable.setText("User Registration Successfully");
             } catch (SQLException e) {
-                showAlert(Alert.AlertType.ERROR, "Database Error", STR."Error in creating user: \{e.getMessage()}");
+                showAlert(Alert.AlertType.ERROR, "Database Error", "Error in creating user: " + e.getMessage());
             }
         } else {
             showAlert(Alert.AlertType.ERROR, "Validation Error", "Some fields are invalid");
         }
     }
+
 
     public void btnRegisterOnAction(){
         if (pwdPassword.getText().equals(pwdConfirmPassword.getText())){

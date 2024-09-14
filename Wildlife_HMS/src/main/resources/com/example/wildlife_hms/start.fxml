@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXProgressBar?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="549.0" prefWidth="817.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="549.0" prefWidth="817.0" styleClass="login-bg" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <MFXProgressBar layoutX="308.0" layoutY="468.0" />
-      <ImageView fx:id="imageViewDp" fitHeight="313.0" fitWidth="416.0" layoutX="252.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+      <MFXProgressBar layoutX="134.0" layoutY="429.0" />
+      <ImageView fitHeight="549.0" fitWidth="424.0" focusTraversable="true" layoutX="451.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../logo.jpeg" />
+            <Image url="@../../../start.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="210.0" fitWidth="424.0" layoutX="50.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../start_text.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="82.0" layoutY="290.0" prefHeight="34.0" prefWidth="326.0" text="Efficient Management and Monitoring of Wildlife Habitats" textFill="#f2e0e0">
+         <font>
+            <Font name="Baskerville Old Face" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -96,7 +96,7 @@
       </StackPane>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <children>
-            <MFXButton fx:id="btnNew" buttonType="RAISED" onAction="#openUserForm" prefHeight="40.0" prefWidth="110.0" text="Create User">
+            <MFXButton fx:id="btnNew" buttonType="RAISED" onAction="#openUserForm" prefHeight="40.0" prefWidth="150.0" text="Create User">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>

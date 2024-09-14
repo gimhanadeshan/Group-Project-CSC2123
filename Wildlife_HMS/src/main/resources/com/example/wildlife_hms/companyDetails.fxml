@@ -77,7 +77,7 @@
                         </ImageView>
                      </graphic>
                   </MFXButton>
-                  <MFXButton fx:id="btnUpdate" buttonType="RAISED" disable="true" onAction="#updateCompany" prefHeight="40.0" prefWidth="130.0" text="Save Changes">
+                  <MFXButton fx:id="btnUpdate" buttonType="RAISED" disable="true" onAction="#updateCompany" prefHeight="40.0" prefWidth="150.0" text="Save Changes">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>

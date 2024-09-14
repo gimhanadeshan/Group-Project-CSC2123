@@ -104,7 +104,7 @@
                         </ImageView>
                      </graphic>
                   </MFXButton>
-                  <MFXButton fx:id="btnClear" buttonType="RAISED" onAction="#clearUser" prefHeight="40.0" prefWidth="90.0" text="Undo">
+                  <MFXButton fx:id="btnClear" buttonType="RAISED" onAction="#clearUser" prefHeight="40.0" prefWidth="100.0" text="Undo">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -113,7 +113,7 @@
                         </ImageView>
                      </graphic>
                   </MFXButton>
-                  <MFXButton fx:id="btnUpdate" buttonType="RAISED" disable="true" layoutX="207.0" layoutY="44.0" onAction="#updateUser" prefHeight="40.0" prefWidth="90.0" text="Update">
+                  <MFXButton fx:id="btnUpdate" buttonType="RAISED" disable="true" layoutX="207.0" layoutY="44.0" onAction="#updateUser" prefHeight="40.0" prefWidth="100.0" text="Update">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>

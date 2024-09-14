@@ -62,9 +62,9 @@
       <MFXTextField fx:id="txtConditionId" disable="true" floatingText="Condition ID" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="50.0" prefWidth="200.0" GridPane.rowIndex="2" />
       <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="4">
          <children>
-            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="260.0" spacing="10.0" StackPane.alignment="CENTER">
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="320.0" spacing="10.0" StackPane.alignment="CENTER">
                <children>
-                  <MFXButton fx:id="btnSave" buttonType="RAISED" onAction="#saveCondition" prefHeight="35.0" prefWidth="75.0" text="Save">
+                  <MFXButton fx:id="btnSave" buttonType="RAISED" onAction="#saveCondition" prefHeight="40.0" prefWidth="100.0" text="Save">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -73,7 +73,7 @@
                         </ImageView>
                      </graphic>
                   </MFXButton>
-                  <MFXButton fx:id="btnClear" buttonType="RAISED" layoutX="96.0" layoutY="10.0" onAction="#clearCondition" prefHeight="35.0" prefWidth="75.0" text="Undo">
+                  <MFXButton fx:id="btnClear" buttonType="RAISED" layoutX="96.0" layoutY="10.0" onAction="#clearCondition" prefHeight="40.0" prefWidth="100.0" text="Undo">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -82,7 +82,7 @@
                         </ImageView>
                      </graphic>
                   </MFXButton>
-                  <MFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#updateCondition" prefHeight="35.0" prefWidth="100.0" text="Update">
+                  <MFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#updateCondition" prefHeight="40.0" prefWidth="100.0" text="Update">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>

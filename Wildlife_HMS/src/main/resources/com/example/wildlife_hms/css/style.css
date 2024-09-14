@@ -109,7 +109,77 @@
 
 .table-view > .column-header-background > .show-hide-columns-button {
     -fx-background-color: #5B9A8B;
+}/* Table View Border */
+.table-view {
+    -fx-border-color: transparent;
 }
+
+/* Column Header Background */
+.table-view .column-header-background {
+    -fx-background-color: #0F766E; /* Tailwind teal-600 */
+    -fx-text-fill: white; /* White text for contrast */
+    -fx-padding: 10px;
+}
+
+/* Table Cell Border */
+.table-view .table-cell {
+    -fx-border-color: transparent;
+}
+
+/* Row Hover Background */
+.table-row-cell:hover {
+    -fx-background-color: #E5E7EB; /* Tailwind gray-200 */
+}
+
+/* Default Row Background */
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-padding: 5px;
+}
+
+/* Column Header Styling */
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+/* Vertical Scroll Bar Thumb */
+.table-view .virtual-flow .scroll-bar:vertical .thumb {
+    -fx-background-color: #6B7280; /* Tailwind gray-500 */
+}
+
+/* Horizontal Scroll Bar Thumb */
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color: #6B7280; /* Tailwind gray-500 */
+}
+
+/* Transparent Scrollbar Tracks */
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+
+/* Scrollbar Buttons */
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 2;
+}
+
+/* Selected Row Background */
+.table-row-cell:selected {
+    -fx-background-color: #D1D5DB; /* Tailwind gray-300 */
+    -fx-text-fill: black; /* Black text for good contrast */
+}
+
+/* Show/Hide Columns Button */
+.table-view > .column-header-background > .show-hide-columns-button {
+    -fx-background-color: #0F766E; /* Tailwind teal-600 */
+}
+
 
 
 .border {
@@ -225,12 +295,126 @@
 }
 
 .check{
-    -mfx-main: red;
-    -mfx-gray: red;
-    -fx-text-fill: red;
+    -mfx-main: #ef4444;
+    -mfx-gray: #ef4444;
+    -fx-text-fill: #ef4444;
 }
 
 .warning{
-    -fx-text-fill: red;
+    -fx-text-fill: #ef4444;
 }
 
+/* General Button Styles */
+.button {
+    -fx-cursor: hand; /* Hand cursor on hover */
+}
+
+/* Report Generate Button - Blue */
+#btnReportGenerate {
+    -fx-background-color: #3B82F6; /* Blue background */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold; /* Bold text */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#btnReportGenerate:hover {
+    -fx-background-color: #2563EB; /* Darker blue on hover */
+}
+
+/* Save Button - Green */
+#btnSave {
+    -fx-background-color: #22C55E; /* Green background */
+    -fx-text-fill: white; /* White text */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold; /* Bold text */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#btnSave:hover {
+    -fx-background-color: #16A34A; /* Darker green on hover */
+}
+
+/* Undo Button - Yellow */
+#btnClear {
+    -fx-background-color: #EAB308; /* Yellow background */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold; /* Bold text */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#btnClear:hover {
+    -fx-background-color: #D97706; /* Darker yellow on hover */
+}
+
+/* Update Button - Blue */
+#btnUpdate {
+    -fx-background-color: #3B82F6; /* Blue background */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold; /* Bold text */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#btnUpdate:hover {
+    -fx-background-color: #2563EB; /* Darker blue on hover */
+}
+
+/* New Button - Blue */
+#btnNew {
+    -fx-background-color: #3B82F6; /* Blue background */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold; /* Bold text */
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#btnNew:hover {
+    -fx-background-color: #2563EB; /* Darker blue on hover */
+}
+
+/* General Card Styles */
+.card {
+    -fx-background-color: white; /* White background */
+    -fx-border-radius: 10px; /* Rounded corners */
+    -fx-padding: 15px; /* Inner padding */
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 2); /* Shadow effect */
+    -fx-text-fill: black; /* Black text */
+    -fx-font-size: 16px; /* Font size */
+    -fx-font-weight: bold; /* Bold text */
+    -fx-alignment: center; /* Center text and content */
+    -fx-margin: 10px; /* Margin around the card */
+    -fx-background-radius: 5px; /* Rounded corners for background */
+}
+
+.card:hover {
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 4); /* Enhanced shadow on hover */
+}
+
+/* Individual Card Backgrounds */
+.card-1 {
+    -fx-background-color: #3B82F6; /* Blue background */
+}
+
+.card-2 {
+    -fx-background-color: #10B981; /* Green background for variety */
+}
+
+.card-3 {
+    -fx-background-color: #F59E0B; /* Yellow background for variety */
+}
+
+.card-4 {
+    -fx-background-color: #000000; /* Black background for variety */
+}
+
+
+.login-bg{
+    -fx-background-color:#1F2937;
+}

@@ -74,7 +74,7 @@
          <children>
             <VBox>
                <children>
-                  <Hyperlink maxWidth="1.7976931348623157E308" onAction="#OpenHabitatForm" prefHeight="50.0" text="Habitat Form">
+                  <Hyperlink maxWidth="1.7976931348623157E308" onAction="#OpenHabitatForm" prefHeight="50.0" text="Create New Habitat">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -83,7 +83,7 @@
                         </ImageView>
                      </graphic>
                   </Hyperlink>
-                  <Hyperlink maxWidth="1.7976931348623157E308" onAction="#OpenSpeciesForm" prefHeight="50.0" text="Species Form">
+                  <Hyperlink maxWidth="1.7976931348623157E308" onAction="#OpenSpeciesForm" prefHeight="50.0" text="Create New Species ">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -104,7 +104,7 @@
          </padding></FlowPane>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.rowIndex="4">
          <children>
-            <MFXButton fx:id="btnAttachments" buttonType="RAISED" onAction="#OpenMultipleImageFileChooser" prefHeight="40.0" prefWidth="90.0" text="Browse ">
+            <MFXButton fx:id="btnAttachments" buttonType="RAISED" onAction="#OpenMultipleImageFileChooser" prefHeight="40.0" prefWidth="100.0" text="Browse ">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -113,7 +113,7 @@
                   </ImageView>
                </graphic>
             </MFXButton>
-            <MFXButton fx:id="btnSave" buttonType="RAISED" onAction="#saveObservations" prefHeight="40.0" prefWidth="90.0" text="Save">
+            <MFXButton fx:id="btnSave" buttonType="RAISED" onAction="#saveObservations" prefHeight="40.0" prefWidth="100.0" text="Save">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -122,7 +122,7 @@
                   </ImageView>
                </graphic>
             </MFXButton>
-            <MFXButton fx:id="btnUpdate" buttonType="RAISED" disable="true" onAction="#updateObservations" prefHeight="40.0" prefWidth="90.0" text="Update">
+            <MFXButton fx:id="btnUpdate" buttonType="RAISED" disable="true" onAction="#updateObservations" prefHeight="40.0" prefWidth="100.0" text="Update">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -131,7 +131,7 @@
                   </ImageView>
                </graphic>
             </MFXButton>
-            <MFXButton fx:id="btnClear" buttonType="RAISED" onAction="#clearObservations" prefHeight="40.0" prefWidth="90.0" text="Clear">
+            <MFXButton fx:id="btnClear" buttonType="RAISED" onAction="#clearObservations" prefHeight="40.0" prefWidth="100.0" text="Clear">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>

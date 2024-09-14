@@ -32,9 +32,9 @@
    <children>
       <StackPane prefHeight="70.0" prefWidth="618.0" GridPane.columnSpan="3" GridPane.rowIndex="3">
          <children>
-            <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="260.0" spacing="10.0">
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="40.0" prefWidth="320.0" spacing="10.0">
                <children>
-                  <MFXButton fx:id="btnSave" buttonType="RAISED" onAction="#saveVegetation" prefHeight="40.0" prefWidth="75.0" text="Save">
+                  <MFXButton fx:id="btnSave" buttonType="RAISED" onAction="#saveVegetation" prefHeight="40.0" prefWidth="100.0" text="Save">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -43,7 +43,7 @@
                         </ImageView>
                      </graphic>
                   </MFXButton>
-                  <MFXButton fx:id="btnClear" buttonType="RAISED" layoutX="96.0" layoutY="10.0" onAction="#clearVegetation" prefHeight="40.0" prefWidth="75.0" text="Undo">
+                  <MFXButton fx:id="btnClear" buttonType="RAISED" layoutX="96.0" layoutY="10.0" onAction="#clearVegetation" prefHeight="40.0" prefWidth="100.0" text="Undo">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -52,7 +52,7 @@
                         </ImageView>
                      </graphic>
                   </MFXButton>
-                  <MFXButton fx:id="btnUpdate" buttonType="RAISED" disable="true" layoutX="10.0" layoutY="10.0" onAction="#updateVegetation" prefHeight="40.0" prefWidth="90.0" text="Update">
+                  <MFXButton fx:id="btnUpdate" buttonType="RAISED" disable="true" layoutX="10.0" layoutY="10.0" onAction="#updateVegetation" prefHeight="40.0" prefWidth="100.0" text="Update">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>

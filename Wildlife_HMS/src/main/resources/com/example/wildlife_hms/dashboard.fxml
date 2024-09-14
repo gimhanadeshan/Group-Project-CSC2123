@@ -19,7 +19,7 @@
 
 <BorderPane fx:id="bpDashboard" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.DashboardController">
    <top>
-      <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="58.0" prefWidth="1139.0" spacing="20.0" style="-fx-background-color: #5B9A8B;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="58.0" prefWidth="1139.0" spacing="20.0" style="-fx-background-color: #1F2937;" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="20.0" fitWidth="20.0" onMouseClicked="#toggleScrollPane" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,7 +57,7 @@
                   </Label>
                   <ImageView fx:id="profile" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#userProfile" pickOnBounds="true">
                      <image>
-                        <Image url="@../../../img/icons8-user-100-1.png" />
+                        <Image url="@../../../img/icons8-user-100.png" />
                      </image>
                   </ImageView>
                </children>
@@ -81,7 +81,7 @@
             <Insets right="10.0" />
          </padding>
          <content>
-            <VBox styleClass="white-background">
+            <VBox>
                <children>
                   <VBox layoutX="10.0" layoutY="580.0" maxHeight="-Infinity" prefWidth="250.0">
                      <children>
@@ -382,6 +382,10 @@
                      </children>
                   </VBox>
                </children>
+               <styleClass>
+                  <String fx:value="white-background" />
+                  <String fx:value="sidebar" />
+               </styleClass>
             </VBox>
          </content>
          <styleClass>

@@ -6,6 +6,7 @@ module com.example.whildlif_hms {
     requires javafx.graphics;
     requires MaterialFX;
     requires jasperreports;
+    requires jbcrypt;
 
 
     opens com.example.wildlife_hms to javafx.fxml;

@@ -3,6 +3,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="817.0" stylesheets="@css/TextFields.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wildlife_hms.LoginController">
    <right>
       <AnchorPane prefHeight="428.0" prefWidth="350.0" styleClass="grid-background" BorderPane.alignment="CENTER">
          <children>
@@ -27,7 +28,7 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label fx:id="loginMsg" layoutX="14.0" layoutY="94.0" prefHeight="27.0" prefWidth="326.0" textFill="#c70c0c">
+            <Label fx:id="loginMsg" layoutX="14.0" layoutY="79.0" prefHeight="27.0" prefWidth="326.0" textFill="#c70c0c">
                <font>
                   <Font name="Times New Roman Bold" size="14.0" />
                </font></Label>
@@ -56,6 +57,10 @@
       </AnchorPane>
    </right>
    <center>
-      <AnchorPane fx:id="ancLogin" prefHeight="550.0" prefWidth="438.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="ancLogin" prefHeight="492.0" prefWidth="438.0" BorderPane.alignment="CENTER" />
    </center>
+   <stylesheets>
+      <URL value="@css/TextFields.css" />
+      <URL value="@css/style.css" />
+   </stylesheets>
 </BorderPane>

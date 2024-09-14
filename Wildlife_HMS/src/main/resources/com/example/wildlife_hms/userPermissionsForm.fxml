@@ -35,7 +35,7 @@
          <children>
             <HBox maxHeight="-Infinity" prefHeight="40.0" prefWidth="260.0" spacing="10.0">
                <children>
-                  <MFXButton fx:id="btnSave" buttonType="RAISED" onAction="#saveChanges" prefHeight="40.0" prefWidth="120.0" styleClass="warning" text="Save Changes" textFill="RED">
+                  <MFXButton fx:id="btnSave" buttonType="RAISED" onAction="#saveChanges" prefHeight="40.0" prefWidth="150.0" styleClass="warning" text="Save Changes" textFill="RED">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
